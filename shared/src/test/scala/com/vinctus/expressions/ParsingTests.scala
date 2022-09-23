@@ -3,7 +3,7 @@ package com.vinctus.expressions
 import org.scalatest.freespec.AnyFreeSpec
 import org.scalatest.matchers.should.Matchers
 
-class BasicTests extends AnyFreeSpec with Matchers:
+class ParsingTests extends AnyFreeSpec with Matchers:
 
   "add" in {
     parse("3 + a") shouldBe
