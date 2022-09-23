@@ -3,10 +3,10 @@ ThisBuild / versionScheme := Some("semver-spec")
 
 publish / skip := true
 
-lazy val projectName = crossProject(JSPlatform, JVMPlatform, NativePlatform)
+lazy val expressions = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   .in(file("."))
   .settings(
-    name := "projectName",
+    name := "expressions",
     version := "0.1.0",
     scalaVersion := "3.2.0",
     scalacOptions ++=
@@ -23,6 +23,7 @@ lazy val projectName = crossProject(JSPlatform, JVMPlatform, NativePlatform)
     githubOwner := "vinctustech",
     githubRepository := name.value,
 //    libraryDependencies += "org.scalatest" %%% "scalatest" % "3.2.12" % "test",
+    libraryDependencies += "org.scala-lang.modules" %%% "scala-parser-combinators" % "2.1.1",
 //    libraryDependencies ++= Seq(
 //      "io.github.edadma" %%% "cross-platform" % "0.1.1"
 //    ),

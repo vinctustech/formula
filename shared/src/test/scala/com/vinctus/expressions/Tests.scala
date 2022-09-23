@@ -1,4 +1,4 @@
-package com.vinctus.projectName
+package com.vinctus.expressions
 
 import org.scalatest.freespec.AnyFreeSpec
 import org.scalatest.matchers.should.Matchers

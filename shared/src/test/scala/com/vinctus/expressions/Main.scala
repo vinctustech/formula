@@ -1,4 +1,4 @@
-package com.vinctus.projectName
+package com.vinctus.expressions
 
 object Main extends App {
 
