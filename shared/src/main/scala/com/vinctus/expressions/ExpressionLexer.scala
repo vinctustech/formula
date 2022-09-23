@@ -20,13 +20,11 @@ class ExpressionLexer extends StdLexical:
 
   override def token: Parser[Token] =
     identChar ~ rep(identChar | digit) ^^ { case first ~ rest => processIdent(first :: rest mkString "") }
-      | digits ~ '.' ~ digits ~ optExponent ^^ { case intPart ~ _ ~ fracPart ~ exp =>
-        NumericLit(s"$intPart.$fracPart$exp")
-      } |
-      '.' ~ digits ~ optExponent ^^ { case _ ~ fracPart ~ exp =>
-        NumericLit(s".$fracPart$exp")
-      } |
-      digits ~ exponent ^^ { case intPart ~ exp =>
+      | opt(digits) ~ '.' ~ digits ~ optExponent ^^ {
+        case Some(intPart) ~ _ ~ fracPart ~ exp => NumericLit(s"$intPart.$fracPart$exp")
+        case None ~ _ ~ fracPart ~ exp          => NumericLit(s".$fracPart$exp")
+      }
+      | digits ~ optExponent ^^ { case intPart ~ exp =>
         NumericLit(s"$intPart$exp")
       }
       | (elem('\'') | '"') >> { c =>
@@ -40,11 +38,11 @@ class ExpressionLexer extends StdLexical:
               case 'n'              => '\n'
               case 'r'              => '\r'
               case 't'              => '\t'
-            }
+            },
           )) | ('\\' ~> 'u' ~> (repN(
             4,
-            digit | 'a' | 'A' | 'b' | 'B' | 'c' | 'C' | 'd' | 'D' | 'e' | 'E' | 'f' | 'F'
-          ) ^^ (ds => Integer.parseInt(ds.mkString, 16).toChar))) | chrExcept('\\'))
+            digit | 'a' | 'A' | 'b' | 'B' | 'c' | 'C' | 'd' | 'D' | 'e' | 'E' | 'f' | 'F',
+          ) ^^ (ds => Integer.parseInt(ds.mkString, 16).toChar))) | chrExcept('\\')),
         ) <~ c
       } ^^ (l => StringLit(l.mkString))
       | EofCh ^^^ EOF

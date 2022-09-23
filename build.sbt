@@ -22,14 +22,14 @@ lazy val expressions = crossProject(JSPlatform, JVMPlatform, NativePlatform)
     organization := "io.github.vinctustech",
     githubOwner := "vinctustech",
     githubRepository := name.value,
-//    libraryDependencies += "org.scalatest" %%% "scalatest" % "3.2.12" % "test",
+    libraryDependencies += "org.scalatest" %%% "scalatest" % "3.2.13" % "test",
     libraryDependencies += "org.scala-lang.modules" %%% "scala-parser-combinators" % "2.1.1",
 //    libraryDependencies ++= Seq(
 //      "io.github.edadma" %%% "cross-platform" % "0.1.1"
 //    ),
     libraryDependencies ++= Seq(
       // "com.github.scopt" %%% "scopt" % "4.1.0",
-//      "com.lihaoyi" %%% "pprint" % "0.7.0" % "test",
+      "com.lihaoyi" %%% "pprint" % "0.7.3" % "test",
     ),
     publishMavenStyle := true,
     Test / publishArtifact := false,

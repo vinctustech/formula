@@ -18,13 +18,11 @@ object ExpressionParser extends StandardTokenParsers with PackratParsers with Im
       case e: NoSuccess    => sys.error(s"parse error: $e")
     }
 
-  // https://github.com/scala/scala-parser-combinators/blob/v2.1.1/shared/src/main/scala/scala/util/parsing/combinator/JavaTokenParsers.scala
-
-  lexical.reserved ++= ("""
-      |if
-      |then
-      |else
-      |""".trim.stripMargin split "\\s+")
+//  lexical.reserved ++= ("""
+//      |if
+//      |then
+//      |else
+//      |""".trim.stripMargin split "\\s+")
   lexical.delimiters ++= ("+ - * / ( ) , == != =" split ' ')
 
   type P[+T] = PackratParser[T]
@@ -32,18 +30,23 @@ object ExpressionParser extends StandardTokenParsers with PackratParsers with Im
   lazy val expression: P[Expr] = additive
 
   lazy val additive: P[Expr] = positioned(
-    additive ~ "+" ~ multiplicative ^^ Binary.apply |
-      multiplicative
+    additive ~ ("+" | "-") ~ multiplicative ^^ Binary.apply
+      | multiplicative,
   )
 
   lazy val multiplicative: P[Expr] = positioned(
-    multiplicative ~ "*" ~ primary ^^ Binary.apply |
-      primary
+    multiplicative ~ ("*" | "/") ~ primary ^^ Binary.apply
+      | applicative,
+  )
+
+  lazy val applicative: P[Expr] = positioned(
+    ident ~ "(" ~ repsep(expression, ",") ^^ { case n ~ _ ~ args => Apply(n, args) }
+      | primary,
   )
 
   lazy val primary: P[Expr] = positioned(
     ident ^^ Variable.apply
       | numericLit ^^ NumericLit.apply
       | stringLit ^^ StringLit.apply
-      | "(" ~> expression <~ ")"
+      | "(" ~> expression <~ ")",
   )

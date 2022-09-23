@@ -1,7 +1,6 @@
 package com.vinctus.expressions
 
-object Main extends App {
+@main def run(): Unit =
+  val input = "(a + b) * 4"
 
-  println("> cross_templateJVM/Test/run")
-
-}
+  println(parse(input))
