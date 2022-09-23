@@ -40,3 +40,60 @@ class BasicTests extends AnyFreeSpec with Matchers:
         |)
         |""".stripMargin.trim
   }
+
+  "sub" in {
+    parse("3 - a") shouldBe
+      """
+        |Binary(left = NumericLit(n = "3"), op = "-", right = Variable(name = "a"))
+        """.trim.stripMargin
+  }
+
+  "div" in {
+    parse("3 / a") shouldBe
+      """
+        |Binary(left = NumericLit(n = "3"), op = "/", right = Variable(name = "a"))
+        """.trim.stripMargin
+  }
+
+  "sub div" in {
+    parse("3 - a / 4") shouldBe
+      """
+        |Binary(
+        |  left = NumericLit(n = "3"),
+        |  op = "-",
+        |  right = Binary(left = Variable(name = "a"), op = "/", right = NumericLit(n = "4"))
+        |)
+        |""".stripMargin.trim
+  }
+
+  "sub div paren" in {
+    parse("(a - b) / 4") shouldBe
+      """
+        |Binary(
+        |  left = Binary(left = Variable(name = "a"), op = "-", right = Variable(name = "b")),
+        |  op = "/",
+        |  right = NumericLit(n = "4")
+        |)
+        |""".stripMargin.trim
+  }
+
+  "func" in {
+    parse("f()") shouldBe
+      """
+        |Apply(name = "f", args = List())
+        """.trim.stripMargin
+  }
+
+  "func arg" in {
+    parse("f(3)") shouldBe
+      """
+        |Apply(name = "f", args = List(NumericLit(n = "3")))
+        """.trim.stripMargin
+  }
+
+  "func args" in {
+    parse("f(3, a)") shouldBe
+      """
+        |Apply(name = "f", args = List(NumericLit(n = "3"), Variable(name = "a")))
+        """.trim.stripMargin
+  }

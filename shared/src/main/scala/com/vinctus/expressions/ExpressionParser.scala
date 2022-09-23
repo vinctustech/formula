@@ -35,12 +35,12 @@ object ExpressionParser extends StandardTokenParsers with PackratParsers with Im
   )
 
   lazy val multiplicative: P[Expr] = positioned(
-    multiplicative ~ ("*" | "/") ~ primary ^^ Binary.apply
+    multiplicative ~ ("*" | "/") ~ applicative ^^ Binary.apply
       | applicative,
   )
 
   lazy val applicative: P[Expr] = positioned(
-    ident ~ "(" ~ repsep(expression, ",") ^^ { case n ~ _ ~ args => Apply(n, args) }
+    ident ~ "(" ~ repsep(expression, ",") ~ ")" ^^ { case n ~ _ ~ args ~ _ => Apply(n, args) }
       | primary,
   )
 

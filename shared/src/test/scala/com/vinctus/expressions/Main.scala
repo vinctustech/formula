@@ -1,6 +1,6 @@
 package com.vinctus.expressions
 
 @main def run(): Unit =
-  val input = "(a + b) * 4"
+  val input = "f(3, a)"
 
   println(parse(input))
