@@ -12,7 +12,7 @@ import pprint.pprintln
       |
       |def f(a) = a + 4
       |
-      |formula u = x + f(5)
+      |formula u = x + f(5) < 10 ? 'yes' : 'no'
       |""".stripMargin,
     )
 

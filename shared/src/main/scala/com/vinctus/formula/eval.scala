@@ -4,6 +4,7 @@ import AST.Expr.*
 
 def eval(e: AST.Expr, env: collection.Map[String, Decl], ctx: collection.Map[String, Decl], pure: Boolean): Any =
   e match
+    case StringLit(s)  => s
     case NumericLit(n) => n.toDouble
     case Name(name) =>
       env.getOrElse(name, sys.error(s"unknown variable or constant '$name'")) match
@@ -57,3 +58,6 @@ def eval(e: AST.Expr, env: collection.Map[String, Decl], ctx: collection.Map[Str
         case (a, "!=", b)                 => a != b
     case Unary("-", expr)   => -eval(expr, env, ctx, pure).asInstanceOf[Double]
     case Unary("not", expr) => !eval(expr, env, ctx, pure).asInstanceOf[Boolean]
+    case Ternary(cond, yes, no) =>
+      if eval(cond, env, ctx, pure).asInstanceOf[Boolean] then eval(yes, env, ctx, pure)
+      else eval(no, env, ctx, pure)
