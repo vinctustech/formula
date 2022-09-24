@@ -18,16 +18,16 @@ val stringRegex = "'([^']*)'|\"([^\"]*)\"".r
       head("formula", "0.0.1"),
       arg[File]("<file>")
         .action((x, c) => c.copy(input = x))
-        .text("file containing declarations"),
+        .text("file containing formulae"),
       opt[String]('f', "formula")
         .unbounded()
         .valueName("<name>")
         .action((x, c) => c.copy(actions = c.actions :+ ("formula", x)))
-        .text("out is a required file property"),
+        .text("compute formula value"),
       opt[Seq[(String, String)]]('s', "set")
-        .valueName("k1=v1,k2=v2...")
+        .valueName("x=a,y=b...")
         .action((x, c) => c.copy(vars = x))
-        .text("out is a required file property"),
+        .text("set variables"),
       help("help").text("prints this usage text"),
     )
   }
