@@ -41,9 +41,14 @@ object FormulaParser extends StandardTokenParsers with PackratParsers with Impli
     "formula" ~> ident ~ ("=" ~> expression) ^^ Formula.apply
       | "const" ~> ident ~ "=" ~ expression ^^ { case n ~ _ ~ e => Const(n, e, null) }
       | "def" ~> ident ~ ("(" ~> rep1sep(ident, ",") <~ ")") ~ ("=" ~> expression) ^^ Def.apply
-      | "var" ~> ident ~ "=" ~ expression ^^ { case n ~ _ ~ e => Var(n, e, null) }
+      | "var" ~> ident ~ opt("=" ~> expression) ^^ { case n ~ e => Var(n, e.orNull, null) }
 
-  lazy val expression: P[Expr] = additive
+  lazy val expression: P[Expr] = ternary
+
+  lazy val ternary: P[Expr] = positioned(
+    additive ~ ("?" ~> additive) ~ (":" ~> additive) ^^ Ternary.apply
+      | additive,
+  )
 
   lazy val additive: P[Expr] = positioned(
     additive ~ ("+" | "-") ~ multiplicative ^^ Binary.apply

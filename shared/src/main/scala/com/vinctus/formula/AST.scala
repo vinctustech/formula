@@ -10,3 +10,4 @@ object AST:
     case NumericLit(n: String) extends Expr
     case StringLit(s: String) extends Expr
     case Apply(name: String, args: Seq[Expr]) extends Expr
+    case Ternary(cond: Expr, yes: Expr, no: Expr) extends Expr

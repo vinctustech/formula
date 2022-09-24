@@ -11,6 +11,7 @@ def eval(e: AST.Expr, env: collection.Map[String, Decl], ctx: collection.Map[Str
         case v @ Var(_, expr, value) =>
           if pure then sys.error(s"referentially opaque: variable '$name' referenced")
           if value == null then
+            if expr == null then sys.error(s"variable '$name' has not been set")
             v.value = eval(expr, env, ctx, false)
             v.value
           else value
