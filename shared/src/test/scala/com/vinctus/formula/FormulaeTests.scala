@@ -7,9 +7,11 @@ class FormulaeTests extends AnyFreeSpec with Matchers:
   val f =
     new Formulae(
       """
-        |def f(a) = a + 1
+        |var x = 3
         |
-        |formula u = f(3)
+        |def f(a) = a + 4
+        |
+        |formula u = x + f(5)
         |""".stripMargin,
     )
 
@@ -17,12 +19,20 @@ class FormulaeTests extends AnyFreeSpec with Matchers:
     pprt(f.env) shouldBe
       """
         |VectorMap(
+        |  "x" -> Var(name = "x", expr = NumericLit(n = "3"), value = null),
         |  "f" -> Def(
         |    name = "f",
         |    params = List("a"),
-        |    func = Binary(left = Name(name = "a"), op = "+", right = NumericLit(n = "1"))
+        |    func = Binary(left = Name(name = "a"), op = "+", right = NumericLit(n = "4"))
         |  ),
-        |  "u" -> Formula(name = "u", expr = Apply(name = "f", args = List(NumericLit(n = "3")))),
+        |  "u" -> Formula(
+        |    name = "u",
+        |    expr = Binary(
+        |      left = Name(name = "x"),
+        |      op = "+",
+        |      right = Apply(name = "f", args = List(NumericLit(n = "5")))
+        |    )
+        |  ),
         |  "e" -> Val(name = "e", value = 2.718281828459045),
         |  "pi" -> Val(name = "pi", value = 3.141592653589793),
         |  "asin" -> Function(name = "asin", func = <function1>),
@@ -42,4 +52,8 @@ class FormulaeTests extends AnyFreeSpec with Matchers:
         |  "acos" -> Function(name = "acos", func = <function1>)
         |)
         |""".stripMargin.trim
+  }
+
+  "formula" in {
+    f.formula("u") shouldBe "12"
   }

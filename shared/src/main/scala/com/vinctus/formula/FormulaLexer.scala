@@ -4,7 +4,7 @@ import scala.util.parsing.combinator.Parsers
 import scala.util.parsing.combinator.lexical.StdLexical
 import scala.util.parsing.input.CharSequenceReader.EofCh
 
-class ExpressionLexer extends StdLexical:
+class FormulaLexer extends StdLexical:
 
   private def digits = rep1(digit) ^^ (_.mkString)
 

@@ -6,9 +6,11 @@ import pprint.pprintln
   val f =
     new Formulae(
       """
-      |def f(a) = a + 1
+      |var x = 3
       |
-      |formula u = f(3)
+      |def f(a) = a + 4
+      |
+      |formula u = x + f(5)
       |""".stripMargin,
     )
 

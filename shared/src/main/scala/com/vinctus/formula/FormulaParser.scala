@@ -5,12 +5,12 @@ import scala.util.parsing.combinator.lexical.StdLexical
 import scala.util.parsing.combinator.syntactical.StandardTokenParsers
 import scala.util.parsing.input.CharSequenceReader
 
-object ExpressionParser extends StandardTokenParsers with PackratParsers with ImplicitConversions:
+object FormulaParser extends StandardTokenParsers with PackratParsers with ImplicitConversions:
 
   import AST.*
   import Expr.*
 
-  override val lexical = new ExpressionLexer
+  override val lexical = new FormulaLexer
 
   def parseExpr(input: String): Expr =
     phrase(expression)(new lexical.Scanner(new PackratReader(new CharSequenceReader(input)))) match {
@@ -41,6 +41,7 @@ object ExpressionParser extends StandardTokenParsers with PackratParsers with Im
     "formula" ~> ident ~ ("=" ~> expression) ^^ Formula.apply
       | "const" ~> ident ~ "=" ~ expression ^^ { case n ~ _ ~ e => Const(n, e, null) }
       | "def" ~> ident ~ ("(" ~> rep1sep(ident, ",") <~ ")") ~ ("=" ~> expression) ^^ Def.apply
+      | "var" ~> ident ~ "=" ~ expression ^^ { case n ~ _ ~ e => Var(n, e, null) }
 
   lazy val expression: P[Expr] = additive
 

@@ -8,6 +8,17 @@ def eval(e: AST.Expr, env: collection.Map[String, Decl], ctx: collection.Map[Str
     case Name(name) =>
       env.getOrElse(name, sys.error(s"unknown variable or constant '$name'")) match
         case Val(_, value) => value
+        case v @ Var(_, expr, value) =>
+          if pure then sys.error(s"referentially opaque: variable '$name' referenced")
+          if value == null then
+            v.value = eval(expr, env, ctx, false)
+            v.value
+          else value
+        case c @ Const(_, expr, value) =>
+          if value == null then
+            c.value = eval(expr, env, ctx, true)
+            c.value
+          else value
     case Apply(name, args) =>
       env.getOrElse(name, sys.error(s"unknown function '$name'")) match
         case _: Var => sys.error(s"variable '$name' doesn't take an argument list")
