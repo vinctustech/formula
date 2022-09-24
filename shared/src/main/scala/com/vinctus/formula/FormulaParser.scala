@@ -30,6 +30,9 @@ object FormulaParser extends StandardTokenParsers with PackratParsers with Impli
       |formula
       |var
       |mod
+      |and
+      |or
+      |not
       |""".trim.stripMargin split "\\s+")
   lexical.delimiters ++= ("+ - * / ( ) , < <= > >= ? : == != =" split ' ')
 
@@ -46,7 +49,22 @@ object FormulaParser extends StandardTokenParsers with PackratParsers with Impli
   lazy val expression: P[Expr] = ternary
 
   lazy val ternary: P[Expr] = positioned(
-    additive ~ ("?" ~> additive) ~ (":" ~> additive) ^^ Ternary.apply
+    disjunctive ~ ("?" ~> disjunctive) ~ (":" ~> disjunctive) ^^ Ternary.apply
+      | disjunctive,
+  )
+
+  lazy val disjunctive: P[Expr] = positioned(
+    conjunctive ~ "or" ~ conjunctive ^^ Binary.apply
+      | conjunctive,
+  )
+
+  lazy val conjunctive: P[Expr] = positioned(
+    relational ~ "and" ~ relational ^^ Binary.apply
+      | relational,
+  )
+
+  lazy val relational: P[Expr] = positioned(
+    additive ~ ("<" | ">" | "<=" | ">=" | "==" | "!=") ~ additive ^^ Binary.apply
       | additive,
   )
 
