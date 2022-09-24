@@ -1,4 +1,4 @@
-package com.vinctus.expressions
+package com.vinctus.formula
 
 abstract class Decl:
   val name: String

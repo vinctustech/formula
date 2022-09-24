@@ -1,4 +1,4 @@
-package com.vinctus.expressions
+package com.vinctus.formula
 
 import scala.util.parsing.combinator.{ImplicitConversions, PackratParsers}
 import scala.util.parsing.combinator.lexical.StdLexical
@@ -12,18 +12,20 @@ object ExpressionParser extends StandardTokenParsers with PackratParsers with Im
 
   override val lexical = new ExpressionLexer
 
-  def parse(input: String): Expr =
+  def parseExpr(input: String): Expr =
     phrase(expression)(new lexical.Scanner(new PackratReader(new CharSequenceReader(input)))) match {
       case Success(ast, _) => ast
       case e: NoSuccess    => sys.error(s"parse error: $e")
     }
 
-//  lexical.reserved ++= ("""
-//      |if
-//      |then
-//      |else
-//      |""".trim.stripMargin split "\\s+")
-  lexical.delimiters ++= ("+ - * / ( ) , == != =" split ' ')
+  lexical.reserved ++= ("""
+      |const
+      |def
+      |formula
+      |var
+      |mod
+      |""".trim.stripMargin split "\\s+")
+  lexical.delimiters ++= ("+ - * / ( ) , < <= > >= ? : == != =" split ' ')
 
   type P[+T] = PackratParser[T]
 
@@ -35,7 +37,7 @@ object ExpressionParser extends StandardTokenParsers with PackratParsers with Im
   )
 
   lazy val multiplicative: P[Expr] = positioned(
-    multiplicative ~ ("*" | "/") ~ applicative ^^ Binary.apply
+    multiplicative ~ ("*" | "/" | "mod") ~ applicative ^^ Binary.apply
       | applicative,
   )
 
@@ -45,7 +47,7 @@ object ExpressionParser extends StandardTokenParsers with PackratParsers with Im
   )
 
   lazy val primary: P[Expr] = positioned(
-    ident ^^ Variable.apply
+    ident ^^ Name.apply
       | numericLit ^^ NumericLit.apply
       | stringLit ^^ StringLit.apply
       | "(" ~> expression <~ ")",

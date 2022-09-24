@@ -1,4 +1,4 @@
-package com.vinctus.expressions
+package com.vinctus.formula
 
 import scala.util.parsing.combinator.Parsers
 import scala.util.parsing.combinator.lexical.StdLexical

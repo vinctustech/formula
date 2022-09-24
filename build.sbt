@@ -3,10 +3,10 @@ ThisBuild / versionScheme := Some("semver-spec")
 
 publish / skip := true
 
-lazy val expressions = crossProject(JSPlatform, JVMPlatform, NativePlatform)
+lazy val formula = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   .in(file("."))
   .settings(
-    name := "expressions",
+    name := "formula",
     version := "0.1.0",
     scalaVersion := "3.2.0",
     scalacOptions ++=
