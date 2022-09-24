@@ -38,7 +38,7 @@ object ExpressionParser extends StandardTokenParsers with PackratParsers with Im
   lazy val formulae: P[Seq[Decl]] = rep1(declaration)
 
   lazy val declaration: P[Decl] =
-    "formula" ~> ident ~ "=" ~ expression ^^ { case n ~ _ ~ e => Formula(n, e) }
+    "formula" ~> ident ~ ("=" ~> expression) ^^ Formula.apply
       | "const" ~> ident ~ "=" ~ expression ^^ { case n ~ _ ~ e => Const(n, e, null) }
 
   lazy val expression: P[Expr] = additive
@@ -49,12 +49,17 @@ object ExpressionParser extends StandardTokenParsers with PackratParsers with Im
   )
 
   lazy val multiplicative: P[Expr] = positioned(
-    multiplicative ~ ("*" | "/" | "mod") ~ applicative ^^ Binary.apply
+    multiplicative ~ ("*" | "/" | "mod") ~ prefix ^^ Binary.apply
+      | prefix,
+  )
+
+  lazy val prefix: P[Expr] = positioned(
+    "-" ~ applicative ^^ Unary.apply
       | applicative,
   )
 
   lazy val applicative: P[Expr] = positioned(
-    ident ~ "(" ~ repsep(expression, ",") ~ ")" ^^ { case n ~ _ ~ args ~ _ => Apply(n, args) }
+    ident ~ ("(" ~> repsep(expression, ",") <~ ")") ^^ Apply.apply
       | primary,
   )
 

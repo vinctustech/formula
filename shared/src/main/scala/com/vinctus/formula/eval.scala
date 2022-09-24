@@ -14,12 +14,10 @@ def eval(e: AST.Expr, env: collection.Map[String, Decl], pure: Boolean): Any =
         case Def(name, params, func) =>
         case Function(_, func)       => func(args map (a => eval(a, env, pure)))
     case Binary(left, op, right) =>
-      val l = eval(left, env, pure)
-      val r = eval(right, env, pure)
-
-      (l, op, r) match
+      (eval(left, env, pure), op, eval(right, env, pure)) match
         case (a: String, "+", b: String) => a ++ b
         case (a: Double, "+", b: Double) => a + b
         case (a: Double, "-", b: Double) => a - b
         case (a: Double, "*", b: Double) => a * b
         case (a: Double, "/", b: Double) => a / b
+    case Unary("-", expr) => -eval(expr, env, pure).asInstanceOf[Double]
