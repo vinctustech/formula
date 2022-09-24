@@ -32,11 +32,28 @@ def eval(e: AST.Expr, env: collection.Map[String, Decl], ctx: collection.Map[Str
 
           eval(func, ctx ++ locals, ctx, pure)
         case Function(_, func) => func(args map (a => eval(a, env, ctx, pure)))
+    case Binary(left, "and", right) =>
+      if eval(left, env, ctx, pure).asInstanceOf[Boolean] then eval(right, env, ctx, pure)
+      else false
+    case Binary(left, "or", right) =>
+      if eval(left, env, ctx, pure).asInstanceOf[Boolean] then true
+      else eval(right, env, ctx, pure)
     case Binary(left, op, right) =>
       (eval(left, env, ctx, pure), op, eval(right, env, ctx, pure)) match
-        case (a: String, "+", b: String) => a ++ b
-        case (a: Double, "+", b: Double) => a + b
-        case (a: Double, "-", b: Double) => a - b
-        case (a: Double, "*", b: Double) => a * b
-        case (a: Double, "/", b: Double) => a / b
-    case Unary("-", expr) => -eval(expr, env, ctx, pure).asInstanceOf[Double]
+        case (a: String, "+", b: String)  => a ++ b
+        case (a: String, "<", b: String)  => a < b
+        case (a: String, ">", b: String)  => a > b
+        case (a: String, "<=", b: String) => a <= b
+        case (a: String, ">=", b: String) => a >= b
+        case (a: Double, "+", b: Double)  => a + b
+        case (a: Double, "-", b: Double)  => a - b
+        case (a: Double, "*", b: Double)  => a * b
+        case (a: Double, "/", b: Double)  => a / b
+        case (a: Double, "<", b: Double)  => a < b
+        case (a: Double, ">", b: Double)  => a > b
+        case (a: Double, "<=", b: Double) => a <= b
+        case (a: Double, ">=", b: Double) => a >= b
+        case (a, "==", b)                 => a == b
+        case (a, "!=", b)                 => a != b
+    case Unary("-", expr)   => -eval(expr, env, ctx, pure).asInstanceOf[Double]
+    case Unary("not", expr) => !eval(expr, env, ctx, pure).asInstanceOf[Boolean]
