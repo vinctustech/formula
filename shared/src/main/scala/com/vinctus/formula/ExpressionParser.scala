@@ -18,6 +18,12 @@ object ExpressionParser extends StandardTokenParsers with PackratParsers with Im
       case e: NoSuccess    => sys.error(s"parse error: $e")
     }
 
+  def parseFormulae(input: String): Seq[Decl] =
+    phrase(formulae)(new lexical.Scanner(new PackratReader(new CharSequenceReader(input)))) match {
+      case Success(decls, _) => decls
+      case e: NoSuccess      => sys.error(s"parse error: $e")
+    }
+
   lexical.reserved ++= ("""
       |const
       |def
@@ -28,6 +34,12 @@ object ExpressionParser extends StandardTokenParsers with PackratParsers with Im
   lexical.delimiters ++= ("+ - * / ( ) , < <= > >= ? : == != =" split ' ')
 
   type P[+T] = PackratParser[T]
+
+  lazy val formulae: P[Seq[Decl]] = rep1(declaration)
+
+  lazy val declaration: P[Decl] =
+    "formula" ~> ident ~ "=" ~ expression ^^ { case n ~ _ ~ e => Formula(n, e) }
+      | "const" ~> ident ~ "=" ~ expression ^^ { case n ~ _ ~ e => Const(n, e, null) }
 
   lazy val expression: P[Expr] = additive
 
