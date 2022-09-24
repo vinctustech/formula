@@ -40,6 +40,7 @@ lazy val formula = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   )
   .nativeSettings(
     nativeLinkStubs := true,
+    libraryDependencies += "org.scala-js" %% "scalajs-stubs" % "1.1.0" % "provided",
     libraryDependencies ++= Seq(
       "com.github.scopt" %%% "scopt" % "4.1.0",
     ),
