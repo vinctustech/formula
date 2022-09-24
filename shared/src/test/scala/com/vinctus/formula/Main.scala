@@ -12,4 +12,5 @@ import pprint.pprintln
       |""".stripMargin,
     )
 
+  pprintln(f.env)
   println(f.formula("u"))
