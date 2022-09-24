@@ -6,7 +6,9 @@ import pprint.pprintln
   val f =
     new Formulae(
       """
-      |var x = 3
+      |const default = 3
+      |
+      |var x = default
       |
       |def f(a) = a + 4
       |

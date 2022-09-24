@@ -7,7 +7,9 @@ class FormulaeTests extends AnyFreeSpec with Matchers:
   val f =
     new Formulae(
       """
-        |var x = 3
+        |const default = 3
+        |
+        |var x = default
         |
         |def f(a) = a + 4
         |
@@ -19,7 +21,8 @@ class FormulaeTests extends AnyFreeSpec with Matchers:
     pprt(f.env) shouldBe
       """
         |VectorMap(
-        |  "x" -> Var(name = "x", expr = NumericLit(n = "3"), value = null),
+        |  "default" -> Const(name = "default", expr = NumericLit(n = "3"), value = null),
+        |  "x" -> Var(name = "x", expr = Name(name = "default"), value = null),
         |  "f" -> Def(
         |    name = "f",
         |    params = List("a"),
@@ -56,4 +59,9 @@ class FormulaeTests extends AnyFreeSpec with Matchers:
 
   "formula" in {
     f.formula("u") shouldBe "12"
+  }
+
+  "set" in {
+    f.set("x", 3.5)
+    f.formula("u") shouldBe "12.5"
   }
