@@ -7,4 +7,4 @@ package com.vinctus.formula
   val ast = ExpressionParser.parseExpr(input)
 
   println(ast)
-  println(render(eval(ast, env, false)))
+  println(render(eval(ast, env, env, false)))
