@@ -40,6 +40,7 @@ object ExpressionParser extends StandardTokenParsers with PackratParsers with Im
   lazy val declaration: P[Decl] =
     "formula" ~> ident ~ ("=" ~> expression) ^^ Formula.apply
       | "const" ~> ident ~ "=" ~ expression ^^ { case n ~ _ ~ e => Const(n, e, null) }
+      | "def" ~> ident ~ ("(" ~> rep1sep(ident, ",") <~ ")") ~ ("=" ~> expression) ^^ Def.apply
 
   lazy val expression: P[Expr] = additive
 

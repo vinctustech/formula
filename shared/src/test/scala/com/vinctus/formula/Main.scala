@@ -1,10 +1,15 @@
 package com.vinctus.formula
 
-@main def run(): Unit =
-  val env: Map[String, Decl] =
-    Builtin
-  val input = "round(pi)"
-  val ast = ExpressionParser.parseExpr(input)
+import pprint.pprintln
 
-  println(ast)
-  println(render(eval(ast, env, env, false)))
+@main def run(): Unit =
+  val f =
+    new Formulae(
+      """
+      |def f(a) = a + 1
+      |
+      |formula u = f(3)
+      |""".stripMargin,
+    )
+
+  println(f.formula("u"))
