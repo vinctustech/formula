@@ -16,5 +16,4 @@ import pprint.pprintln
       |""".stripMargin,
     )
 
-  pprintln(f.env)
-  println(f.formula("u"))
+  println(f.expression("cos((pi ^ .5) ^ 2) == -1"))

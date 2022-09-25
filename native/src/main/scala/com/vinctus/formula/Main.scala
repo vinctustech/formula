@@ -4,7 +4,7 @@ import scopt.OParser
 import java.io.File
 import scala.util.{Try, Using}
 
-case class Config(input: File, vars: Seq[(String, String)], formulae: Seq[String])
+case class Config(input: File, vars: Seq[(String, String)], expr: Option[String], formulae: Seq[String])
 val stringRegex = "'([^']*)'|\"([^\"]*)\"".r
 
 @main def run(args: String*): Unit =
@@ -17,6 +17,10 @@ val stringRegex = "'([^']*)'|\"([^\"]*)\"".r
       arg[File]("<file>")
         .action((x, c) => c.copy(input = x))
         .text("file containing formulae"),
+      opt[String]('e', "evaluate")
+        .valueName("<expression>")
+        .action((x, c) => c.copy(expr = Some(x)))
+        .text("compute expression value"),
       opt[String]('f', "formula")
         .unbounded()
         .valueName("<name>")
@@ -30,8 +34,8 @@ val stringRegex = "'([^']*)'|\"([^\"]*)\"".r
     )
   }
 
-  OParser.parse(parser, args, Config(null, Nil, Nil)) match {
-    case Some(Config(file, vars, actions)) =>
+  OParser.parse(parser, args, Config(null, Nil, None, Nil)) match {
+    case Some(Config(file, vars, expr, actions)) =>
       val f = new Formulae(Using(io.Source.fromFile(file))(_.mkString).get)
 
       vars foreach {
@@ -41,6 +45,7 @@ val stringRegex = "'([^']*)'|\"([^\"]*)\"".r
         case (name, n)                      => f.set(name, n.toDouble)
       }
 
-      actions foreach { name => println(s"formula $name = ${f.formula(name)}") }
+      actions foreach (name => println(s"formula $name = ${f.formula(name)}"))
+      expr foreach (e => println(s"expression = ${f.expression(e)}"))
     case _ =>
   }

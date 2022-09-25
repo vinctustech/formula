@@ -19,6 +19,8 @@ val Builtin =
     Function("exp", { case Seq(x: Double) => exp(x) }),
     Function("ln", { case Seq(x: Double) => log(x) }),
     Function("log", { case Seq(x: Double) => log10(x) }),
+    Function("sqrt", { case Seq(x: Double) => sqrt(x) }),
+    Function("pow", { case Seq(x: Double, y: Double) => pow(x, y) }),
     Val("pi", Pi),
     Val("e", E),
   ) map (f => (f.name, f)) toMap

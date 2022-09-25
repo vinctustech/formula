@@ -20,3 +20,6 @@ class Formulae(decls: String):
     env get name match
       case Some(v: Var) => v.value = value
       case _            => sys.error(s"variable '$name' not found")
+
+  @JSExport
+  def expression(expr: String): String = render(eval(FormulaParser.parseExpr(expr), env, env, false))
