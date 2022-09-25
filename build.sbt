@@ -46,10 +46,12 @@ lazy val formula = crossProject(JSPlatform, JVMPlatform, NativePlatform)
     ),
   )
   .jsSettings(
+//    mainClass := Some("com.vinctus.formula.run"),
+    scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) },
     jsEnv := new org.scalajs.jsenv.nodejs.NodeJSEnv(),
 //    Test / scalaJSUseMainModuleInitializer := true,
 //    Test / scalaJSUseTestModuleInitializer := false,
-    Test / scalaJSUseMainModuleInitializer := false,
-    Test / scalaJSUseTestModuleInitializer := true,
-    scalaJSUseMainModuleInitializer := false,
+//    Test / scalaJSUseMainModuleInitializer := false,
+//    Test / scalaJSUseTestModuleInitializer := true,
+//    scalaJSUseMainModuleInitializer := true,
   )

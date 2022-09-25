@@ -4,7 +4,7 @@ import scala.collection.immutable.VectorMap
 import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
 
 @JSExportTopLevel("Formulae")
-class Formulae(decls: String):
+class Formulae(val decls: String):
   val env: Map[String, Decl] = (FormulaParser.parseFormulae(decls) map (d => (d.name, d)) to VectorMap) ++ Builtin
 
   @JSExport
