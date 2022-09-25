@@ -1088,39 +1088,23 @@ function $m_Lcom_vinctus_formula_Builtin$package$() {
   return $n_Lcom_vinctus_formula_Builtin$package$
 }
 /** @constructor */
-function $c_Lcom_vinctus_formula_Decl() {
-  /*<skip>*/
-}
-$c_Lcom_vinctus_formula_Decl.prototype = new $h_O();
-$c_Lcom_vinctus_formula_Decl.prototype.constructor = $c_Lcom_vinctus_formula_Decl;
-/** @constructor */
-function $h_Lcom_vinctus_formula_Decl() {
-  /*<skip>*/
-}
-$h_Lcom_vinctus_formula_Decl.prototype = $c_Lcom_vinctus_formula_Decl.prototype;
-function $as_Lcom_vinctus_formula_Decl(obj) {
-  return (((obj instanceof $c_Lcom_vinctus_formula_Decl) || (obj === null)) ? obj : $throwClassCastException(obj, "com.vinctus.formula.Decl"))
-}
-function $isArrayOf_Lcom_vinctus_formula_Decl(obj, depth) {
-  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Lcom_vinctus_formula_Decl)))
-}
-function $asArrayOf_Lcom_vinctus_formula_Decl(obj, depth) {
-  return (($isArrayOf_Lcom_vinctus_formula_Decl(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lcom.vinctus.formula.Decl;", depth))
-}
-var $d_Lcom_vinctus_formula_Decl = new $TypeData().initClass({
-  Lcom_vinctus_formula_Decl: 0
-}, false, "com.vinctus.formula.Decl", {
-  Lcom_vinctus_formula_Decl: 1,
-  O: 1
-});
-$c_Lcom_vinctus_formula_Decl.prototype.$classData = $d_Lcom_vinctus_formula_Decl;
-/** @constructor */
 function $c_Lcom_vinctus_formula_Formulae(decls) {
   this.Lcom_vinctus_formula_Formulae__f_env = null;
-  var this$3 = $as_sc_IterableOnceOps($m_Lcom_vinctus_formula_FormulaParser$().parseFormulae__T__sci_Seq(decls).map__F1__O(new $c_sjsr_AnonFunction1(((d) => {
+  var ds = $m_Lcom_vinctus_formula_FormulaParser$().parseFormulae__T__sci_Seq(decls);
+  var s = $ct_scm_HashSet__(new $c_scm_HashSet());
+  ds.foreach__F1__V(new $c_sjsr_AnonFunction1(((d) => {
     var d$1 = $as_Lcom_vinctus_formula_Decl(d);
-    var _1 = d$1.name__T();
-    return new $c_T2(_1, d$1)
+    if (s.contains__O__Z(d$1.name__T())) {
+      $m_Lcom_vinctus_formula_problem$package$().problem__s_util_parsing_input_Position__T__E(d$1.Lcom_vinctus_formula_Decl__f_pos, (("duplicate name '" + d$1.name__T()) + "'"))
+    };
+    var elem = d$1.name__T();
+    s.add__O__Z(elem);
+    return s
+  })));
+  var this$3 = $as_sc_IterableOnceOps(ds.map__F1__O(new $c_sjsr_AnonFunction1(((d$2) => {
+    var d$3 = $as_Lcom_vinctus_formula_Decl(d$2);
+    var _1 = d$3.name__T();
+    return new $c_T2(_1, d$3)
   }))));
   var factory = $m_sci_VectorMap$();
   var factory$1 = new $c_sc_MapFactory$ToFactory(factory);
@@ -1208,6 +1192,9 @@ $c_Lcom_vinctus_formula_Formulae.prototype.$js$exported$meth$func__T__sci_Seq__O
 $c_Lcom_vinctus_formula_Formulae.prototype.$js$exported$meth$set__T__O__O = (function(name, value) {
   this.set__T__O__V(name, value)
 });
+$c_Lcom_vinctus_formula_Formulae.prototype.$js$exported$meth$get__T__O = (function(name) {
+  return $m_Lcom_vinctus_formula_lookup$package$().lookup__T__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O(name, null, this.Lcom_vinctus_formula_Formulae__f_env, this.Lcom_vinctus_formula_Formulae__f_env, false)
+});
 $c_Lcom_vinctus_formula_Formulae.prototype.$js$exported$meth$expression__T__O = (function(expr) {
   return this.expression__T__O(expr)
 });
@@ -1228,6 +1215,10 @@ $c_Lcom_vinctus_formula_Formulae.prototype.func = (function(arg, ...rest) {
   var prep0 = $as_T(arg);
   var prep1 = $m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq(rest);
   return this.$js$exported$meth$func__T__sci_Seq__O(prep0, prep1)
+});
+$c_Lcom_vinctus_formula_Formulae.prototype.get = (function(arg) {
+  var prep0 = $as_T(arg);
+  return this.$js$exported$meth$get__T__O(prep0)
 });
 var $d_Lcom_vinctus_formula_Formulae = new $TypeData().initClass({
   Lcom_vinctus_formula_Formulae: 0
@@ -1251,234 +1242,200 @@ $c_Lcom_vinctus_formula_eval$package$.prototype.eval__Lcom_vinctus_formula_AST$E
   var env$tailLocal1 = env;
   var e$tailLocal1 = e;
   while (true) {
-    var x112 = e$tailLocal1;
-    if ((x112 instanceof $c_Lcom_vinctus_formula_AST$Expr$StringLit)) {
-      var x$1 = $as_Lcom_vinctus_formula_AST$Expr$StringLit(x112);
-      var x153 = x$1.Lcom_vinctus_formula_AST$Expr$StringLit__f_s;
-      return x153
+    var x97 = e$tailLocal1;
+    if ((x97 instanceof $c_Lcom_vinctus_formula_AST$Expr$StringLit)) {
+      var x$1 = $as_Lcom_vinctus_formula_AST$Expr$StringLit(x97);
+      var x138 = x$1.Lcom_vinctus_formula_AST$Expr$StringLit__f_s;
+      return x138
     };
-    if ((x112 instanceof $c_Lcom_vinctus_formula_AST$Expr$NumericLit)) {
-      var x$1$1 = $as_Lcom_vinctus_formula_AST$Expr$NumericLit(x112);
-      var x150 = x$1$1.Lcom_vinctus_formula_AST$Expr$NumericLit__f_n;
-      return $m_jl_Double$().parseDouble__T__D(x150)
+    if ((x97 instanceof $c_Lcom_vinctus_formula_AST$Expr$NumericLit)) {
+      var x$1$1 = $as_Lcom_vinctus_formula_AST$Expr$NumericLit(x97);
+      var x135 = x$1$1.Lcom_vinctus_formula_AST$Expr$NumericLit__f_n;
+      return $m_jl_Double$().parseDouble__T__D(x135)
     };
-    if ((x112 instanceof $c_Lcom_vinctus_formula_AST$Expr$Name)) {
-      var x$1$2 = $as_Lcom_vinctus_formula_AST$Expr$Name(x112);
-      var x147 = x$1$2.Lcom_vinctus_formula_AST$Expr$Name__f_name;
-      var x1 = $as_Lcom_vinctus_formula_Decl(env$tailLocal1.getOrElse__O__F0__O(x147, new $c_sjsr_AnonFunction0(((x147) => (() => {
-        $m_s_sys_package$().error__T__E((("unknown variable or constant '" + x147) + "'"))
-      }))(x147))));
-      if ((x1 instanceof $c_Lcom_vinctus_formula_Val)) {
-        var x$1$3 = $as_Lcom_vinctus_formula_Val(x1);
-        var x15 = x$1$3.Lcom_vinctus_formula_Val__f_value;
-        return x15
-      };
-      if ((x1 instanceof $c_Lcom_vinctus_formula_Var)) {
-        var x7 = $as_Lcom_vinctus_formula_Var(x1);
-        var x10 = x7.Lcom_vinctus_formula_Var__f_expr;
-        var x11 = x7.Lcom_vinctus_formula_Var__f_value;
-        if (pure) {
-          $m_s_sys_package$().error__T__E((("referentially opaque: variable '" + x147) + "' referenced"))
-        };
-        if ((x11 === null)) {
-          if ((x10 === null)) {
-            $m_s_sys_package$().error__T__E((("variable '" + x147) + "' has not been set"))
-          };
-          x7.Lcom_vinctus_formula_Var__f_value = $m_Lcom_vinctus_formula_eval$package$().eval__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O(x10, env$tailLocal1, ctx, false);
-          return x7.Lcom_vinctus_formula_Var__f_value
-        } else {
-          return x11
-        }
-      };
-      if ((x1 instanceof $c_Lcom_vinctus_formula_Const)) {
-        var x2 = $as_Lcom_vinctus_formula_Const(x1);
-        var x5 = x2.Lcom_vinctus_formula_Const__f_expr;
-        var x6 = x2.Lcom_vinctus_formula_Const__f_value;
-        if ((x6 === null)) {
-          x2.Lcom_vinctus_formula_Const__f_value = $m_Lcom_vinctus_formula_eval$package$().eval__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O(x5, env$tailLocal1, ctx, true);
-          return x2.Lcom_vinctus_formula_Const__f_value
-        } else {
-          return x6
-        }
-      };
-      throw new $c_s_MatchError(x1)
+    if ((x97 instanceof $c_Lcom_vinctus_formula_AST$Expr$Name)) {
+      var x$1$2 = $as_Lcom_vinctus_formula_AST$Expr$Name(x97);
+      var x132 = x$1$2.Lcom_vinctus_formula_AST$Expr$Name__f_name;
+      return $m_Lcom_vinctus_formula_lookup$package$().lookup__T__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O(x132, e$tailLocal1, env$tailLocal1, ctx, pure)
     };
-    if ((x112 instanceof $c_Lcom_vinctus_formula_AST$Expr$Apply)) {
-      var x$1$4 = $as_Lcom_vinctus_formula_AST$Expr$Apply(x112);
-      var x143 = x$1$4.Lcom_vinctus_formula_AST$Expr$Apply__f_name;
-      var x144 = x$1$4.Lcom_vinctus_formula_AST$Expr$Apply__f_args;
-      var x19 = $as_Lcom_vinctus_formula_Decl(env$tailLocal1.getOrElse__O__F0__O(x143, new $c_sjsr_AnonFunction0(((x143) => (() => {
-        $m_s_sys_package$().error__T__E((("unknown function '" + x143) + "'"))
-      }))(x143))));
-      if ((x19 instanceof $c_Lcom_vinctus_formula_Var)) {
-        $m_s_sys_package$().error__T__E((("variable '" + x143) + "' doesn't take an argument list"))
+    if ((x97 instanceof $c_Lcom_vinctus_formula_AST$Expr$Apply)) {
+      var x$1$3 = $as_Lcom_vinctus_formula_AST$Expr$Apply(x97);
+      var x128 = x$1$3.Lcom_vinctus_formula_AST$Expr$Apply__f_name;
+      var x129 = x$1$3.Lcom_vinctus_formula_AST$Expr$Apply__f_args;
+      var $$x1 = env$tailLocal1;
+      var e$tailLocal1$2$1 = e$tailLocal1;
+      var x4 = $as_Lcom_vinctus_formula_Decl($$x1.getOrElse__O__F0__O(x128, new $c_sjsr_AnonFunction0(((x128, e$tailLocal1$2) => (() => {
+        $m_Lcom_vinctus_formula_problem$package$().problem__s_util_parsing_input_Position__T__E(e$tailLocal1$2.Lcom_vinctus_formula_AST$Expr__f_pos, (("unknown function '" + x128) + "'"))
+      }))(x128, e$tailLocal1$2$1))));
+      if ((x4 instanceof $c_Lcom_vinctus_formula_Var)) {
+        $m_Lcom_vinctus_formula_problem$package$().problem__s_util_parsing_input_Position__T__E(e$tailLocal1.Lcom_vinctus_formula_AST$Expr__f_pos, (("variable '" + x128) + "' doesn't take an argument list"))
       };
-      if ((x19 instanceof $c_Lcom_vinctus_formula_Def)) {
-        var x$1$5 = $as_Lcom_vinctus_formula_Def(x19);
-        var x26 = x$1$5.Lcom_vinctus_formula_Def__f_name;
-        var x27 = x$1$5.Lcom_vinctus_formula_Def__f_params;
-        var x28 = x$1$5.Lcom_vinctus_formula_Def__f_func;
-        if ((x144.length__I() < x27.length__I())) {
-          $m_s_sys_package$().error__T__E((((("too few arguments, '" + x26) + "' takes ") + x27.length__I()) + " parameters"))
+      if ((x4 instanceof $c_Lcom_vinctus_formula_Def)) {
+        var x$1$4 = $as_Lcom_vinctus_formula_Def(x4);
+        var x11 = x$1$4.Lcom_vinctus_formula_Def__f_name;
+        var x12 = x$1$4.Lcom_vinctus_formula_Def__f_params;
+        var x13 = x$1$4.Lcom_vinctus_formula_Def__f_func;
+        if ((x129.length__I() < x12.length__I())) {
+          $m_Lcom_vinctus_formula_problem$package$().problem__s_util_parsing_input_Position__T__E(e$tailLocal1.Lcom_vinctus_formula_AST$Expr__f_pos, (((("too few arguments, '" + x11) + "' takes ") + x12.length__I()) + " parameters"))
         };
-        if ((x144.length__I() > x27.length__I())) {
-          $m_s_sys_package$().error__T__E((((("too many arguments, '" + x26) + "' takes ") + x27.length__I()) + " parameters"))
+        if ((x129.length__I() > x12.length__I())) {
+          $m_Lcom_vinctus_formula_problem$package$().problem__s_util_parsing_input_Position__T__E(e$tailLocal1.Lcom_vinctus_formula_AST$Expr__f_pos, (((("too many arguments, '" + x11) + "' takes ") + x12.length__I()) + " parameters"))
         };
-        var $$x1 = $as_sc_IterableOps(x27.zip__sc_IterableOnce__O(x144));
+        var $$x2 = $as_sc_IterableOps(x12.zip__sc_IterableOnce__O(x129));
         var env$tailLocal1$2$1 = env$tailLocal1;
-        var locals = $as_sci_Seq($$x1.map__F1__O(new $c_sjsr_AnonFunction1(((ctx, pure, env$tailLocal1$2) => ((x$1$6) => {
-          var x$1$7 = $as_T2(x$1$6);
-          if ((x$1$7 !== null)) {
-            var p = $as_T(x$1$7.T2__f__1);
-            var a = $as_Lcom_vinctus_formula_AST$Expr(x$1$7.T2__f__2);
+        var locals = $as_sci_Seq($$x2.map__F1__O(new $c_sjsr_AnonFunction1(((ctx, pure, env$tailLocal1$2) => ((x$1$5) => {
+          var x$1$6 = $as_T2(x$1$5);
+          if ((x$1$6 !== null)) {
+            var p = $as_T(x$1$6.T2__f__1);
+            var a = $as_Lcom_vinctus_formula_AST$Expr(x$1$6.T2__f__2);
             var value = $m_Lcom_vinctus_formula_eval$package$().eval__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O(a, env$tailLocal1$2, ctx, pure);
             var _2 = new $c_Lcom_vinctus_formula_Val(p, value);
             return new $c_T2(p, _2)
           };
-          throw new $c_s_MatchError(x$1$7)
+          throw new $c_s_MatchError(x$1$6)
         }))(ctx, pure, env$tailLocal1$2$1))));
         var env$tailLocal1$tmp1 = $as_sc_Map(ctx.concat__sc_IterableOnce__sc_IterableOps(locals));
-        e$tailLocal1 = x28;
+        e$tailLocal1 = x13;
         env$tailLocal1 = env$tailLocal1$tmp1;
         continue
       };
-      if ((x19 instanceof $c_Lcom_vinctus_formula_Function)) {
-        var x$1$8 = $as_Lcom_vinctus_formula_Function(x19);
-        var x23 = x$1$8.Lcom_vinctus_formula_Function__f_func;
+      if ((x4 instanceof $c_Lcom_vinctus_formula_Function)) {
+        var x$1$7 = $as_Lcom_vinctus_formula_Function(x4);
+        var x8 = x$1$7.Lcom_vinctus_formula_Function__f_func;
         var env$tailLocal1$3$1 = env$tailLocal1;
-        return x23.apply__O__O(x144.map__F1__O(new $c_sjsr_AnonFunction1(((ctx, pure, env$tailLocal1$3) => ((a$1) => {
+        return x8.apply__O__O(x129.map__F1__O(new $c_sjsr_AnonFunction1(((ctx, pure, env$tailLocal1$3) => ((a$1) => {
           var a$2 = $as_Lcom_vinctus_formula_AST$Expr(a$1);
           return $m_Lcom_vinctus_formula_eval$package$().eval__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O(a$2, env$tailLocal1$3, ctx, pure)
         }))(ctx, pure, env$tailLocal1$3$1))))
       };
-      throw new $c_s_MatchError(x19)
+      throw new $c_s_MatchError(x4)
     };
-    if ((x112 instanceof $c_Lcom_vinctus_formula_AST$Expr$Binary)) {
-      var x$1$9 = $as_Lcom_vinctus_formula_AST$Expr$Binary(x112);
-      var x138 = x$1$9.Lcom_vinctus_formula_AST$Expr$Binary__f_left;
-      var x139 = x$1$9.Lcom_vinctus_formula_AST$Expr$Binary__f_op;
-      var x140 = x$1$9.Lcom_vinctus_formula_AST$Expr$Binary__f_right;
-      if ((x139 === "and")) {
-        if ($uZ($m_Lcom_vinctus_formula_eval$package$().eval__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O(x138, env$tailLocal1, ctx, pure))) {
-          e$tailLocal1 = x140;
+    if ((x97 instanceof $c_Lcom_vinctus_formula_AST$Expr$Binary)) {
+      var x$1$8 = $as_Lcom_vinctus_formula_AST$Expr$Binary(x97);
+      var x123 = x$1$8.Lcom_vinctus_formula_AST$Expr$Binary__f_left;
+      var x124 = x$1$8.Lcom_vinctus_formula_AST$Expr$Binary__f_op;
+      var x125 = x$1$8.Lcom_vinctus_formula_AST$Expr$Binary__f_right;
+      if ((x124 === "and")) {
+        if ($uZ($m_Lcom_vinctus_formula_eval$package$().eval__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O(x123, env$tailLocal1, ctx, pure))) {
+          e$tailLocal1 = x125;
           continue
         } else {
           return false
         }
       };
-      if ((x139 === "or")) {
-        if ($uZ($m_Lcom_vinctus_formula_eval$package$().eval__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O(x138, env$tailLocal1, ctx, pure))) {
+      if ((x124 === "or")) {
+        if ($uZ($m_Lcom_vinctus_formula_eval$package$().eval__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O(x123, env$tailLocal1, ctx, pure))) {
           return true
         } else {
-          e$tailLocal1 = x140;
+          e$tailLocal1 = x125;
           continue
         }
       };
-      var _1 = $m_Lcom_vinctus_formula_eval$package$().eval__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O(x138, env$tailLocal1, ctx, pure);
-      var _3 = $m_Lcom_vinctus_formula_eval$package$().eval__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O(x140, env$tailLocal1, ctx, pure);
-      var x30 = new $c_T3(_1, x139, _3);
-      var x107 = x30.T3__f__1;
-      var x108 = $as_T(x30.T3__f__2);
-      var x109 = x30.T3__f__3;
-      if (((typeof x107) === "string")) {
-        var x111 = $as_T(x107);
-        if (((x108 === "+") && ((typeof x109) === "string"))) {
-          var b = $as_T(x109);
-          return (("" + x111) + b)
+      var _1 = $m_Lcom_vinctus_formula_eval$package$().eval__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O(x123, env$tailLocal1, ctx, pure);
+      var _3 = $m_Lcom_vinctus_formula_eval$package$().eval__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O(x125, env$tailLocal1, ctx, pure);
+      var x15 = new $c_T3(_1, x124, _3);
+      var x92 = x15.T3__f__1;
+      var x93 = $as_T(x15.T3__f__2);
+      var x94 = x15.T3__f__3;
+      if (((typeof x92) === "string")) {
+        var x96 = $as_T(x92);
+        if (((x93 === "+") && ((typeof x94) === "string"))) {
+          var b = $as_T(x94);
+          return (("" + x96) + b)
         };
-        if (((x108 === "<") && ((typeof x109) === "string"))) {
-          var b$2 = $as_T(x109);
-          return $m_sc_StringOps$().$less$extension__T__T__Z(x111, b$2)
+        if (((x93 === "<") && ((typeof x94) === "string"))) {
+          var b$2 = $as_T(x94);
+          return $m_sc_StringOps$().$less$extension__T__T__Z(x96, b$2)
         };
-        if (((x108 === ">") && ((typeof x109) === "string"))) {
-          var b$3 = $as_T(x109);
-          return $m_sc_StringOps$().$greater$extension__T__T__Z(x111, b$3)
+        if (((x93 === ">") && ((typeof x94) === "string"))) {
+          var b$3 = $as_T(x94);
+          return $m_sc_StringOps$().$greater$extension__T__T__Z(x96, b$3)
         };
-        if (((x108 === "<=") && ((typeof x109) === "string"))) {
-          var b$4 = $as_T(x109);
-          return $m_sc_StringOps$().$less$eq$extension__T__T__Z(x111, b$4)
+        if (((x93 === "<=") && ((typeof x94) === "string"))) {
+          var b$4 = $as_T(x94);
+          return $m_sc_StringOps$().$less$eq$extension__T__T__Z(x96, b$4)
         };
-        if (((x108 === ">=") && ((typeof x109) === "string"))) {
-          var b$5 = $as_T(x109);
-          return $m_sc_StringOps$().$greater$eq$extension__T__T__Z(x111, b$5)
+        if (((x93 === ">=") && ((typeof x94) === "string"))) {
+          var b$5 = $as_T(x94);
+          return $m_sc_StringOps$().$greater$eq$extension__T__T__Z(x96, b$5)
         }
       };
-      if (((typeof x107) === "number")) {
-        var x86 = $uD(x107);
-        if (((x108 === "+") && ((typeof x109) === "number"))) {
-          var b$6 = $uD(x109);
-          return (x86 + b$6)
+      if (((typeof x92) === "number")) {
+        var x71 = $uD(x92);
+        if (((x93 === "+") && ((typeof x94) === "number"))) {
+          var b$6 = $uD(x94);
+          return (x71 + b$6)
         };
-        if (((x108 === "-") && ((typeof x109) === "number"))) {
-          var b$7 = $uD(x109);
-          return (x86 - b$7)
+        if (((x93 === "-") && ((typeof x94) === "number"))) {
+          var b$7 = $uD(x94);
+          return (x71 - b$7)
         };
-        if (((x108 === "*") && ((typeof x109) === "number"))) {
-          var b$8 = $uD(x109);
-          return (x86 * b$8)
+        if (((x93 === "*") && ((typeof x94) === "number"))) {
+          var b$8 = $uD(x94);
+          return (x71 * b$8)
         };
-        if (((x108 === "mod") && ((typeof x109) === "number"))) {
-          var b$9 = $uD(x109);
-          return (x86 % b$9)
+        if (((x93 === "mod") && ((typeof x94) === "number"))) {
+          var b$9 = $uD(x94);
+          return (x71 % b$9)
         };
-        if (((x108 === "^") && ((typeof x109) === "number"))) {
-          var b$10 = $uD(x109);
-          return $uD(Math.pow(x86, b$10))
+        if (((x93 === "^") && ((typeof x94) === "number"))) {
+          var b$10 = $uD(x94);
+          return $uD(Math.pow(x71, b$10))
         };
-        if (((x108 === "/") && ((typeof x109) === "number"))) {
-          var b$11 = $uD(x109);
-          return (x86 / b$11)
+        if (((x93 === "/") && ((typeof x94) === "number"))) {
+          var b$11 = $uD(x94);
+          return (x71 / b$11)
         };
-        if (((x108 === "<") && ((typeof x109) === "number"))) {
-          var b$12 = $uD(x109);
-          return (x86 < b$12)
+        if (((x93 === "<") && ((typeof x94) === "number"))) {
+          var b$12 = $uD(x94);
+          return (x71 < b$12)
         };
-        if (((x108 === ">") && ((typeof x109) === "number"))) {
-          var b$13 = $uD(x109);
-          return (x86 > b$13)
+        if (((x93 === ">") && ((typeof x94) === "number"))) {
+          var b$13 = $uD(x94);
+          return (x71 > b$13)
         };
-        if (((x108 === "<=") && ((typeof x109) === "number"))) {
-          var b$14 = $uD(x109);
-          return (x86 <= b$14)
+        if (((x93 === "<=") && ((typeof x94) === "number"))) {
+          var b$14 = $uD(x94);
+          return (x71 <= b$14)
         };
-        if (((x108 === ">=") && ((typeof x109) === "number"))) {
-          var b$15 = $uD(x109);
-          return (x86 >= b$15)
+        if (((x93 === ">=") && ((typeof x94) === "number"))) {
+          var b$15 = $uD(x94);
+          return (x71 >= b$15)
         }
       };
-      if ((x108 === "==")) {
-        return $m_sr_BoxesRunTime$().equals__O__O__Z(x107, x109)
+      if ((x93 === "==")) {
+        return $m_sr_BoxesRunTime$().equals__O__O__Z(x92, x94)
       };
-      if ((x108 === "!=")) {
-        return (!$m_sr_BoxesRunTime$().equals__O__O__Z(x107, x109))
+      if ((x93 === "!=")) {
+        return (!$m_sr_BoxesRunTime$().equals__O__O__Z(x92, x94))
       };
-      throw new $c_s_MatchError(x30)
+      throw new $c_s_MatchError(x15)
     };
-    if ((x112 instanceof $c_Lcom_vinctus_formula_AST$Expr$Unary)) {
-      var x$1$10 = $as_Lcom_vinctus_formula_AST$Expr$Unary(x112);
-      var x124 = x$1$10.Lcom_vinctus_formula_AST$Expr$Unary__f_op;
-      var x125 = x$1$10.Lcom_vinctus_formula_AST$Expr$Unary__f_expr;
-      if ((x124 === "-")) {
-        return (-$uD($m_Lcom_vinctus_formula_eval$package$().eval__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O(x125, env$tailLocal1, ctx, pure)))
+    if ((x97 instanceof $c_Lcom_vinctus_formula_AST$Expr$Unary)) {
+      var x$1$9 = $as_Lcom_vinctus_formula_AST$Expr$Unary(x97);
+      var x109 = x$1$9.Lcom_vinctus_formula_AST$Expr$Unary__f_op;
+      var x110 = x$1$9.Lcom_vinctus_formula_AST$Expr$Unary__f_expr;
+      if ((x109 === "-")) {
+        return (-$uD($m_Lcom_vinctus_formula_eval$package$().eval__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O(x110, env$tailLocal1, ctx, pure)))
       };
-      if ((x124 === "not")) {
-        return (!$uZ($m_Lcom_vinctus_formula_eval$package$().eval__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O(x125, env$tailLocal1, ctx, pure)))
+      if ((x109 === "not")) {
+        return (!$uZ($m_Lcom_vinctus_formula_eval$package$().eval__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O(x110, env$tailLocal1, ctx, pure)))
       }
     };
-    if ((x112 instanceof $c_Lcom_vinctus_formula_AST$Expr$Ternary)) {
-      var x$1$11 = $as_Lcom_vinctus_formula_AST$Expr$Ternary(x112);
-      var x115 = x$1$11.Lcom_vinctus_formula_AST$Expr$Ternary__f_cond;
-      var x116 = x$1$11.Lcom_vinctus_formula_AST$Expr$Ternary__f_yes;
-      var x117 = x$1$11.Lcom_vinctus_formula_AST$Expr$Ternary__f_no;
-      if ($uZ($m_Lcom_vinctus_formula_eval$package$().eval__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O(x115, env$tailLocal1, ctx, pure))) {
-        e$tailLocal1 = x116;
+    if ((x97 instanceof $c_Lcom_vinctus_formula_AST$Expr$Ternary)) {
+      var x$1$10 = $as_Lcom_vinctus_formula_AST$Expr$Ternary(x97);
+      var x100 = x$1$10.Lcom_vinctus_formula_AST$Expr$Ternary__f_cond;
+      var x101 = x$1$10.Lcom_vinctus_formula_AST$Expr$Ternary__f_yes;
+      var x102 = x$1$10.Lcom_vinctus_formula_AST$Expr$Ternary__f_no;
+      if ($uZ($m_Lcom_vinctus_formula_eval$package$().eval__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O(x100, env$tailLocal1, ctx, pure))) {
+        e$tailLocal1 = x101;
         continue
       } else {
-        e$tailLocal1 = x117;
+        e$tailLocal1 = x102;
         continue
       }
     };
-    throw new $c_s_MatchError(x112)
+    throw new $c_s_MatchError(x97)
   }
 });
 var $d_Lcom_vinctus_formula_eval$package$ = new $TypeData().initClass({
@@ -1494,6 +1451,99 @@ function $m_Lcom_vinctus_formula_eval$package$() {
     $n_Lcom_vinctus_formula_eval$package$ = new $c_Lcom_vinctus_formula_eval$package$()
   };
   return $n_Lcom_vinctus_formula_eval$package$
+}
+/** @constructor */
+function $c_Lcom_vinctus_formula_lookup$package$() {
+  /*<skip>*/
+}
+$c_Lcom_vinctus_formula_lookup$package$.prototype = new $h_O();
+$c_Lcom_vinctus_formula_lookup$package$.prototype.constructor = $c_Lcom_vinctus_formula_lookup$package$;
+/** @constructor */
+function $h_Lcom_vinctus_formula_lookup$package$() {
+  /*<skip>*/
+}
+$h_Lcom_vinctus_formula_lookup$package$.prototype = $c_Lcom_vinctus_formula_lookup$package$.prototype;
+$c_Lcom_vinctus_formula_lookup$package$.prototype.lookup__T__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O = (function(name, e, env, ctx, pure) {
+  var x1 = $as_Lcom_vinctus_formula_Decl(env.getOrElse__O__F0__O(name, new $c_sjsr_AnonFunction0((() => {
+    $m_Lcom_vinctus_formula_problem$package$().problem__s_util_parsing_input_Position__T__E(e.Lcom_vinctus_formula_AST$Expr__f_pos, (("unknown variable or constant '" + name) + "'"))
+  }))));
+  if ((x1 instanceof $c_Lcom_vinctus_formula_Val)) {
+    var x$1 = $as_Lcom_vinctus_formula_Val(x1);
+    var x15 = x$1.Lcom_vinctus_formula_Val__f_value;
+    return x15
+  };
+  if ((x1 instanceof $c_Lcom_vinctus_formula_Var)) {
+    var x7 = $as_Lcom_vinctus_formula_Var(x1);
+    var x10 = x7.Lcom_vinctus_formula_Var__f_expr;
+    var x11 = x7.Lcom_vinctus_formula_Var__f_value;
+    if (pure) {
+      $m_Lcom_vinctus_formula_problem$package$().problem__s_util_parsing_input_Position__T__E(e.Lcom_vinctus_formula_AST$Expr__f_pos, (("referentially opaque: variable '" + name) + "' referenced"))
+    };
+    if ((x11 === null)) {
+      if ((x10 === null)) {
+        $m_Lcom_vinctus_formula_problem$package$().problem__s_util_parsing_input_Position__T__E(e.Lcom_vinctus_formula_AST$Expr__f_pos, (("variable '" + name) + "' has not been set"))
+      };
+      x7.Lcom_vinctus_formula_Var__f_value = $m_Lcom_vinctus_formula_eval$package$().eval__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O(x10, env, ctx, false);
+      return x7.Lcom_vinctus_formula_Var__f_value
+    } else {
+      return x11
+    }
+  };
+  if ((x1 instanceof $c_Lcom_vinctus_formula_Const)) {
+    var x2 = $as_Lcom_vinctus_formula_Const(x1);
+    var x5 = x2.Lcom_vinctus_formula_Const__f_expr;
+    var x6 = x2.Lcom_vinctus_formula_Const__f_value;
+    if ((x6 === null)) {
+      x2.Lcom_vinctus_formula_Const__f_value = $m_Lcom_vinctus_formula_eval$package$().eval__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O(x5, env, ctx, true);
+      return x2.Lcom_vinctus_formula_Const__f_value
+    } else {
+      return x6
+    }
+  };
+  throw new $c_s_MatchError(x1)
+});
+var $d_Lcom_vinctus_formula_lookup$package$ = new $TypeData().initClass({
+  Lcom_vinctus_formula_lookup$package$: 0
+}, false, "com.vinctus.formula.lookup$package$", {
+  Lcom_vinctus_formula_lookup$package$: 1,
+  O: 1
+});
+$c_Lcom_vinctus_formula_lookup$package$.prototype.$classData = $d_Lcom_vinctus_formula_lookup$package$;
+var $n_Lcom_vinctus_formula_lookup$package$;
+function $m_Lcom_vinctus_formula_lookup$package$() {
+  if ((!$n_Lcom_vinctus_formula_lookup$package$)) {
+    $n_Lcom_vinctus_formula_lookup$package$ = new $c_Lcom_vinctus_formula_lookup$package$()
+  };
+  return $n_Lcom_vinctus_formula_lookup$package$
+}
+/** @constructor */
+function $c_Lcom_vinctus_formula_problem$package$() {
+  /*<skip>*/
+}
+$c_Lcom_vinctus_formula_problem$package$.prototype = new $h_O();
+$c_Lcom_vinctus_formula_problem$package$.prototype.constructor = $c_Lcom_vinctus_formula_problem$package$;
+/** @constructor */
+function $h_Lcom_vinctus_formula_problem$package$() {
+  /*<skip>*/
+}
+$h_Lcom_vinctus_formula_problem$package$.prototype = $c_Lcom_vinctus_formula_problem$package$.prototype;
+$c_Lcom_vinctus_formula_problem$package$.prototype.problem__s_util_parsing_input_Position__T__E = (function(pos, msg) {
+  var error = ((pos === null) ? msg : ((pos.line__I() === 1) ? ((msg + "\n") + pos.longString__T()) : ((((pos.line__I() + ": ") + msg) + "\n") + pos.longString__T())));
+  $m_s_sys_package$().error__T__E(error)
+});
+var $d_Lcom_vinctus_formula_problem$package$ = new $TypeData().initClass({
+  Lcom_vinctus_formula_problem$package$: 0
+}, false, "com.vinctus.formula.problem$package$", {
+  Lcom_vinctus_formula_problem$package$: 1,
+  O: 1
+});
+$c_Lcom_vinctus_formula_problem$package$.prototype.$classData = $d_Lcom_vinctus_formula_problem$package$;
+var $n_Lcom_vinctus_formula_problem$package$;
+function $m_Lcom_vinctus_formula_problem$package$() {
+  if ((!$n_Lcom_vinctus_formula_problem$package$)) {
+    $n_Lcom_vinctus_formula_problem$package$ = new $c_Lcom_vinctus_formula_problem$package$()
+  };
+  return $n_Lcom_vinctus_formula_problem$package$
 }
 function $is_jl_CharSequence(obj) {
   return ((!(!((obj && obj.$classData) && obj.$classData.ancestors.jl_CharSequence))) || ((typeof obj) === "string"))
@@ -6440,7 +6490,7 @@ function $f_s_util_parsing_combinator_Parsers__positioned__F0__s_util_parsing_co
       $thiz.Success__s_util_parsing_combinator_Parsers$Success$();
       var x199 = $as_s_util_parsing_input_Positional(x197.s_util_parsing_combinator_Parsers$Success__f_result);
       var x200 = x197.s_util_parsing_combinator_Parsers$Success__f_next;
-      var x = x199.Lcom_vinctus_formula_AST$Expr__f_pos;
+      var x = x199.pos__s_util_parsing_input_Position();
       var x$2 = $m_s_util_parsing_input_NoPosition$();
       if (((x !== null) && x.equals__O__Z(x$2))) {
         var newpos = in$2.pos__s_util_parsing_input_Position();
@@ -6673,8 +6723,8 @@ function $f_s_util_parsing_input_Position__$less__s_util_parsing_input_Position_
   return (($thiz.line__I() < that.line__I()) || (($thiz.line__I() === that.line__I()) && ($thiz.column__I() < that.column__I())))
 }
 function $f_s_util_parsing_input_Positional__setPos__s_util_parsing_input_Position__s_util_parsing_input_Positional($thiz, newpos) {
-  if (($thiz.Lcom_vinctus_formula_AST$Expr__f_pos === $m_s_util_parsing_input_NoPosition$())) {
-    $thiz.Lcom_vinctus_formula_AST$Expr__f_pos = newpos
+  if (($thiz.pos__s_util_parsing_input_Position() === $m_s_util_parsing_input_NoPosition$())) {
+    $thiz.pos_$eq__s_util_parsing_input_Position__V(newpos)
   };
   return $thiz
 }
@@ -6710,6 +6760,40 @@ function $isArrayOf_s_util_parsing_input_Reader(obj, depth) {
 function $asArrayOf_s_util_parsing_input_Reader(obj, depth) {
   return (($isArrayOf_s_util_parsing_input_Reader(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.util.parsing.input.Reader;", depth))
 }
+/** @constructor */
+function $c_Lcom_vinctus_formula_Decl() {
+  this.Lcom_vinctus_formula_Decl__f_pos = null
+}
+$c_Lcom_vinctus_formula_Decl.prototype = new $h_O();
+$c_Lcom_vinctus_formula_Decl.prototype.constructor = $c_Lcom_vinctus_formula_Decl;
+/** @constructor */
+function $h_Lcom_vinctus_formula_Decl() {
+  /*<skip>*/
+}
+$h_Lcom_vinctus_formula_Decl.prototype = $c_Lcom_vinctus_formula_Decl.prototype;
+$c_Lcom_vinctus_formula_Decl.prototype.pos__s_util_parsing_input_Position = (function() {
+  return this.Lcom_vinctus_formula_Decl__f_pos
+});
+$c_Lcom_vinctus_formula_Decl.prototype.pos_$eq__s_util_parsing_input_Position__V = (function(x$1) {
+  this.Lcom_vinctus_formula_Decl__f_pos = x$1
+});
+function $as_Lcom_vinctus_formula_Decl(obj) {
+  return (((obj instanceof $c_Lcom_vinctus_formula_Decl) || (obj === null)) ? obj : $throwClassCastException(obj, "com.vinctus.formula.Decl"))
+}
+function $isArrayOf_Lcom_vinctus_formula_Decl(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Lcom_vinctus_formula_Decl)))
+}
+function $asArrayOf_Lcom_vinctus_formula_Decl(obj, depth) {
+  return (($isArrayOf_Lcom_vinctus_formula_Decl(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lcom.vinctus.formula.Decl;", depth))
+}
+var $d_Lcom_vinctus_formula_Decl = new $TypeData().initClass({
+  Lcom_vinctus_formula_Decl: 0
+}, false, "com.vinctus.formula.Decl", {
+  Lcom_vinctus_formula_Decl: 1,
+  O: 1,
+  s_util_parsing_input_Positional: 1
+});
+$c_Lcom_vinctus_formula_Decl.prototype.$classData = $d_Lcom_vinctus_formula_Decl;
 function $p_jl_Character$__getTypeGE256__I__I($thiz, codePoint) {
   return $p_jl_Character$__charTypes__AI($thiz).get($p_jl_Character$__findIndexOfRange__AI__I__Z__I($thiz, $p_jl_Character$__charTypeIndices__AI($thiz), codePoint, false))
 }
@@ -13384,278 +13468,6 @@ var $d_Lcom_vinctus_formula_Builtin$package$$anon$9 = new $TypeData().initClass(
 });
 $c_Lcom_vinctus_formula_Builtin$package$$anon$9.prototype.$classData = $d_Lcom_vinctus_formula_Builtin$package$$anon$9;
 /** @constructor */
-function $c_Lcom_vinctus_formula_Const(name, expr, value) {
-  this.Lcom_vinctus_formula_Const__f_name = null;
-  this.Lcom_vinctus_formula_Const__f_expr = null;
-  this.Lcom_vinctus_formula_Const__f_value = null;
-  this.Lcom_vinctus_formula_Const__f_name = name;
-  this.Lcom_vinctus_formula_Const__f_expr = expr;
-  this.Lcom_vinctus_formula_Const__f_value = value
-}
-$c_Lcom_vinctus_formula_Const.prototype = new $h_Lcom_vinctus_formula_Decl();
-$c_Lcom_vinctus_formula_Const.prototype.constructor = $c_Lcom_vinctus_formula_Const;
-/** @constructor */
-function $h_Lcom_vinctus_formula_Const() {
-  /*<skip>*/
-}
-$h_Lcom_vinctus_formula_Const.prototype = $c_Lcom_vinctus_formula_Const.prototype;
-$c_Lcom_vinctus_formula_Const.prototype.productIterator__sc_Iterator = (function() {
-  return new $c_s_Product$$anon$1(this)
-});
-$c_Lcom_vinctus_formula_Const.prototype.hashCode__I = (function() {
-  var this$2 = $m_s_util_hashing_MurmurHash3$();
-  return this$2.productHash__s_Product__I__Z__I(this, (-889275714), false)
-});
-$c_Lcom_vinctus_formula_Const.prototype.equals__O__Z = (function(x$0) {
-  if ((this === x$0)) {
-    return true
-  } else if ((x$0 instanceof $c_Lcom_vinctus_formula_Const)) {
-    var x$0$2 = $as_Lcom_vinctus_formula_Const(x$0);
-    if ((this.Lcom_vinctus_formula_Const__f_name === x$0$2.Lcom_vinctus_formula_Const__f_name)) {
-      var x = this.Lcom_vinctus_formula_Const__f_expr;
-      var x$2 = x$0$2.Lcom_vinctus_formula_Const__f_expr;
-      var $$x1 = ((x === null) ? (x$2 === null) : x.equals__O__Z(x$2))
-    } else {
-      var $$x1 = false
-    };
-    if ($$x1) {
-      var x$1 = this.Lcom_vinctus_formula_Const__f_value;
-      var y = x$0$2.Lcom_vinctus_formula_Const__f_value;
-      return $m_sr_BoxesRunTime$().equals__O__O__Z(x$1, y)
-    } else {
-      return false
-    }
-  } else {
-    return false
-  }
-});
-$c_Lcom_vinctus_formula_Const.prototype.toString__T = (function() {
-  return $m_sr_ScalaRunTime$()._toString__s_Product__T(this)
-});
-$c_Lcom_vinctus_formula_Const.prototype.productArity__I = (function() {
-  return 3
-});
-$c_Lcom_vinctus_formula_Const.prototype.productPrefix__T = (function() {
-  return "Const"
-});
-$c_Lcom_vinctus_formula_Const.prototype.productElement__I__O = (function(n) {
-  switch (n) {
-    case 0: {
-      return this.Lcom_vinctus_formula_Const__f_name;
-      break
-    }
-    case 1: {
-      return this.Lcom_vinctus_formula_Const__f_expr;
-      break
-    }
-    case 2: {
-      return this.Lcom_vinctus_formula_Const__f_value;
-      break
-    }
-    default: {
-      throw $ct_jl_IndexOutOfBoundsException__T__(new $c_jl_IndexOutOfBoundsException(), ("" + n))
-    }
-  }
-});
-$c_Lcom_vinctus_formula_Const.prototype.name__T = (function() {
-  return this.Lcom_vinctus_formula_Const__f_name
-});
-function $as_Lcom_vinctus_formula_Const(obj) {
-  return (((obj instanceof $c_Lcom_vinctus_formula_Const) || (obj === null)) ? obj : $throwClassCastException(obj, "com.vinctus.formula.Const"))
-}
-function $isArrayOf_Lcom_vinctus_formula_Const(obj, depth) {
-  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Lcom_vinctus_formula_Const)))
-}
-function $asArrayOf_Lcom_vinctus_formula_Const(obj, depth) {
-  return (($isArrayOf_Lcom_vinctus_formula_Const(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lcom.vinctus.formula.Const;", depth))
-}
-var $d_Lcom_vinctus_formula_Const = new $TypeData().initClass({
-  Lcom_vinctus_formula_Const: 0
-}, false, "com.vinctus.formula.Const", {
-  Lcom_vinctus_formula_Const: 1,
-  Lcom_vinctus_formula_Decl: 1,
-  O: 1,
-  s_Equals: 1,
-  s_Product: 1,
-  Ljava_io_Serializable: 1
-});
-$c_Lcom_vinctus_formula_Const.prototype.$classData = $d_Lcom_vinctus_formula_Const;
-/** @constructor */
-function $c_Lcom_vinctus_formula_Def(name, params, func) {
-  this.Lcom_vinctus_formula_Def__f_name = null;
-  this.Lcom_vinctus_formula_Def__f_params = null;
-  this.Lcom_vinctus_formula_Def__f_func = null;
-  this.Lcom_vinctus_formula_Def__f_name = name;
-  this.Lcom_vinctus_formula_Def__f_params = params;
-  this.Lcom_vinctus_formula_Def__f_func = func
-}
-$c_Lcom_vinctus_formula_Def.prototype = new $h_Lcom_vinctus_formula_Decl();
-$c_Lcom_vinctus_formula_Def.prototype.constructor = $c_Lcom_vinctus_formula_Def;
-/** @constructor */
-function $h_Lcom_vinctus_formula_Def() {
-  /*<skip>*/
-}
-$h_Lcom_vinctus_formula_Def.prototype = $c_Lcom_vinctus_formula_Def.prototype;
-$c_Lcom_vinctus_formula_Def.prototype.productIterator__sc_Iterator = (function() {
-  return new $c_s_Product$$anon$1(this)
-});
-$c_Lcom_vinctus_formula_Def.prototype.hashCode__I = (function() {
-  var this$2 = $m_s_util_hashing_MurmurHash3$();
-  return this$2.productHash__s_Product__I__Z__I(this, (-889275714), false)
-});
-$c_Lcom_vinctus_formula_Def.prototype.equals__O__Z = (function(x$0) {
-  if ((this === x$0)) {
-    return true
-  } else if ((x$0 instanceof $c_Lcom_vinctus_formula_Def)) {
-    var x$0$2 = $as_Lcom_vinctus_formula_Def(x$0);
-    if ((this.Lcom_vinctus_formula_Def__f_name === x$0$2.Lcom_vinctus_formula_Def__f_name)) {
-      var x = this.Lcom_vinctus_formula_Def__f_params;
-      var x$2 = x$0$2.Lcom_vinctus_formula_Def__f_params;
-      var $$x1 = ((x === null) ? (x$2 === null) : x.equals__O__Z(x$2))
-    } else {
-      var $$x1 = false
-    };
-    if ($$x1) {
-      var x$3 = this.Lcom_vinctus_formula_Def__f_func;
-      var x$4 = x$0$2.Lcom_vinctus_formula_Def__f_func;
-      return ((x$3 === null) ? (x$4 === null) : x$3.equals__O__Z(x$4))
-    } else {
-      return false
-    }
-  } else {
-    return false
-  }
-});
-$c_Lcom_vinctus_formula_Def.prototype.toString__T = (function() {
-  return $m_sr_ScalaRunTime$()._toString__s_Product__T(this)
-});
-$c_Lcom_vinctus_formula_Def.prototype.productArity__I = (function() {
-  return 3
-});
-$c_Lcom_vinctus_formula_Def.prototype.productPrefix__T = (function() {
-  return "Def"
-});
-$c_Lcom_vinctus_formula_Def.prototype.productElement__I__O = (function(n) {
-  switch (n) {
-    case 0: {
-      return this.Lcom_vinctus_formula_Def__f_name;
-      break
-    }
-    case 1: {
-      return this.Lcom_vinctus_formula_Def__f_params;
-      break
-    }
-    case 2: {
-      return this.Lcom_vinctus_formula_Def__f_func;
-      break
-    }
-    default: {
-      throw $ct_jl_IndexOutOfBoundsException__T__(new $c_jl_IndexOutOfBoundsException(), ("" + n))
-    }
-  }
-});
-$c_Lcom_vinctus_formula_Def.prototype.name__T = (function() {
-  return this.Lcom_vinctus_formula_Def__f_name
-});
-function $as_Lcom_vinctus_formula_Def(obj) {
-  return (((obj instanceof $c_Lcom_vinctus_formula_Def) || (obj === null)) ? obj : $throwClassCastException(obj, "com.vinctus.formula.Def"))
-}
-function $isArrayOf_Lcom_vinctus_formula_Def(obj, depth) {
-  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Lcom_vinctus_formula_Def)))
-}
-function $asArrayOf_Lcom_vinctus_formula_Def(obj, depth) {
-  return (($isArrayOf_Lcom_vinctus_formula_Def(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lcom.vinctus.formula.Def;", depth))
-}
-var $d_Lcom_vinctus_formula_Def = new $TypeData().initClass({
-  Lcom_vinctus_formula_Def: 0
-}, false, "com.vinctus.formula.Def", {
-  Lcom_vinctus_formula_Def: 1,
-  Lcom_vinctus_formula_Decl: 1,
-  O: 1,
-  s_Equals: 1,
-  s_Product: 1,
-  Ljava_io_Serializable: 1
-});
-$c_Lcom_vinctus_formula_Def.prototype.$classData = $d_Lcom_vinctus_formula_Def;
-/** @constructor */
-function $c_Lcom_vinctus_formula_Formula(name, expr) {
-  this.Lcom_vinctus_formula_Formula__f_name = null;
-  this.Lcom_vinctus_formula_Formula__f_expr = null;
-  this.Lcom_vinctus_formula_Formula__f_name = name;
-  this.Lcom_vinctus_formula_Formula__f_expr = expr
-}
-$c_Lcom_vinctus_formula_Formula.prototype = new $h_Lcom_vinctus_formula_Decl();
-$c_Lcom_vinctus_formula_Formula.prototype.constructor = $c_Lcom_vinctus_formula_Formula;
-/** @constructor */
-function $h_Lcom_vinctus_formula_Formula() {
-  /*<skip>*/
-}
-$h_Lcom_vinctus_formula_Formula.prototype = $c_Lcom_vinctus_formula_Formula.prototype;
-$c_Lcom_vinctus_formula_Formula.prototype.productIterator__sc_Iterator = (function() {
-  return new $c_s_Product$$anon$1(this)
-});
-$c_Lcom_vinctus_formula_Formula.prototype.hashCode__I = (function() {
-  var this$2 = $m_s_util_hashing_MurmurHash3$();
-  return this$2.productHash__s_Product__I__Z__I(this, (-889275714), false)
-});
-$c_Lcom_vinctus_formula_Formula.prototype.equals__O__Z = (function(x$0) {
-  if ((this === x$0)) {
-    return true
-  } else if ((x$0 instanceof $c_Lcom_vinctus_formula_Formula)) {
-    var x$0$2 = $as_Lcom_vinctus_formula_Formula(x$0);
-    if ((this.Lcom_vinctus_formula_Formula__f_name === x$0$2.Lcom_vinctus_formula_Formula__f_name)) {
-      var x = this.Lcom_vinctus_formula_Formula__f_expr;
-      var x$2 = x$0$2.Lcom_vinctus_formula_Formula__f_expr;
-      return ((x === null) ? (x$2 === null) : x.equals__O__Z(x$2))
-    } else {
-      return false
-    }
-  } else {
-    return false
-  }
-});
-$c_Lcom_vinctus_formula_Formula.prototype.toString__T = (function() {
-  return $m_sr_ScalaRunTime$()._toString__s_Product__T(this)
-});
-$c_Lcom_vinctus_formula_Formula.prototype.productArity__I = (function() {
-  return 2
-});
-$c_Lcom_vinctus_formula_Formula.prototype.productPrefix__T = (function() {
-  return "Formula"
-});
-$c_Lcom_vinctus_formula_Formula.prototype.productElement__I__O = (function(n) {
-  if ((n === 0)) {
-    return this.Lcom_vinctus_formula_Formula__f_name
-  };
-  if ((n === 1)) {
-    return this.Lcom_vinctus_formula_Formula__f_expr
-  };
-  throw $ct_jl_IndexOutOfBoundsException__T__(new $c_jl_IndexOutOfBoundsException(), ("" + n))
-});
-$c_Lcom_vinctus_formula_Formula.prototype.name__T = (function() {
-  return this.Lcom_vinctus_formula_Formula__f_name
-});
-function $as_Lcom_vinctus_formula_Formula(obj) {
-  return (((obj instanceof $c_Lcom_vinctus_formula_Formula) || (obj === null)) ? obj : $throwClassCastException(obj, "com.vinctus.formula.Formula"))
-}
-function $isArrayOf_Lcom_vinctus_formula_Formula(obj, depth) {
-  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Lcom_vinctus_formula_Formula)))
-}
-function $asArrayOf_Lcom_vinctus_formula_Formula(obj, depth) {
-  return (($isArrayOf_Lcom_vinctus_formula_Formula(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lcom.vinctus.formula.Formula;", depth))
-}
-var $d_Lcom_vinctus_formula_Formula = new $TypeData().initClass({
-  Lcom_vinctus_formula_Formula: 0
-}, false, "com.vinctus.formula.Formula", {
-  Lcom_vinctus_formula_Formula: 1,
-  Lcom_vinctus_formula_Decl: 1,
-  O: 1,
-  s_Equals: 1,
-  s_Product: 1,
-  Ljava_io_Serializable: 1
-});
-$c_Lcom_vinctus_formula_Formula.prototype.$classData = $d_Lcom_vinctus_formula_Formula;
-/** @constructor */
 function $c_Lcom_vinctus_formula_FormulaLexer$$anon$1() {
   /*<skip>*/
 }
@@ -13745,259 +13557,6 @@ var $d_Lcom_vinctus_formula_FormulaLexer$$anon$1 = new $TypeData().initClass({
   Ljava_io_Serializable: 1
 });
 $c_Lcom_vinctus_formula_FormulaLexer$$anon$1.prototype.$classData = $d_Lcom_vinctus_formula_FormulaLexer$$anon$1;
-/** @constructor */
-function $c_Lcom_vinctus_formula_Function(name, func) {
-  this.Lcom_vinctus_formula_Function__f_name = null;
-  this.Lcom_vinctus_formula_Function__f_func = null;
-  this.Lcom_vinctus_formula_Function__f_name = name;
-  this.Lcom_vinctus_formula_Function__f_func = func
-}
-$c_Lcom_vinctus_formula_Function.prototype = new $h_Lcom_vinctus_formula_Decl();
-$c_Lcom_vinctus_formula_Function.prototype.constructor = $c_Lcom_vinctus_formula_Function;
-/** @constructor */
-function $h_Lcom_vinctus_formula_Function() {
-  /*<skip>*/
-}
-$h_Lcom_vinctus_formula_Function.prototype = $c_Lcom_vinctus_formula_Function.prototype;
-$c_Lcom_vinctus_formula_Function.prototype.productIterator__sc_Iterator = (function() {
-  return new $c_s_Product$$anon$1(this)
-});
-$c_Lcom_vinctus_formula_Function.prototype.hashCode__I = (function() {
-  var this$2 = $m_s_util_hashing_MurmurHash3$();
-  return this$2.productHash__s_Product__I__Z__I(this, (-889275714), false)
-});
-$c_Lcom_vinctus_formula_Function.prototype.equals__O__Z = (function(x$0) {
-  if ((this === x$0)) {
-    return true
-  } else if ((x$0 instanceof $c_Lcom_vinctus_formula_Function)) {
-    var x$0$2 = $as_Lcom_vinctus_formula_Function(x$0);
-    if ((this.Lcom_vinctus_formula_Function__f_name === x$0$2.Lcom_vinctus_formula_Function__f_name)) {
-      var x = this.Lcom_vinctus_formula_Function__f_func;
-      var x$2 = x$0$2.Lcom_vinctus_formula_Function__f_func;
-      return ((x === null) ? (x$2 === null) : x.equals__O__Z(x$2))
-    } else {
-      return false
-    }
-  } else {
-    return false
-  }
-});
-$c_Lcom_vinctus_formula_Function.prototype.toString__T = (function() {
-  return $m_sr_ScalaRunTime$()._toString__s_Product__T(this)
-});
-$c_Lcom_vinctus_formula_Function.prototype.productArity__I = (function() {
-  return 2
-});
-$c_Lcom_vinctus_formula_Function.prototype.productPrefix__T = (function() {
-  return "Function"
-});
-$c_Lcom_vinctus_formula_Function.prototype.productElement__I__O = (function(n) {
-  if ((n === 0)) {
-    return this.Lcom_vinctus_formula_Function__f_name
-  };
-  if ((n === 1)) {
-    return this.Lcom_vinctus_formula_Function__f_func
-  };
-  throw $ct_jl_IndexOutOfBoundsException__T__(new $c_jl_IndexOutOfBoundsException(), ("" + n))
-});
-$c_Lcom_vinctus_formula_Function.prototype.name__T = (function() {
-  return this.Lcom_vinctus_formula_Function__f_name
-});
-function $as_Lcom_vinctus_formula_Function(obj) {
-  return (((obj instanceof $c_Lcom_vinctus_formula_Function) || (obj === null)) ? obj : $throwClassCastException(obj, "com.vinctus.formula.Function"))
-}
-function $isArrayOf_Lcom_vinctus_formula_Function(obj, depth) {
-  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Lcom_vinctus_formula_Function)))
-}
-function $asArrayOf_Lcom_vinctus_formula_Function(obj, depth) {
-  return (($isArrayOf_Lcom_vinctus_formula_Function(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lcom.vinctus.formula.Function;", depth))
-}
-var $d_Lcom_vinctus_formula_Function = new $TypeData().initClass({
-  Lcom_vinctus_formula_Function: 0
-}, false, "com.vinctus.formula.Function", {
-  Lcom_vinctus_formula_Function: 1,
-  Lcom_vinctus_formula_Decl: 1,
-  O: 1,
-  s_Equals: 1,
-  s_Product: 1,
-  Ljava_io_Serializable: 1
-});
-$c_Lcom_vinctus_formula_Function.prototype.$classData = $d_Lcom_vinctus_formula_Function;
-/** @constructor */
-function $c_Lcom_vinctus_formula_Val(name, value) {
-  this.Lcom_vinctus_formula_Val__f_name = null;
-  this.Lcom_vinctus_formula_Val__f_value = null;
-  this.Lcom_vinctus_formula_Val__f_name = name;
-  this.Lcom_vinctus_formula_Val__f_value = value
-}
-$c_Lcom_vinctus_formula_Val.prototype = new $h_Lcom_vinctus_formula_Decl();
-$c_Lcom_vinctus_formula_Val.prototype.constructor = $c_Lcom_vinctus_formula_Val;
-/** @constructor */
-function $h_Lcom_vinctus_formula_Val() {
-  /*<skip>*/
-}
-$h_Lcom_vinctus_formula_Val.prototype = $c_Lcom_vinctus_formula_Val.prototype;
-$c_Lcom_vinctus_formula_Val.prototype.productIterator__sc_Iterator = (function() {
-  return new $c_s_Product$$anon$1(this)
-});
-$c_Lcom_vinctus_formula_Val.prototype.hashCode__I = (function() {
-  var this$2 = $m_s_util_hashing_MurmurHash3$();
-  return this$2.productHash__s_Product__I__Z__I(this, (-889275714), false)
-});
-$c_Lcom_vinctus_formula_Val.prototype.equals__O__Z = (function(x$0) {
-  if ((this === x$0)) {
-    return true
-  } else if ((x$0 instanceof $c_Lcom_vinctus_formula_Val)) {
-    var x$0$2 = $as_Lcom_vinctus_formula_Val(x$0);
-    if ((this.Lcom_vinctus_formula_Val__f_name === x$0$2.Lcom_vinctus_formula_Val__f_name)) {
-      var x = this.Lcom_vinctus_formula_Val__f_value;
-      var y = x$0$2.Lcom_vinctus_formula_Val__f_value;
-      return $m_sr_BoxesRunTime$().equals__O__O__Z(x, y)
-    } else {
-      return false
-    }
-  } else {
-    return false
-  }
-});
-$c_Lcom_vinctus_formula_Val.prototype.toString__T = (function() {
-  return $m_sr_ScalaRunTime$()._toString__s_Product__T(this)
-});
-$c_Lcom_vinctus_formula_Val.prototype.productArity__I = (function() {
-  return 2
-});
-$c_Lcom_vinctus_formula_Val.prototype.productPrefix__T = (function() {
-  return "Val"
-});
-$c_Lcom_vinctus_formula_Val.prototype.productElement__I__O = (function(n) {
-  if ((n === 0)) {
-    return this.Lcom_vinctus_formula_Val__f_name
-  };
-  if ((n === 1)) {
-    return this.Lcom_vinctus_formula_Val__f_value
-  };
-  throw $ct_jl_IndexOutOfBoundsException__T__(new $c_jl_IndexOutOfBoundsException(), ("" + n))
-});
-$c_Lcom_vinctus_formula_Val.prototype.name__T = (function() {
-  return this.Lcom_vinctus_formula_Val__f_name
-});
-function $as_Lcom_vinctus_formula_Val(obj) {
-  return (((obj instanceof $c_Lcom_vinctus_formula_Val) || (obj === null)) ? obj : $throwClassCastException(obj, "com.vinctus.formula.Val"))
-}
-function $isArrayOf_Lcom_vinctus_formula_Val(obj, depth) {
-  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Lcom_vinctus_formula_Val)))
-}
-function $asArrayOf_Lcom_vinctus_formula_Val(obj, depth) {
-  return (($isArrayOf_Lcom_vinctus_formula_Val(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lcom.vinctus.formula.Val;", depth))
-}
-var $d_Lcom_vinctus_formula_Val = new $TypeData().initClass({
-  Lcom_vinctus_formula_Val: 0
-}, false, "com.vinctus.formula.Val", {
-  Lcom_vinctus_formula_Val: 1,
-  Lcom_vinctus_formula_Decl: 1,
-  O: 1,
-  s_Equals: 1,
-  s_Product: 1,
-  Ljava_io_Serializable: 1
-});
-$c_Lcom_vinctus_formula_Val.prototype.$classData = $d_Lcom_vinctus_formula_Val;
-/** @constructor */
-function $c_Lcom_vinctus_formula_Var(name, expr, value) {
-  this.Lcom_vinctus_formula_Var__f_name = null;
-  this.Lcom_vinctus_formula_Var__f_expr = null;
-  this.Lcom_vinctus_formula_Var__f_value = null;
-  this.Lcom_vinctus_formula_Var__f_name = name;
-  this.Lcom_vinctus_formula_Var__f_expr = expr;
-  this.Lcom_vinctus_formula_Var__f_value = value
-}
-$c_Lcom_vinctus_formula_Var.prototype = new $h_Lcom_vinctus_formula_Decl();
-$c_Lcom_vinctus_formula_Var.prototype.constructor = $c_Lcom_vinctus_formula_Var;
-/** @constructor */
-function $h_Lcom_vinctus_formula_Var() {
-  /*<skip>*/
-}
-$h_Lcom_vinctus_formula_Var.prototype = $c_Lcom_vinctus_formula_Var.prototype;
-$c_Lcom_vinctus_formula_Var.prototype.productIterator__sc_Iterator = (function() {
-  return new $c_s_Product$$anon$1(this)
-});
-$c_Lcom_vinctus_formula_Var.prototype.hashCode__I = (function() {
-  var this$2 = $m_s_util_hashing_MurmurHash3$();
-  return this$2.productHash__s_Product__I__Z__I(this, (-889275714), false)
-});
-$c_Lcom_vinctus_formula_Var.prototype.equals__O__Z = (function(x$0) {
-  if ((this === x$0)) {
-    return true
-  } else if ((x$0 instanceof $c_Lcom_vinctus_formula_Var)) {
-    var x$0$2 = $as_Lcom_vinctus_formula_Var(x$0);
-    if ((this.Lcom_vinctus_formula_Var__f_name === x$0$2.Lcom_vinctus_formula_Var__f_name)) {
-      var x = this.Lcom_vinctus_formula_Var__f_expr;
-      var x$2 = x$0$2.Lcom_vinctus_formula_Var__f_expr;
-      var $$x1 = ((x === null) ? (x$2 === null) : x.equals__O__Z(x$2))
-    } else {
-      var $$x1 = false
-    };
-    if ($$x1) {
-      var x$1 = this.Lcom_vinctus_formula_Var__f_value;
-      var y = x$0$2.Lcom_vinctus_formula_Var__f_value;
-      return $m_sr_BoxesRunTime$().equals__O__O__Z(x$1, y)
-    } else {
-      return false
-    }
-  } else {
-    return false
-  }
-});
-$c_Lcom_vinctus_formula_Var.prototype.toString__T = (function() {
-  return $m_sr_ScalaRunTime$()._toString__s_Product__T(this)
-});
-$c_Lcom_vinctus_formula_Var.prototype.productArity__I = (function() {
-  return 3
-});
-$c_Lcom_vinctus_formula_Var.prototype.productPrefix__T = (function() {
-  return "Var"
-});
-$c_Lcom_vinctus_formula_Var.prototype.productElement__I__O = (function(n) {
-  switch (n) {
-    case 0: {
-      return this.Lcom_vinctus_formula_Var__f_name;
-      break
-    }
-    case 1: {
-      return this.Lcom_vinctus_formula_Var__f_expr;
-      break
-    }
-    case 2: {
-      return this.Lcom_vinctus_formula_Var__f_value;
-      break
-    }
-    default: {
-      throw $ct_jl_IndexOutOfBoundsException__T__(new $c_jl_IndexOutOfBoundsException(), ("" + n))
-    }
-  }
-});
-$c_Lcom_vinctus_formula_Var.prototype.name__T = (function() {
-  return this.Lcom_vinctus_formula_Var__f_name
-});
-function $as_Lcom_vinctus_formula_Var(obj) {
-  return (((obj instanceof $c_Lcom_vinctus_formula_Var) || (obj === null)) ? obj : $throwClassCastException(obj, "com.vinctus.formula.Var"))
-}
-function $isArrayOf_Lcom_vinctus_formula_Var(obj, depth) {
-  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Lcom_vinctus_formula_Var)))
-}
-function $asArrayOf_Lcom_vinctus_formula_Var(obj, depth) {
-  return (($isArrayOf_Lcom_vinctus_formula_Var(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lcom.vinctus.formula.Var;", depth))
-}
-var $d_Lcom_vinctus_formula_Var = new $TypeData().initClass({
-  Lcom_vinctus_formula_Var: 0
-}, false, "com.vinctus.formula.Var", {
-  Lcom_vinctus_formula_Var: 1,
-  Lcom_vinctus_formula_Decl: 1,
-  O: 1,
-  s_Equals: 1,
-  s_Product: 1,
-  Ljava_io_Serializable: 1
-});
-$c_Lcom_vinctus_formula_Var.prototype.$classData = $d_Lcom_vinctus_formula_Var;
 class $c_jl_ArithmeticException extends $c_jl_RuntimeException {
   constructor(s) {
     super();
@@ -18282,6 +17841,12 @@ function $h_Lcom_vinctus_formula_AST$Expr() {
   /*<skip>*/
 }
 $h_Lcom_vinctus_formula_AST$Expr.prototype = $c_Lcom_vinctus_formula_AST$Expr.prototype;
+$c_Lcom_vinctus_formula_AST$Expr.prototype.pos__s_util_parsing_input_Position = (function() {
+  return this.Lcom_vinctus_formula_AST$Expr__f_pos
+});
+$c_Lcom_vinctus_formula_AST$Expr.prototype.pos_$eq__s_util_parsing_input_Position__V = (function(x$1) {
+  this.Lcom_vinctus_formula_AST$Expr__f_pos = x$1
+});
 $c_Lcom_vinctus_formula_AST$Expr.prototype.productIterator__sc_Iterator = (function() {
   return new $c_s_Product$$anon$1(this)
 });
@@ -18294,6 +17859,549 @@ function $isArrayOf_Lcom_vinctus_formula_AST$Expr(obj, depth) {
 function $asArrayOf_Lcom_vinctus_formula_AST$Expr(obj, depth) {
   return (($isArrayOf_Lcom_vinctus_formula_AST$Expr(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lcom.vinctus.formula.AST$Expr;", depth))
 }
+/** @constructor */
+function $c_Lcom_vinctus_formula_Const(name, expr, value) {
+  this.Lcom_vinctus_formula_Decl__f_pos = null;
+  this.Lcom_vinctus_formula_Const__f_name = null;
+  this.Lcom_vinctus_formula_Const__f_expr = null;
+  this.Lcom_vinctus_formula_Const__f_value = null;
+  this.Lcom_vinctus_formula_Const__f_name = name;
+  this.Lcom_vinctus_formula_Const__f_expr = expr;
+  this.Lcom_vinctus_formula_Const__f_value = value;
+  this.Lcom_vinctus_formula_Decl__f_pos = $m_s_util_parsing_input_NoPosition$()
+}
+$c_Lcom_vinctus_formula_Const.prototype = new $h_Lcom_vinctus_formula_Decl();
+$c_Lcom_vinctus_formula_Const.prototype.constructor = $c_Lcom_vinctus_formula_Const;
+/** @constructor */
+function $h_Lcom_vinctus_formula_Const() {
+  /*<skip>*/
+}
+$h_Lcom_vinctus_formula_Const.prototype = $c_Lcom_vinctus_formula_Const.prototype;
+$c_Lcom_vinctus_formula_Const.prototype.productIterator__sc_Iterator = (function() {
+  return new $c_s_Product$$anon$1(this)
+});
+$c_Lcom_vinctus_formula_Const.prototype.hashCode__I = (function() {
+  var this$2 = $m_s_util_hashing_MurmurHash3$();
+  return this$2.productHash__s_Product__I__Z__I(this, (-889275714), false)
+});
+$c_Lcom_vinctus_formula_Const.prototype.equals__O__Z = (function(x$0) {
+  if ((this === x$0)) {
+    return true
+  } else if ((x$0 instanceof $c_Lcom_vinctus_formula_Const)) {
+    var x$0$2 = $as_Lcom_vinctus_formula_Const(x$0);
+    if ((this.Lcom_vinctus_formula_Const__f_name === x$0$2.Lcom_vinctus_formula_Const__f_name)) {
+      var x = this.Lcom_vinctus_formula_Const__f_expr;
+      var x$2 = x$0$2.Lcom_vinctus_formula_Const__f_expr;
+      var $$x1 = ((x === null) ? (x$2 === null) : x.equals__O__Z(x$2))
+    } else {
+      var $$x1 = false
+    };
+    if ($$x1) {
+      var x$1 = this.Lcom_vinctus_formula_Const__f_value;
+      var y = x$0$2.Lcom_vinctus_formula_Const__f_value;
+      return $m_sr_BoxesRunTime$().equals__O__O__Z(x$1, y)
+    } else {
+      return false
+    }
+  } else {
+    return false
+  }
+});
+$c_Lcom_vinctus_formula_Const.prototype.toString__T = (function() {
+  return $m_sr_ScalaRunTime$()._toString__s_Product__T(this)
+});
+$c_Lcom_vinctus_formula_Const.prototype.productArity__I = (function() {
+  return 3
+});
+$c_Lcom_vinctus_formula_Const.prototype.productPrefix__T = (function() {
+  return "Const"
+});
+$c_Lcom_vinctus_formula_Const.prototype.productElement__I__O = (function(n) {
+  switch (n) {
+    case 0: {
+      return this.Lcom_vinctus_formula_Const__f_name;
+      break
+    }
+    case 1: {
+      return this.Lcom_vinctus_formula_Const__f_expr;
+      break
+    }
+    case 2: {
+      return this.Lcom_vinctus_formula_Const__f_value;
+      break
+    }
+    default: {
+      throw $ct_jl_IndexOutOfBoundsException__T__(new $c_jl_IndexOutOfBoundsException(), ("" + n))
+    }
+  }
+});
+$c_Lcom_vinctus_formula_Const.prototype.name__T = (function() {
+  return this.Lcom_vinctus_formula_Const__f_name
+});
+function $as_Lcom_vinctus_formula_Const(obj) {
+  return (((obj instanceof $c_Lcom_vinctus_formula_Const) || (obj === null)) ? obj : $throwClassCastException(obj, "com.vinctus.formula.Const"))
+}
+function $isArrayOf_Lcom_vinctus_formula_Const(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Lcom_vinctus_formula_Const)))
+}
+function $asArrayOf_Lcom_vinctus_formula_Const(obj, depth) {
+  return (($isArrayOf_Lcom_vinctus_formula_Const(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lcom.vinctus.formula.Const;", depth))
+}
+var $d_Lcom_vinctus_formula_Const = new $TypeData().initClass({
+  Lcom_vinctus_formula_Const: 0
+}, false, "com.vinctus.formula.Const", {
+  Lcom_vinctus_formula_Const: 1,
+  Lcom_vinctus_formula_Decl: 1,
+  O: 1,
+  s_util_parsing_input_Positional: 1,
+  s_Equals: 1,
+  s_Product: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Lcom_vinctus_formula_Const.prototype.$classData = $d_Lcom_vinctus_formula_Const;
+/** @constructor */
+function $c_Lcom_vinctus_formula_Def(name, params, func) {
+  this.Lcom_vinctus_formula_Decl__f_pos = null;
+  this.Lcom_vinctus_formula_Def__f_name = null;
+  this.Lcom_vinctus_formula_Def__f_params = null;
+  this.Lcom_vinctus_formula_Def__f_func = null;
+  this.Lcom_vinctus_formula_Def__f_name = name;
+  this.Lcom_vinctus_formula_Def__f_params = params;
+  this.Lcom_vinctus_formula_Def__f_func = func;
+  this.Lcom_vinctus_formula_Decl__f_pos = $m_s_util_parsing_input_NoPosition$()
+}
+$c_Lcom_vinctus_formula_Def.prototype = new $h_Lcom_vinctus_formula_Decl();
+$c_Lcom_vinctus_formula_Def.prototype.constructor = $c_Lcom_vinctus_formula_Def;
+/** @constructor */
+function $h_Lcom_vinctus_formula_Def() {
+  /*<skip>*/
+}
+$h_Lcom_vinctus_formula_Def.prototype = $c_Lcom_vinctus_formula_Def.prototype;
+$c_Lcom_vinctus_formula_Def.prototype.productIterator__sc_Iterator = (function() {
+  return new $c_s_Product$$anon$1(this)
+});
+$c_Lcom_vinctus_formula_Def.prototype.hashCode__I = (function() {
+  var this$2 = $m_s_util_hashing_MurmurHash3$();
+  return this$2.productHash__s_Product__I__Z__I(this, (-889275714), false)
+});
+$c_Lcom_vinctus_formula_Def.prototype.equals__O__Z = (function(x$0) {
+  if ((this === x$0)) {
+    return true
+  } else if ((x$0 instanceof $c_Lcom_vinctus_formula_Def)) {
+    var x$0$2 = $as_Lcom_vinctus_formula_Def(x$0);
+    if ((this.Lcom_vinctus_formula_Def__f_name === x$0$2.Lcom_vinctus_formula_Def__f_name)) {
+      var x = this.Lcom_vinctus_formula_Def__f_params;
+      var x$2 = x$0$2.Lcom_vinctus_formula_Def__f_params;
+      var $$x1 = ((x === null) ? (x$2 === null) : x.equals__O__Z(x$2))
+    } else {
+      var $$x1 = false
+    };
+    if ($$x1) {
+      var x$3 = this.Lcom_vinctus_formula_Def__f_func;
+      var x$4 = x$0$2.Lcom_vinctus_formula_Def__f_func;
+      return ((x$3 === null) ? (x$4 === null) : x$3.equals__O__Z(x$4))
+    } else {
+      return false
+    }
+  } else {
+    return false
+  }
+});
+$c_Lcom_vinctus_formula_Def.prototype.toString__T = (function() {
+  return $m_sr_ScalaRunTime$()._toString__s_Product__T(this)
+});
+$c_Lcom_vinctus_formula_Def.prototype.productArity__I = (function() {
+  return 3
+});
+$c_Lcom_vinctus_formula_Def.prototype.productPrefix__T = (function() {
+  return "Def"
+});
+$c_Lcom_vinctus_formula_Def.prototype.productElement__I__O = (function(n) {
+  switch (n) {
+    case 0: {
+      return this.Lcom_vinctus_formula_Def__f_name;
+      break
+    }
+    case 1: {
+      return this.Lcom_vinctus_formula_Def__f_params;
+      break
+    }
+    case 2: {
+      return this.Lcom_vinctus_formula_Def__f_func;
+      break
+    }
+    default: {
+      throw $ct_jl_IndexOutOfBoundsException__T__(new $c_jl_IndexOutOfBoundsException(), ("" + n))
+    }
+  }
+});
+$c_Lcom_vinctus_formula_Def.prototype.name__T = (function() {
+  return this.Lcom_vinctus_formula_Def__f_name
+});
+function $as_Lcom_vinctus_formula_Def(obj) {
+  return (((obj instanceof $c_Lcom_vinctus_formula_Def) || (obj === null)) ? obj : $throwClassCastException(obj, "com.vinctus.formula.Def"))
+}
+function $isArrayOf_Lcom_vinctus_formula_Def(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Lcom_vinctus_formula_Def)))
+}
+function $asArrayOf_Lcom_vinctus_formula_Def(obj, depth) {
+  return (($isArrayOf_Lcom_vinctus_formula_Def(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lcom.vinctus.formula.Def;", depth))
+}
+var $d_Lcom_vinctus_formula_Def = new $TypeData().initClass({
+  Lcom_vinctus_formula_Def: 0
+}, false, "com.vinctus.formula.Def", {
+  Lcom_vinctus_formula_Def: 1,
+  Lcom_vinctus_formula_Decl: 1,
+  O: 1,
+  s_util_parsing_input_Positional: 1,
+  s_Equals: 1,
+  s_Product: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Lcom_vinctus_formula_Def.prototype.$classData = $d_Lcom_vinctus_formula_Def;
+/** @constructor */
+function $c_Lcom_vinctus_formula_Formula(name, expr) {
+  this.Lcom_vinctus_formula_Decl__f_pos = null;
+  this.Lcom_vinctus_formula_Formula__f_name = null;
+  this.Lcom_vinctus_formula_Formula__f_expr = null;
+  this.Lcom_vinctus_formula_Formula__f_name = name;
+  this.Lcom_vinctus_formula_Formula__f_expr = expr;
+  this.Lcom_vinctus_formula_Decl__f_pos = $m_s_util_parsing_input_NoPosition$()
+}
+$c_Lcom_vinctus_formula_Formula.prototype = new $h_Lcom_vinctus_formula_Decl();
+$c_Lcom_vinctus_formula_Formula.prototype.constructor = $c_Lcom_vinctus_formula_Formula;
+/** @constructor */
+function $h_Lcom_vinctus_formula_Formula() {
+  /*<skip>*/
+}
+$h_Lcom_vinctus_formula_Formula.prototype = $c_Lcom_vinctus_formula_Formula.prototype;
+$c_Lcom_vinctus_formula_Formula.prototype.productIterator__sc_Iterator = (function() {
+  return new $c_s_Product$$anon$1(this)
+});
+$c_Lcom_vinctus_formula_Formula.prototype.hashCode__I = (function() {
+  var this$2 = $m_s_util_hashing_MurmurHash3$();
+  return this$2.productHash__s_Product__I__Z__I(this, (-889275714), false)
+});
+$c_Lcom_vinctus_formula_Formula.prototype.equals__O__Z = (function(x$0) {
+  if ((this === x$0)) {
+    return true
+  } else if ((x$0 instanceof $c_Lcom_vinctus_formula_Formula)) {
+    var x$0$2 = $as_Lcom_vinctus_formula_Formula(x$0);
+    if ((this.Lcom_vinctus_formula_Formula__f_name === x$0$2.Lcom_vinctus_formula_Formula__f_name)) {
+      var x = this.Lcom_vinctus_formula_Formula__f_expr;
+      var x$2 = x$0$2.Lcom_vinctus_formula_Formula__f_expr;
+      return ((x === null) ? (x$2 === null) : x.equals__O__Z(x$2))
+    } else {
+      return false
+    }
+  } else {
+    return false
+  }
+});
+$c_Lcom_vinctus_formula_Formula.prototype.toString__T = (function() {
+  return $m_sr_ScalaRunTime$()._toString__s_Product__T(this)
+});
+$c_Lcom_vinctus_formula_Formula.prototype.productArity__I = (function() {
+  return 2
+});
+$c_Lcom_vinctus_formula_Formula.prototype.productPrefix__T = (function() {
+  return "Formula"
+});
+$c_Lcom_vinctus_formula_Formula.prototype.productElement__I__O = (function(n) {
+  if ((n === 0)) {
+    return this.Lcom_vinctus_formula_Formula__f_name
+  };
+  if ((n === 1)) {
+    return this.Lcom_vinctus_formula_Formula__f_expr
+  };
+  throw $ct_jl_IndexOutOfBoundsException__T__(new $c_jl_IndexOutOfBoundsException(), ("" + n))
+});
+$c_Lcom_vinctus_formula_Formula.prototype.name__T = (function() {
+  return this.Lcom_vinctus_formula_Formula__f_name
+});
+function $as_Lcom_vinctus_formula_Formula(obj) {
+  return (((obj instanceof $c_Lcom_vinctus_formula_Formula) || (obj === null)) ? obj : $throwClassCastException(obj, "com.vinctus.formula.Formula"))
+}
+function $isArrayOf_Lcom_vinctus_formula_Formula(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Lcom_vinctus_formula_Formula)))
+}
+function $asArrayOf_Lcom_vinctus_formula_Formula(obj, depth) {
+  return (($isArrayOf_Lcom_vinctus_formula_Formula(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lcom.vinctus.formula.Formula;", depth))
+}
+var $d_Lcom_vinctus_formula_Formula = new $TypeData().initClass({
+  Lcom_vinctus_formula_Formula: 0
+}, false, "com.vinctus.formula.Formula", {
+  Lcom_vinctus_formula_Formula: 1,
+  Lcom_vinctus_formula_Decl: 1,
+  O: 1,
+  s_util_parsing_input_Positional: 1,
+  s_Equals: 1,
+  s_Product: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Lcom_vinctus_formula_Formula.prototype.$classData = $d_Lcom_vinctus_formula_Formula;
+/** @constructor */
+function $c_Lcom_vinctus_formula_Function(name, func) {
+  this.Lcom_vinctus_formula_Decl__f_pos = null;
+  this.Lcom_vinctus_formula_Function__f_name = null;
+  this.Lcom_vinctus_formula_Function__f_func = null;
+  this.Lcom_vinctus_formula_Function__f_name = name;
+  this.Lcom_vinctus_formula_Function__f_func = func;
+  this.Lcom_vinctus_formula_Decl__f_pos = $m_s_util_parsing_input_NoPosition$()
+}
+$c_Lcom_vinctus_formula_Function.prototype = new $h_Lcom_vinctus_formula_Decl();
+$c_Lcom_vinctus_formula_Function.prototype.constructor = $c_Lcom_vinctus_formula_Function;
+/** @constructor */
+function $h_Lcom_vinctus_formula_Function() {
+  /*<skip>*/
+}
+$h_Lcom_vinctus_formula_Function.prototype = $c_Lcom_vinctus_formula_Function.prototype;
+$c_Lcom_vinctus_formula_Function.prototype.productIterator__sc_Iterator = (function() {
+  return new $c_s_Product$$anon$1(this)
+});
+$c_Lcom_vinctus_formula_Function.prototype.hashCode__I = (function() {
+  var this$2 = $m_s_util_hashing_MurmurHash3$();
+  return this$2.productHash__s_Product__I__Z__I(this, (-889275714), false)
+});
+$c_Lcom_vinctus_formula_Function.prototype.equals__O__Z = (function(x$0) {
+  if ((this === x$0)) {
+    return true
+  } else if ((x$0 instanceof $c_Lcom_vinctus_formula_Function)) {
+    var x$0$2 = $as_Lcom_vinctus_formula_Function(x$0);
+    if ((this.Lcom_vinctus_formula_Function__f_name === x$0$2.Lcom_vinctus_formula_Function__f_name)) {
+      var x = this.Lcom_vinctus_formula_Function__f_func;
+      var x$2 = x$0$2.Lcom_vinctus_formula_Function__f_func;
+      return ((x === null) ? (x$2 === null) : x.equals__O__Z(x$2))
+    } else {
+      return false
+    }
+  } else {
+    return false
+  }
+});
+$c_Lcom_vinctus_formula_Function.prototype.toString__T = (function() {
+  return $m_sr_ScalaRunTime$()._toString__s_Product__T(this)
+});
+$c_Lcom_vinctus_formula_Function.prototype.productArity__I = (function() {
+  return 2
+});
+$c_Lcom_vinctus_formula_Function.prototype.productPrefix__T = (function() {
+  return "Function"
+});
+$c_Lcom_vinctus_formula_Function.prototype.productElement__I__O = (function(n) {
+  if ((n === 0)) {
+    return this.Lcom_vinctus_formula_Function__f_name
+  };
+  if ((n === 1)) {
+    return this.Lcom_vinctus_formula_Function__f_func
+  };
+  throw $ct_jl_IndexOutOfBoundsException__T__(new $c_jl_IndexOutOfBoundsException(), ("" + n))
+});
+$c_Lcom_vinctus_formula_Function.prototype.name__T = (function() {
+  return this.Lcom_vinctus_formula_Function__f_name
+});
+function $as_Lcom_vinctus_formula_Function(obj) {
+  return (((obj instanceof $c_Lcom_vinctus_formula_Function) || (obj === null)) ? obj : $throwClassCastException(obj, "com.vinctus.formula.Function"))
+}
+function $isArrayOf_Lcom_vinctus_formula_Function(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Lcom_vinctus_formula_Function)))
+}
+function $asArrayOf_Lcom_vinctus_formula_Function(obj, depth) {
+  return (($isArrayOf_Lcom_vinctus_formula_Function(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lcom.vinctus.formula.Function;", depth))
+}
+var $d_Lcom_vinctus_formula_Function = new $TypeData().initClass({
+  Lcom_vinctus_formula_Function: 0
+}, false, "com.vinctus.formula.Function", {
+  Lcom_vinctus_formula_Function: 1,
+  Lcom_vinctus_formula_Decl: 1,
+  O: 1,
+  s_util_parsing_input_Positional: 1,
+  s_Equals: 1,
+  s_Product: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Lcom_vinctus_formula_Function.prototype.$classData = $d_Lcom_vinctus_formula_Function;
+/** @constructor */
+function $c_Lcom_vinctus_formula_Val(name, value) {
+  this.Lcom_vinctus_formula_Decl__f_pos = null;
+  this.Lcom_vinctus_formula_Val__f_name = null;
+  this.Lcom_vinctus_formula_Val__f_value = null;
+  this.Lcom_vinctus_formula_Val__f_name = name;
+  this.Lcom_vinctus_formula_Val__f_value = value;
+  this.Lcom_vinctus_formula_Decl__f_pos = $m_s_util_parsing_input_NoPosition$()
+}
+$c_Lcom_vinctus_formula_Val.prototype = new $h_Lcom_vinctus_formula_Decl();
+$c_Lcom_vinctus_formula_Val.prototype.constructor = $c_Lcom_vinctus_formula_Val;
+/** @constructor */
+function $h_Lcom_vinctus_formula_Val() {
+  /*<skip>*/
+}
+$h_Lcom_vinctus_formula_Val.prototype = $c_Lcom_vinctus_formula_Val.prototype;
+$c_Lcom_vinctus_formula_Val.prototype.productIterator__sc_Iterator = (function() {
+  return new $c_s_Product$$anon$1(this)
+});
+$c_Lcom_vinctus_formula_Val.prototype.hashCode__I = (function() {
+  var this$2 = $m_s_util_hashing_MurmurHash3$();
+  return this$2.productHash__s_Product__I__Z__I(this, (-889275714), false)
+});
+$c_Lcom_vinctus_formula_Val.prototype.equals__O__Z = (function(x$0) {
+  if ((this === x$0)) {
+    return true
+  } else if ((x$0 instanceof $c_Lcom_vinctus_formula_Val)) {
+    var x$0$2 = $as_Lcom_vinctus_formula_Val(x$0);
+    if ((this.Lcom_vinctus_formula_Val__f_name === x$0$2.Lcom_vinctus_formula_Val__f_name)) {
+      var x = this.Lcom_vinctus_formula_Val__f_value;
+      var y = x$0$2.Lcom_vinctus_formula_Val__f_value;
+      return $m_sr_BoxesRunTime$().equals__O__O__Z(x, y)
+    } else {
+      return false
+    }
+  } else {
+    return false
+  }
+});
+$c_Lcom_vinctus_formula_Val.prototype.toString__T = (function() {
+  return $m_sr_ScalaRunTime$()._toString__s_Product__T(this)
+});
+$c_Lcom_vinctus_formula_Val.prototype.productArity__I = (function() {
+  return 2
+});
+$c_Lcom_vinctus_formula_Val.prototype.productPrefix__T = (function() {
+  return "Val"
+});
+$c_Lcom_vinctus_formula_Val.prototype.productElement__I__O = (function(n) {
+  if ((n === 0)) {
+    return this.Lcom_vinctus_formula_Val__f_name
+  };
+  if ((n === 1)) {
+    return this.Lcom_vinctus_formula_Val__f_value
+  };
+  throw $ct_jl_IndexOutOfBoundsException__T__(new $c_jl_IndexOutOfBoundsException(), ("" + n))
+});
+$c_Lcom_vinctus_formula_Val.prototype.name__T = (function() {
+  return this.Lcom_vinctus_formula_Val__f_name
+});
+function $as_Lcom_vinctus_formula_Val(obj) {
+  return (((obj instanceof $c_Lcom_vinctus_formula_Val) || (obj === null)) ? obj : $throwClassCastException(obj, "com.vinctus.formula.Val"))
+}
+function $isArrayOf_Lcom_vinctus_formula_Val(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Lcom_vinctus_formula_Val)))
+}
+function $asArrayOf_Lcom_vinctus_formula_Val(obj, depth) {
+  return (($isArrayOf_Lcom_vinctus_formula_Val(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lcom.vinctus.formula.Val;", depth))
+}
+var $d_Lcom_vinctus_formula_Val = new $TypeData().initClass({
+  Lcom_vinctus_formula_Val: 0
+}, false, "com.vinctus.formula.Val", {
+  Lcom_vinctus_formula_Val: 1,
+  Lcom_vinctus_formula_Decl: 1,
+  O: 1,
+  s_util_parsing_input_Positional: 1,
+  s_Equals: 1,
+  s_Product: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Lcom_vinctus_formula_Val.prototype.$classData = $d_Lcom_vinctus_formula_Val;
+/** @constructor */
+function $c_Lcom_vinctus_formula_Var(name, expr, value) {
+  this.Lcom_vinctus_formula_Decl__f_pos = null;
+  this.Lcom_vinctus_formula_Var__f_name = null;
+  this.Lcom_vinctus_formula_Var__f_expr = null;
+  this.Lcom_vinctus_formula_Var__f_value = null;
+  this.Lcom_vinctus_formula_Var__f_name = name;
+  this.Lcom_vinctus_formula_Var__f_expr = expr;
+  this.Lcom_vinctus_formula_Var__f_value = value;
+  this.Lcom_vinctus_formula_Decl__f_pos = $m_s_util_parsing_input_NoPosition$()
+}
+$c_Lcom_vinctus_formula_Var.prototype = new $h_Lcom_vinctus_formula_Decl();
+$c_Lcom_vinctus_formula_Var.prototype.constructor = $c_Lcom_vinctus_formula_Var;
+/** @constructor */
+function $h_Lcom_vinctus_formula_Var() {
+  /*<skip>*/
+}
+$h_Lcom_vinctus_formula_Var.prototype = $c_Lcom_vinctus_formula_Var.prototype;
+$c_Lcom_vinctus_formula_Var.prototype.productIterator__sc_Iterator = (function() {
+  return new $c_s_Product$$anon$1(this)
+});
+$c_Lcom_vinctus_formula_Var.prototype.hashCode__I = (function() {
+  var this$2 = $m_s_util_hashing_MurmurHash3$();
+  return this$2.productHash__s_Product__I__Z__I(this, (-889275714), false)
+});
+$c_Lcom_vinctus_formula_Var.prototype.equals__O__Z = (function(x$0) {
+  if ((this === x$0)) {
+    return true
+  } else if ((x$0 instanceof $c_Lcom_vinctus_formula_Var)) {
+    var x$0$2 = $as_Lcom_vinctus_formula_Var(x$0);
+    if ((this.Lcom_vinctus_formula_Var__f_name === x$0$2.Lcom_vinctus_formula_Var__f_name)) {
+      var x = this.Lcom_vinctus_formula_Var__f_expr;
+      var x$2 = x$0$2.Lcom_vinctus_formula_Var__f_expr;
+      var $$x1 = ((x === null) ? (x$2 === null) : x.equals__O__Z(x$2))
+    } else {
+      var $$x1 = false
+    };
+    if ($$x1) {
+      var x$1 = this.Lcom_vinctus_formula_Var__f_value;
+      var y = x$0$2.Lcom_vinctus_formula_Var__f_value;
+      return $m_sr_BoxesRunTime$().equals__O__O__Z(x$1, y)
+    } else {
+      return false
+    }
+  } else {
+    return false
+  }
+});
+$c_Lcom_vinctus_formula_Var.prototype.toString__T = (function() {
+  return $m_sr_ScalaRunTime$()._toString__s_Product__T(this)
+});
+$c_Lcom_vinctus_formula_Var.prototype.productArity__I = (function() {
+  return 3
+});
+$c_Lcom_vinctus_formula_Var.prototype.productPrefix__T = (function() {
+  return "Var"
+});
+$c_Lcom_vinctus_formula_Var.prototype.productElement__I__O = (function(n) {
+  switch (n) {
+    case 0: {
+      return this.Lcom_vinctus_formula_Var__f_name;
+      break
+    }
+    case 1: {
+      return this.Lcom_vinctus_formula_Var__f_expr;
+      break
+    }
+    case 2: {
+      return this.Lcom_vinctus_formula_Var__f_value;
+      break
+    }
+    default: {
+      throw $ct_jl_IndexOutOfBoundsException__T__(new $c_jl_IndexOutOfBoundsException(), ("" + n))
+    }
+  }
+});
+$c_Lcom_vinctus_formula_Var.prototype.name__T = (function() {
+  return this.Lcom_vinctus_formula_Var__f_name
+});
+function $as_Lcom_vinctus_formula_Var(obj) {
+  return (((obj instanceof $c_Lcom_vinctus_formula_Var) || (obj === null)) ? obj : $throwClassCastException(obj, "com.vinctus.formula.Var"))
+}
+function $isArrayOf_Lcom_vinctus_formula_Var(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Lcom_vinctus_formula_Var)))
+}
+function $asArrayOf_Lcom_vinctus_formula_Var(obj, depth) {
+  return (($isArrayOf_Lcom_vinctus_formula_Var(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lcom.vinctus.formula.Var;", depth))
+}
+var $d_Lcom_vinctus_formula_Var = new $TypeData().initClass({
+  Lcom_vinctus_formula_Var: 0
+}, false, "com.vinctus.formula.Var", {
+  Lcom_vinctus_formula_Var: 1,
+  Lcom_vinctus_formula_Decl: 1,
+  O: 1,
+  s_util_parsing_input_Positional: 1,
+  s_Equals: 1,
+  s_Product: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Lcom_vinctus_formula_Var.prototype.$classData = $d_Lcom_vinctus_formula_Var;
 function $ct_jl_ArrayIndexOutOfBoundsException__T__($thiz, s) {
   $ct_jl_Throwable__T__jl_Throwable__Z__Z__($thiz, s, null, true, true);
   return $thiz
@@ -18792,6 +18900,9 @@ $c_sc_AbstractIterable.prototype.map__F1__O = (function(f) {
 });
 $c_sc_AbstractIterable.prototype.zip__sc_IterableOnce__O = (function(that) {
   return $f_sc_IterableOps__zip__sc_IterableOnce__O(this, that)
+});
+$c_sc_AbstractIterable.prototype.foreach__F1__V = (function(f) {
+  $f_sc_IterableOnceOps__foreach__F1__V(this, f)
 });
 $c_sc_AbstractIterable.prototype.forall__F1__Z = (function(p) {
   return $f_sc_IterableOnceOps__forall__F1__Z(this, p)
@@ -21033,57 +21144,77 @@ $c_Lcom_vinctus_formula_FormulaParser$.prototype.formulae__s_util_parsing_combin
 });
 $c_Lcom_vinctus_formula_FormulaParser$.prototype.declaration__s_util_parsing_combinator_PackratParsers$PackratParser = (function() {
   if ((!this.Lcom_vinctus_formula_FormulaParser$__f_declarationbitmap$1)) {
-    var p$2 = new $c_sjsr_AnonFunction0((() => {
-      var $$x1 = this.keyword__T__s_util_parsing_combinator_Parsers$Parser("formula").$tilde$greater__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => $f_s_util_parsing_combinator_syntactical_StdTokenParsers__ident__s_util_parsing_combinator_Parsers$Parser(this)))).$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser("=").$tilde$greater__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.expression__s_util_parsing_combinator_PackratParsers$PackratParser()))))));
-      var f = new $c_sjsr_AnonFunction2(((name, expr) => {
-        var name$1 = $as_T(name);
-        var expr$1 = $as_Lcom_vinctus_formula_AST$Expr(expr);
-        return new $c_Lcom_vinctus_formula_Formula(name$1, expr$1)
-      }));
-      return $$x1.$up$up__F1__s_util_parsing_combinator_Parsers$Parser($f_s_util_parsing_combinator_ImplicitConversions__flatten2__F2__F1(this, f)).$bar__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser("const").$tilde$greater__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => $f_s_util_parsing_combinator_syntactical_StdTokenParsers__ident__s_util_parsing_combinator_Parsers$Parser(this)))).$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser("=")))).$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.expression__s_util_parsing_combinator_PackratParsers$PackratParser()))).$up$up__F1__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction1(((x$1) => {
-        var x$1$1 = $as_s_util_parsing_combinator_Parsers$$tilde(x$1);
-        if ((x$1$1 !== null)) {
-          this.$tilde__s_util_parsing_combinator_Parsers$$tilde$();
-          var x15 = $as_s_util_parsing_combinator_Parsers$$tilde(x$1$1.s_util_parsing_combinator_Parsers$$tilde__f__1);
-          if ((x15 !== null)) {
-            this.$tilde__s_util_parsing_combinator_Parsers$$tilde$();
-            var n = $as_T(x15.s_util_parsing_combinator_Parsers$$tilde__f__1);
-            var e = $as_Lcom_vinctus_formula_AST$Expr(x$1$1.s_util_parsing_combinator_Parsers$$tilde__f__2);
-            return new $c_Lcom_vinctus_formula_Const(n, e, null)
-          }
-        };
-        throw new $c_s_MatchError(x$1$1)
-      })))))).$bar__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => {
-        var $$x2 = this.keyword__T__s_util_parsing_combinator_Parsers$Parser("def").$tilde$greater__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => $f_s_util_parsing_combinator_syntactical_StdTokenParsers__ident__s_util_parsing_combinator_Parsers$Parser(this)))).$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser("(").$tilde$greater__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => {
-          var p = new $c_sjsr_AnonFunction0((() => $f_s_util_parsing_combinator_syntactical_StdTokenParsers__ident__s_util_parsing_combinator_Parsers$Parser(this)));
-          var q = new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser(",")));
-          return $f_s_util_parsing_combinator_Parsers__rep1sep__F0__F0__s_util_parsing_combinator_Parsers$Parser(this, p, q)
-        }))).$less$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser(")"))))))).$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser("=").$tilde$greater__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.expression__s_util_parsing_combinator_PackratParsers$PackratParser()))))));
-        var f$1 = new $c_sjsr_AnonFunction3(((name$2, params, func) => {
-          var name$3 = $as_T(name$2);
-          var params$1 = $as_sci_Seq(params);
-          var func$1 = $as_Lcom_vinctus_formula_AST$Expr(func);
-          return new $c_Lcom_vinctus_formula_Def(name$3, params$1, func$1)
+    var p$3 = new $c_sjsr_AnonFunction0((() => {
+      var p$2 = new $c_sjsr_AnonFunction0((() => {
+        var $$x1 = this.keyword__T__s_util_parsing_combinator_Parsers$Parser("formula").$tilde$greater__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => $f_s_util_parsing_combinator_syntactical_StdTokenParsers__ident__s_util_parsing_combinator_Parsers$Parser(this)))).$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser("=").$tilde$greater__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.expression__s_util_parsing_combinator_PackratParsers$PackratParser()))))));
+        var f = new $c_sjsr_AnonFunction2(((name, expr) => {
+          var name$1 = $as_T(name);
+          var expr$1 = $as_Lcom_vinctus_formula_AST$Expr(expr);
+          return new $c_Lcom_vinctus_formula_Formula(name$1, expr$1)
         }));
-        return $$x2.$up$up__F1__s_util_parsing_combinator_Parsers$Parser($f_s_util_parsing_combinator_ImplicitConversions__flatten3__F3__F1(this, f$1))
-      }))).$bar__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser("var").$tilde$greater__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => $f_s_util_parsing_combinator_syntactical_StdTokenParsers__ident__s_util_parsing_combinator_Parsers$Parser(this)))).$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => {
-        var p$1 = new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser("=").$tilde$greater__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.expression__s_util_parsing_combinator_PackratParsers$PackratParser())))));
-        return $f_s_util_parsing_combinator_Parsers__opt__F0__s_util_parsing_combinator_Parsers$Parser(this, p$1)
-      }))).$up$up__F1__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction1(((x$1$2) => {
-        var x$1$3 = $as_s_util_parsing_combinator_Parsers$$tilde(x$1$2);
-        if ((x$1$3 !== null)) {
-          this.$tilde__s_util_parsing_combinator_Parsers$$tilde$();
-          var n$1 = $as_T(x$1$3.s_util_parsing_combinator_Parsers$$tilde__f__1);
-          var e$1 = $as_s_Option(x$1$3.s_util_parsing_combinator_Parsers$$tilde__f__2);
-          $m_s_$less$colon$less$();
-          var default$1 = new $c_sjsr_AnonFunction0((() => null));
-          var expr$2 = $as_Lcom_vinctus_formula_AST$Expr((e$1.isEmpty__Z() ? default$1.apply__O() : e$1.get__O()));
-          return new $c_Lcom_vinctus_formula_Var(n$1, expr$2, null)
-        };
-        throw new $c_s_MatchError(x$1$3)
-      }))))))
+        return $$x1.$up$up__F1__s_util_parsing_combinator_Parsers$Parser($f_s_util_parsing_combinator_ImplicitConversions__flatten2__F2__F1(this, f)).$bar__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser("const").$tilde$greater__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => $f_s_util_parsing_combinator_syntactical_StdTokenParsers__ident__s_util_parsing_combinator_Parsers$Parser(this)))).$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser("=")))).$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.expression__s_util_parsing_combinator_PackratParsers$PackratParser()))).$up$up__F1__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction1(((x$1) => {
+          var x$1$1 = $as_s_util_parsing_combinator_Parsers$$tilde(x$1);
+          matchResult3$1: {
+            var $$x3;
+            if ((x$1$1 !== null)) {
+              this.$tilde__s_util_parsing_combinator_Parsers$$tilde$();
+              var x30 = $as_s_util_parsing_combinator_Parsers$$tilde(x$1$1.s_util_parsing_combinator_Parsers$$tilde__f__1);
+              var x31 = $as_Lcom_vinctus_formula_AST$Expr(x$1$1.s_util_parsing_combinator_Parsers$$tilde__f__2);
+              if ((x30 !== null)) {
+                this.$tilde__s_util_parsing_combinator_Parsers$$tilde$();
+                var x36 = $as_T(x30.s_util_parsing_combinator_Parsers$$tilde__f__1);
+                if ((x31 instanceof $c_Lcom_vinctus_formula_AST$Expr$NumericLit)) {
+                  var x$1$2 = $as_Lcom_vinctus_formula_AST$Expr$NumericLit(x31);
+                  var x34 = x$1$2.Lcom_vinctus_formula_AST$Expr$NumericLit__f_n;
+                  var $$x3 = new $c_Lcom_vinctus_formula_Val(x36, x34);
+                  break matchResult3$1
+                };
+                if ((x31 instanceof $c_Lcom_vinctus_formula_AST$Expr$StringLit)) {
+                  var x$1$3 = $as_Lcom_vinctus_formula_AST$Expr$StringLit(x31);
+                  var x25 = x$1$3.Lcom_vinctus_formula_AST$Expr$StringLit__f_s;
+                  var $$x3 = new $c_Lcom_vinctus_formula_Val(x36, x25);
+                  break matchResult3$1
+                };
+                var $$x3 = new $c_Lcom_vinctus_formula_Const(x36, x31, null);
+                break matchResult3$1
+              }
+            };
+            throw new $c_s_MatchError(x$1$1)
+          };
+          return $as_Lcom_vinctus_formula_Decl($$x3)
+        })))))).$bar__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => {
+          var $$x2 = this.keyword__T__s_util_parsing_combinator_Parsers$Parser("def").$tilde$greater__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => $f_s_util_parsing_combinator_syntactical_StdTokenParsers__ident__s_util_parsing_combinator_Parsers$Parser(this)))).$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser("(").$tilde$greater__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => {
+            var p = new $c_sjsr_AnonFunction0((() => $f_s_util_parsing_combinator_syntactical_StdTokenParsers__ident__s_util_parsing_combinator_Parsers$Parser(this)));
+            var q = new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser(",")));
+            return $f_s_util_parsing_combinator_Parsers__rep1sep__F0__F0__s_util_parsing_combinator_Parsers$Parser(this, p, q)
+          }))).$less$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser(")"))))))).$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser("=").$tilde$greater__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.expression__s_util_parsing_combinator_PackratParsers$PackratParser()))))));
+          var f$1 = new $c_sjsr_AnonFunction3(((name$2, params, func) => {
+            var name$3 = $as_T(name$2);
+            var params$1 = $as_sci_Seq(params);
+            var func$1 = $as_Lcom_vinctus_formula_AST$Expr(func);
+            return new $c_Lcom_vinctus_formula_Def(name$3, params$1, func$1)
+          }));
+          return $$x2.$up$up__F1__s_util_parsing_combinator_Parsers$Parser($f_s_util_parsing_combinator_ImplicitConversions__flatten3__F3__F1(this, f$1))
+        }))).$bar__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser("var").$tilde$greater__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => $f_s_util_parsing_combinator_syntactical_StdTokenParsers__ident__s_util_parsing_combinator_Parsers$Parser(this)))).$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => {
+          var p$1 = new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser("=").$tilde$greater__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.expression__s_util_parsing_combinator_PackratParsers$PackratParser())))));
+          return $f_s_util_parsing_combinator_Parsers__opt__F0__s_util_parsing_combinator_Parsers$Parser(this, p$1)
+        }))).$up$up__F1__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction1(((x$1$4) => {
+          var x$1$5 = $as_s_util_parsing_combinator_Parsers$$tilde(x$1$4);
+          if ((x$1$5 !== null)) {
+            this.$tilde__s_util_parsing_combinator_Parsers$$tilde$();
+            var n = $as_T(x$1$5.s_util_parsing_combinator_Parsers$$tilde__f__1);
+            var e = $as_s_Option(x$1$5.s_util_parsing_combinator_Parsers$$tilde__f__2);
+            $m_s_$less$colon$less$();
+            var default$1 = new $c_sjsr_AnonFunction0((() => null));
+            var expr$2 = $as_Lcom_vinctus_formula_AST$Expr((e.isEmpty__Z() ? default$1.apply__O() : e.get__O()));
+            return new $c_Lcom_vinctus_formula_Var(n, expr$2, null)
+          };
+          throw new $c_s_MatchError(x$1$5)
+        }))))))
+      }));
+      return $f_s_util_parsing_combinator_Parsers__positioned__F0__s_util_parsing_combinator_Parsers$Parser(this, p$2)
     }));
-    this.Lcom_vinctus_formula_FormulaParser$__f_declaration$lzy1 = $f_s_util_parsing_combinator_PackratParsers__parser2packrat__F0__s_util_parsing_combinator_PackratParsers$PackratParser(this, p$2);
+    this.Lcom_vinctus_formula_FormulaParser$__f_declaration$lzy1 = $f_s_util_parsing_combinator_PackratParsers__parser2packrat__F0__s_util_parsing_combinator_PackratParsers$PackratParser(this, p$3);
     this.Lcom_vinctus_formula_FormulaParser$__f_declarationbitmap$1 = true
   };
   return this.Lcom_vinctus_formula_FormulaParser$__f_declaration$lzy1
@@ -24796,6 +24927,15 @@ $c_sci_LazyList.prototype.force__sci_LazyList = (function() {
 $c_sci_LazyList.prototype.iterator__sc_Iterator = (function() {
   return ((this.sci_LazyList__f_scala$collection$immutable$LazyList$$stateEvaluated && this.isEmpty__Z()) ? $m_sc_Iterator$().sc_Iterator$__f_scala$collection$Iterator$$_empty : new $c_sci_LazyList$LazyIterator(this))
 });
+$c_sci_LazyList.prototype.foreach__F1__V = (function(f) {
+  var _$this = this;
+  while ((!_$this.isEmpty__Z())) {
+    var this$1 = _$this;
+    f.apply__O__O(this$1.scala$collection$immutable$LazyList$$state__sci_LazyList$State().head__O());
+    var this$2 = _$this;
+    _$this = this$2.scala$collection$immutable$LazyList$$state__sci_LazyList$State().tail__sci_LazyList()
+  }
+});
 $c_sci_LazyList.prototype.foldLeft__O__F2__O = (function(z, op) {
   var _$this = this;
   while (true) {
@@ -25098,6 +25238,9 @@ $c_sjsr_WrappedVarArgs.prototype.contains__O__Z = (function(elem) {
 });
 $c_sjsr_WrappedVarArgs.prototype.isEmpty__Z = (function() {
   return $f_sc_SeqOps__isEmpty__Z(this)
+});
+$c_sjsr_WrappedVarArgs.prototype.foreach__F1__V = (function(f) {
+  $f_sc_IterableOnceOps__foreach__F1__V(this, f)
 });
 $c_sjsr_WrappedVarArgs.prototype.exists__F1__Z = (function(p) {
   return $f_sc_IterableOnceOps__exists__F1__Z(this, p)
@@ -27037,6 +27180,13 @@ $c_sci_List.prototype.map__F1__sci_List = (function(f) {
       rest = $as_sci_List(rest.tail__O())
     };
     return h
+  }
+});
+$c_sci_List.prototype.foreach__F1__V = (function(f) {
+  var these = this;
+  while ((!these.isEmpty__Z())) {
+    f.apply__O__O(these.head__O());
+    these = $as_sci_List(these.tail__O())
   }
 });
 $c_sci_List.prototype.reverse__sci_List = (function() {
