@@ -7,13 +7,13 @@ class FormulaeTests extends AnyFreeSpec with Matchers:
   val f =
     new Formulae(
       """
-        |const default = 3
+        |const default = 3.1
         |
         |var x = default
         |
-        |def f(a) = a + 4
+        |def f(a) = a + 4.2
         |
-        |formula u = x + f(5)
+        |formula u = x + f(5.3)
         |""".stripMargin,
     )
 
@@ -58,10 +58,10 @@ class FormulaeTests extends AnyFreeSpec with Matchers:
   }
 
   "formula" in {
-    f.formula("u") shouldBe "12"
+    render(f.formula("u")) shouldBe "12"
   }
 
   "set" in {
     f.set("x", 3.5)
-    f.formula("u") shouldBe "12.5"
+    f.formula("u") shouldBe 12.5
   }

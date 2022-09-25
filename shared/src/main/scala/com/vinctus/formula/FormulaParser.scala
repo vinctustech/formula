@@ -43,7 +43,7 @@ object FormulaParser extends StandardTokenParsers with PackratParsers with Impli
   lazy val declaration: P[Decl] = positioned(
     "formula" ~> ident ~ ("=" ~> expression) ^^ Formula.apply
       | "const" ~> ident ~ "=" ~ expression ^^ {
-        case n ~ _ ~ NumericLit(v) => Val(n, v)
+        case n ~ _ ~ NumericLit(v) => Val(n, v.toDouble)
         case n ~ _ ~ StringLit(v)  => Val(n, v)
         case n ~ _ ~ e             => Const(n, e, null)
       }

@@ -21166,7 +21166,8 @@ $c_Lcom_vinctus_formula_FormulaParser$.prototype.declaration__s_util_parsing_com
                 if ((x31 instanceof $c_Lcom_vinctus_formula_AST$Expr$NumericLit)) {
                   var x$1$2 = $as_Lcom_vinctus_formula_AST$Expr$NumericLit(x31);
                   var x34 = x$1$2.Lcom_vinctus_formula_AST$Expr$NumericLit__f_n;
-                  var $$x3 = new $c_Lcom_vinctus_formula_Val(x36, x34);
+                  var value = $m_jl_Double$().parseDouble__T__D(x34);
+                  var $$x3 = new $c_Lcom_vinctus_formula_Val(x36, value);
                   break matchResult3$1
                 };
                 if ((x31 instanceof $c_Lcom_vinctus_formula_AST$Expr$StringLit)) {

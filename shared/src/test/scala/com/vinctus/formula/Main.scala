@@ -6,15 +6,14 @@ import pprint.pprintln
   val f =
     new Formulae(
       """
-      |const default = 3
+      |const default = 3.5
       |
       |var x = default
       |
       |def f(a) = a + 4
       |
-      |formula u = x + f(5) < 10 ? 'yes' : 'no'
+      |formula u = x + f(5)
       |""".stripMargin,
     )
 
-  println(f.expression("cos((pi ^ .5) ^ 2) == -1"))
-  println(f.get("default"))
+  println(f.get("default").getClass)
