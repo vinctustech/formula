@@ -7,7 +7,7 @@ lazy val formula = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   .in(file("."))
   .settings(
     name := "formula",
-    version := "0.0.12",
+    version := "0.0.13",
     scalaVersion := "3.2.0",
     scalacOptions ++=
       Seq(
