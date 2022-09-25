@@ -17,3 +17,4 @@ import pprint.pprintln
     )
 
   println(f.expression("cos((pi ^ .5) ^ 2) == -1"))
+  println(f.get("default"))

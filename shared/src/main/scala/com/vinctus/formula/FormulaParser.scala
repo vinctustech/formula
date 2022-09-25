@@ -40,11 +40,16 @@ object FormulaParser extends StandardTokenParsers with PackratParsers with Impli
 
   lazy val formulae: P[Seq[Decl]] = rep1(declaration)
 
-  lazy val declaration: P[Decl] =
+  lazy val declaration: P[Decl] = positioned(
     "formula" ~> ident ~ ("=" ~> expression) ^^ Formula.apply
-      | "const" ~> ident ~ "=" ~ expression ^^ { case n ~ _ ~ e => Const(n, e, null) }
+      | "const" ~> ident ~ "=" ~ expression ^^ {
+        case n ~ _ ~ NumericLit(v) => Val(n, v)
+        case n ~ _ ~ StringLit(v)  => Val(n, v)
+        case n ~ _ ~ e             => Const(n, e, null)
+      }
       | "def" ~> ident ~ ("(" ~> rep1sep(ident, ",") <~ ")") ~ ("=" ~> expression) ^^ Def.apply
-      | "var" ~> ident ~ opt("=" ~> expression) ^^ { case n ~ e => Var(n, e.orNull, null) }
+      | "var" ~> ident ~ opt("=" ~> expression) ^^ { case n ~ e => Var(n, e.orNull, null) },
+  )
 
   lazy val expression: P[Expr] = ternary
 

@@ -1,11 +1,20 @@
 package com.vinctus.formula
 
 import scala.collection.immutable.VectorMap
+import scala.collection.mutable
 import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
 
 @JSExportTopLevel("Formulae")
 class Formulae(decls: String):
-  val env: Map[String, Decl] = (FormulaParser.parseFormulae(decls) map (d => (d.name, d)) to VectorMap) ++ Builtin
+  val env: Map[String, Decl] =
+    val ds: Seq[Decl] = FormulaParser.parseFormulae(decls)
+    val s = new mutable.HashSet[String]
+
+    for d <- ds do
+      if s contains d.name then problem(d.pos, s"duplicate name '${d.name}'")
+      s += d.name
+
+    (ds map (d => (d.name, d)) to VectorMap) ++ Builtin
 
   @JSExport
   def formula(name: String): Any =
@@ -32,6 +41,9 @@ class Formulae(decls: String):
     env get name match
       case Some(v: Var) => v.value = value
       case _            => sys.error(s"variable '$name' not found")
+
+  @JSExport
+  def get(name: String): Any = lookup(name, null, env, env, false)
 
   @JSExport
   def expression(expr: String): Any = eval(FormulaParser.parseExpr(expr), env, env, false)

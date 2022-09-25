@@ -1,6 +1,8 @@
 package com.vinctus.formula
 
-abstract class Decl:
+import scala.util.parsing.input.Positional
+
+abstract class Decl extends Positional:
   val name: String
 
 case class Const(name: String, expr: AST.Expr, var value: Any) extends Decl
