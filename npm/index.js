@@ -1469,36 +1469,41 @@ $c_Lcom_vinctus_formula_lookup$package$.prototype.lookup__T__Lcom_vinctus_formul
   }))));
   if ((x1 instanceof $c_Lcom_vinctus_formula_Val)) {
     var x$1 = $as_Lcom_vinctus_formula_Val(x1);
-    var x15 = x$1.Lcom_vinctus_formula_Val__f_value;
-    return x15
+    var x19 = x$1.Lcom_vinctus_formula_Val__f_value;
+    return x19
   };
   if ((x1 instanceof $c_Lcom_vinctus_formula_Var)) {
-    var x7 = $as_Lcom_vinctus_formula_Var(x1);
-    var x10 = x7.Lcom_vinctus_formula_Var__f_expr;
-    var x11 = x7.Lcom_vinctus_formula_Var__f_value;
+    var x11 = $as_Lcom_vinctus_formula_Var(x1);
+    var x14 = x11.Lcom_vinctus_formula_Var__f_expr;
+    var x15 = x11.Lcom_vinctus_formula_Var__f_value;
     if (pure) {
       $m_Lcom_vinctus_formula_problem$package$().problem__s_util_parsing_input_Position__T__E(e.Lcom_vinctus_formula_AST$Expr__f_pos, (("referentially opaque: variable '" + name) + "' referenced"))
     };
-    if ((x11 === null)) {
-      if ((x10 === null)) {
+    if ((x15 === null)) {
+      if ((x14 === null)) {
         $m_Lcom_vinctus_formula_problem$package$().problem__s_util_parsing_input_Position__T__E(e.Lcom_vinctus_formula_AST$Expr__f_pos, (("variable '" + name) + "' has not been set"))
       };
-      x7.Lcom_vinctus_formula_Var__f_value = $m_Lcom_vinctus_formula_eval$package$().eval__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O(x10, env, ctx, false);
-      return x7.Lcom_vinctus_formula_Var__f_value
+      x11.Lcom_vinctus_formula_Var__f_value = $m_Lcom_vinctus_formula_eval$package$().eval__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O(x14, env, ctx, false);
+      return x11.Lcom_vinctus_formula_Var__f_value
     } else {
-      return x11
+      return x15
     }
   };
   if ((x1 instanceof $c_Lcom_vinctus_formula_Const)) {
-    var x2 = $as_Lcom_vinctus_formula_Const(x1);
-    var x5 = x2.Lcom_vinctus_formula_Const__f_expr;
-    var x6 = x2.Lcom_vinctus_formula_Const__f_value;
-    if ((x6 === null)) {
-      x2.Lcom_vinctus_formula_Const__f_value = $m_Lcom_vinctus_formula_eval$package$().eval__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O(x5, env, ctx, true);
-      return x2.Lcom_vinctus_formula_Const__f_value
+    var x6 = $as_Lcom_vinctus_formula_Const(x1);
+    var x9 = x6.Lcom_vinctus_formula_Const__f_expr;
+    var x10 = x6.Lcom_vinctus_formula_Const__f_value;
+    if ((x10 === null)) {
+      x6.Lcom_vinctus_formula_Const__f_value = $m_Lcom_vinctus_formula_eval$package$().eval__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O(x9, env, ctx, true);
+      return x6.Lcom_vinctus_formula_Const__f_value
     } else {
-      return x6
+      return x10
     }
+  };
+  if ((x1 instanceof $c_Lcom_vinctus_formula_Formula)) {
+    var x$1$1 = $as_Lcom_vinctus_formula_Formula(x1);
+    var x5 = x$1$1.Lcom_vinctus_formula_Formula__f_expr;
+    return $m_Lcom_vinctus_formula_eval$package$().eval__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O(x5, env, env, pure)
   };
   throw new $c_s_MatchError(x1)
 });

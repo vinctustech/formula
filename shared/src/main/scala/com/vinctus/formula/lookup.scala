@@ -21,3 +21,4 @@ def lookup(
         c.value = eval(expr, env, ctx, true)
         c.value
       else value
+    case Formula(_, expr) => eval(expr, env, env, pure)

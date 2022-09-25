@@ -13,7 +13,9 @@ import pprint.pprintln
       |def f(a) = a + 4
       |
       |formula u = x + f(5)
+      |formula v = u + 1
       |""".stripMargin,
     )
 
-  println(f.get("default").getClass)
+  println(f.formula("u"))
+  println(f.formula("v"))
