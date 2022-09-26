@@ -21073,7 +21073,7 @@ function $c_Lcom_vinctus_formula_FormulaParser$() {
   this.Lcom_vinctus_formula_FormulaParser$__f_lexical = new $c_Lcom_vinctus_formula_FormulaLexer();
   var this$4 = this.Lcom_vinctus_formula_FormulaParser$__f_lexical.s_util_parsing_combinator_lexical_StdLexical__f_reserved;
   var $$x1 = $m_s_Predef$();
-  var x = $f_T__trim__T("\n      |const\n      |def\n      |formula\n      |var\n      |mod\n      |and\n      |or\n      |not\n      |");
+  var x = $f_T__trim__T("\n      |const\n      |def\n      |var\n      |mod\n      |and\n      |or\n      |not\n      |");
   var this$3 = $m_sc_StringOps$().stripMargin$extension__T__C__T(x, 124);
   var xs = $$x1.wrapRefArray__AO__scm_ArraySeq$ofRef($f_T__split__T__I__AT(this$3, "\\s+", 0));
   this$4.addAll__sc_IterableOnce__scm_HashSet(xs);
@@ -21154,7 +21154,7 @@ $c_Lcom_vinctus_formula_FormulaParser$.prototype.declaration__s_util_parsing_com
   if ((!this.Lcom_vinctus_formula_FormulaParser$__f_declarationbitmap$1)) {
     var p$3 = new $c_sjsr_AnonFunction0((() => {
       var p$2 = new $c_sjsr_AnonFunction0((() => {
-        var $$x1 = this.keyword__T__s_util_parsing_combinator_Parsers$Parser("formula").$tilde$greater__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => $f_s_util_parsing_combinator_syntactical_StdTokenParsers__ident__s_util_parsing_combinator_Parsers$Parser(this)))).$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser("=").$tilde$greater__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.expression__s_util_parsing_combinator_PackratParsers$PackratParser()))))));
+        var $$x1 = this.keyword__T__s_util_parsing_combinator_Parsers$Parser("def").$tilde$greater__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => $f_s_util_parsing_combinator_syntactical_StdTokenParsers__ident__s_util_parsing_combinator_Parsers$Parser(this)))).$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser("=").$tilde$greater__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.expression__s_util_parsing_combinator_PackratParsers$PackratParser()))))));
         var f = new $c_sjsr_AnonFunction2(((name, expr) => {
           var name$1 = $as_T(name);
           var expr$1 = $as_Lcom_vinctus_formula_AST$Expr(expr);

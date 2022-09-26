@@ -27,7 +27,6 @@ object FormulaParser extends StandardTokenParsers with PackratParsers with Impli
   lexical.reserved ++= ("""
       |const
       |def
-      |formula
       |var
       |mod
       |and
@@ -41,7 +40,7 @@ object FormulaParser extends StandardTokenParsers with PackratParsers with Impli
   lazy val formulae: P[Seq[Decl]] = rep1(declaration)
 
   lazy val declaration: P[Decl] = positioned(
-    "formula" ~> ident ~ ("=" ~> expression) ^^ Formula.apply
+    "def" ~> ident ~ ("=" ~> expression) ^^ Formula.apply
       | "const" ~> ident ~ "=" ~ expression ^^ {
         case n ~ _ ~ NumericLit(v) => Val(n, v.toDouble)
         case n ~ _ ~ StringLit(v)  => Val(n, v)

@@ -12,8 +12,8 @@ import pprint.pprintln
       |
       |def f(a) = a + 4
       |
-      |formula u = x + f(5)
-      |formula v = 1 + u%
+      |def u = x + f(5)
+      |def v = 1 + u%
       |""".stripMargin,
     )
 
