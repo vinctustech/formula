@@ -47,6 +47,7 @@ def eval(e: AST.Expr, env: collection.Map[String, Decl], ctx: collection.Map[Str
         case (a, "!=", b)                  => a != b
     case Unary("-", expr)   => -eval(expr, env, ctx, pure).asInstanceOf[Double]
     case Unary("not", expr) => !eval(expr, env, ctx, pure).asInstanceOf[Boolean]
+    case Unary("%", expr)   => eval(expr, env, ctx, pure).asInstanceOf[Double] / 100
     case Ternary(cond, yes, no) =>
       if eval(cond, env, ctx, pure).asInstanceOf[Boolean] then eval(yes, env, ctx, pure)
       else eval(no, env, ctx, pure)

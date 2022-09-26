@@ -34,7 +34,7 @@ object FormulaParser extends StandardTokenParsers with PackratParsers with Impli
       |or
       |not
       |""".trim.stripMargin split "\\s+")
-  lexical.delimiters ++= ("+ - * / ^ ( ) , < <= > >= ? : == != =" split ' ')
+  lexical.delimiters ++= ("+ - * / ^ % ( ) , < <= > >= ? : == != =" split ' ')
 
   type P[+T] = PackratParser[T]
 
@@ -95,6 +95,7 @@ object FormulaParser extends StandardTokenParsers with PackratParsers with Impli
 
   lazy val applicative: P[Expr] = positioned(
     ident ~ ("(" ~> repsep(expression, ",") <~ ")") ^^ Apply.apply
+      | primary <~ "%" ^^ (e => Unary("%", e))
       | primary,
   )
 

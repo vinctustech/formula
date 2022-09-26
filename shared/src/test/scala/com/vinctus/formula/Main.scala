@@ -13,7 +13,7 @@ import pprint.pprintln
       |def f(a) = a + 4
       |
       |formula u = x + f(5)
-      |formula v = u + 1
+      |formula v = 1 + u%
       |""".stripMargin,
     )
 
