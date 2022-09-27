@@ -29,8 +29,8 @@ val stringRegex = "'([^']*)'|\"([^\"]*)\"".r
       opt[Seq[(String, String)]]('s', "set")
         .valueName("x=a,y=b...")
         .action((x, c) => c.copy(vars = x))
-        .text("set variables"),
-      help("help").text("prints this usage text"),
+        .text("set variable(s)"),
+      help("help").text("print this usage text"),
     )
   }
 
