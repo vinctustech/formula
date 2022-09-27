@@ -1087,9 +1087,7 @@ function $m_Lcom_vinctus_formula_Builtin$package$() {
   };
   return $n_Lcom_vinctus_formula_Builtin$package$
 }
-/** @constructor */
-function $c_Lcom_vinctus_formula_Formulae(decls) {
-  this.Lcom_vinctus_formula_Formulae__f_env = null;
+function $ct_Lcom_vinctus_formula_Formulae__T__($thiz, decls) {
   var ds = $m_Lcom_vinctus_formula_FormulaParser$().parseFormulae__T__sci_Seq(decls);
   var s = $ct_scm_HashSet__(new $c_scm_HashSet());
   ds.foreach__F1__V(new $c_sjsr_AnonFunction1(((d) => {
@@ -1101,16 +1099,20 @@ function $c_Lcom_vinctus_formula_Formulae(decls) {
     s.add__O__Z(elem);
     return s
   })));
-  var this$3 = $as_sc_IterableOnceOps(ds.map__F1__O(new $c_sjsr_AnonFunction1(((d$2) => {
+  var $$x1 = $as_sc_IterableOnceOps(ds.map__F1__O(new $c_sjsr_AnonFunction1(((d$2) => {
     var d$3 = $as_Lcom_vinctus_formula_Decl(d$2);
     var _1 = d$3.name__T();
     return new $c_T2(_1, d$3)
   }))));
-  var factory = $m_sci_VectorMap$();
-  var factory$1 = new $c_sc_MapFactory$ToFactory(factory);
-  var this$4 = $as_sc_MapOps(factory$1.fromSpecific__sc_IterableOnce__O($as_sc_IterableOnce(this$3)));
+  var this$2 = $m_s_$less$colon$less$();
+  var this$3 = $$x1.toMap__s_$less$colon$less__sci_Map(this$2.s_$less$colon$less$__f_singleton);
   var xs = $m_Lcom_vinctus_formula_Builtin$package$().Lcom_vinctus_formula_Builtin$package$__f_Builtin;
-  this.Lcom_vinctus_formula_Formulae__f_env = $as_sci_Map(this$4.concat__sc_IterableOnce__sc_IterableOps(xs))
+  $thiz.Lcom_vinctus_formula_Formulae__f_env = $as_sci_Map(this$3.concat__sc_IterableOnce__sc_IterableOps(xs));
+  return $thiz
+}
+/** @constructor */
+function $c_Lcom_vinctus_formula_Formulae() {
+  this.Lcom_vinctus_formula_Formulae__f_env = null
 }
 $c_Lcom_vinctus_formula_Formulae.prototype = new $h_O();
 $c_Lcom_vinctus_formula_Formulae.prototype.constructor = $c_Lcom_vinctus_formula_Formulae;
@@ -1180,6 +1182,9 @@ $c_Lcom_vinctus_formula_Formulae.prototype.set__T__F0__V = (function(name, value
     $m_s_sys_package$().error__T__E((("variable '" + name) + "' not found"))
   }
 });
+$c_Lcom_vinctus_formula_Formulae.prototype.get__T__O = (function(name) {
+  return $m_Lcom_vinctus_formula_lookup$package$().lookup__T__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O(name, null, this.Lcom_vinctus_formula_Formulae__f_env, this.Lcom_vinctus_formula_Formulae__f_env, false)
+});
 $c_Lcom_vinctus_formula_Formulae.prototype.expression__T__O = (function(expr) {
   return $m_Lcom_vinctus_formula_eval$package$().eval__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O($m_Lcom_vinctus_formula_FormulaParser$().parseExpr__T__Lcom_vinctus_formula_AST$Expr(expr), this.Lcom_vinctus_formula_Formulae__f_env, this.Lcom_vinctus_formula_Formulae__f_env, false)
 });
@@ -1189,11 +1194,8 @@ $c_Lcom_vinctus_formula_Formulae.prototype.$js$exported$meth$formula__T__O = (fu
 $c_Lcom_vinctus_formula_Formulae.prototype.$js$exported$meth$func__T__sci_Seq__O = (function(name, args) {
   return this.func__T__sci_Seq__O(name, args)
 });
-$c_Lcom_vinctus_formula_Formulae.prototype.$js$exported$meth$set__T__F0__O = (function(name, value) {
-  this.set__T__F0__V(name, value)
-});
 $c_Lcom_vinctus_formula_Formulae.prototype.$js$exported$meth$get__T__O = (function(name) {
-  return $m_Lcom_vinctus_formula_lookup$package$().lookup__T__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O(name, null, this.Lcom_vinctus_formula_Formulae__f_env, this.Lcom_vinctus_formula_Formulae__f_env, false)
+  return this.get__T__O(name)
 });
 $c_Lcom_vinctus_formula_Formulae.prototype.$js$exported$meth$expression__T__O = (function(expr) {
   return this.expression__T__O(expr)
@@ -1206,11 +1208,6 @@ $c_Lcom_vinctus_formula_Formulae.prototype.expression = (function(arg) {
   var prep0 = $as_T(arg);
   return this.$js$exported$meth$expression__T__O(prep0)
 });
-$c_Lcom_vinctus_formula_Formulae.prototype.set = (function(arg, arg$2) {
-  var prep0 = $as_T(arg);
-  var prep1 = $as_F0(arg$2);
-  return this.$js$exported$meth$set__T__F0__O(prep0, prep1)
-});
 $c_Lcom_vinctus_formula_Formulae.prototype.func = (function(arg, ...rest) {
   var prep0 = $as_T(arg);
   var prep1 = $m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq(rest);
@@ -1220,13 +1217,6 @@ $c_Lcom_vinctus_formula_Formulae.prototype.get = (function(arg) {
   var prep0 = $as_T(arg);
   return this.$js$exported$meth$get__T__O(prep0)
 });
-var $d_Lcom_vinctus_formula_Formulae = new $TypeData().initClass({
-  Lcom_vinctus_formula_Formulae: 0
-}, false, "com.vinctus.formula.Formulae", {
-  Lcom_vinctus_formula_Formulae: 1,
-  O: 1
-});
-$c_Lcom_vinctus_formula_Formulae.prototype.$classData = $d_Lcom_vinctus_formula_Formulae;
 /** @constructor */
 function $c_Lcom_vinctus_formula_eval$package$() {
   /*<skip>*/
@@ -4072,18 +4062,6 @@ function $m_s_Array$EmptyArrays$() {
   };
   return $n_s_Array$EmptyArrays$
 }
-function $is_F0(obj) {
-  return (!(!((obj && obj.$classData) && obj.$classData.ancestors.F0)))
-}
-function $as_F0(obj) {
-  return (($is_F0(obj) || (obj === null)) ? obj : $throwClassCastException(obj, "scala.Function0"))
-}
-function $isArrayOf_F0(obj, depth) {
-  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.F0)))
-}
-function $asArrayOf_F0(obj, depth) {
-  return (($isArrayOf_F0(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.Function0;", depth))
-}
 function $is_F1(obj) {
   return (!(!((obj && obj.$classData) && obj.$classData.ancestors.F1)))
 }
@@ -6815,6 +6793,37 @@ var $d_Lcom_vinctus_formula_Decl = new $TypeData().initClass({
   s_util_parsing_input_Positional: 1
 });
 $c_Lcom_vinctus_formula_Decl.prototype.$classData = $d_Lcom_vinctus_formula_Decl;
+/** @constructor */
+function $c_Lcom_vinctus_formula_FormulaeJS(decls) {
+  this.Lcom_vinctus_formula_Formulae__f_env = null;
+  $ct_Lcom_vinctus_formula_Formulae__T__(this, decls)
+}
+$c_Lcom_vinctus_formula_FormulaeJS.prototype = new $h_Lcom_vinctus_formula_Formulae();
+$c_Lcom_vinctus_formula_FormulaeJS.prototype.constructor = $c_Lcom_vinctus_formula_FormulaeJS;
+/** @constructor */
+function $h_Lcom_vinctus_formula_FormulaeJS() {
+  /*<skip>*/
+}
+$h_Lcom_vinctus_formula_FormulaeJS.prototype = $c_Lcom_vinctus_formula_FormulaeJS.prototype;
+$c_Lcom_vinctus_formula_FormulaeJS.prototype.set__T__sjs_js_Function0__V = (function(name, value) {
+  $c_Lcom_vinctus_formula_Formulae.prototype.set__T__F0__V.call(this, name, $m_sjs_js_Any$().toFunction0__sjs_js_Function0__F0(value))
+});
+$c_Lcom_vinctus_formula_FormulaeJS.prototype.$js$exported$meth$set__T__sjs_js_Function0__O = (function(name, value) {
+  this.set__T__sjs_js_Function0__V(name, value)
+});
+$c_Lcom_vinctus_formula_FormulaeJS.prototype.set = (function(arg, arg$2) {
+  var prep0 = $as_T(arg);
+  var prep1 = arg$2;
+  return this.$js$exported$meth$set__T__sjs_js_Function0__O(prep0, prep1)
+});
+var $d_Lcom_vinctus_formula_FormulaeJS = new $TypeData().initClass({
+  Lcom_vinctus_formula_FormulaeJS: 0
+}, false, "com.vinctus.formula.FormulaeJS", {
+  Lcom_vinctus_formula_FormulaeJS: 1,
+  Lcom_vinctus_formula_Formulae: 1,
+  O: 1
+});
+$c_Lcom_vinctus_formula_FormulaeJS.prototype.$classData = $d_Lcom_vinctus_formula_FormulaeJS;
 function $p_jl_Character$__getTypeGE256__I__I($thiz, codePoint) {
   return $p_jl_Character$__charTypes__AI($thiz).get($p_jl_Character$__findIndexOfRange__AI__I__Z__I($thiz, $p_jl_Character$__charTypeIndices__AI($thiz), codePoint, false))
 }
@@ -9181,30 +9190,6 @@ $c_sc_MapFactory$Delegate.prototype.newBuilder__scm_Builder = (function() {
   return this.sc_MapFactory$Delegate__f_delegate.newBuilder__scm_Builder()
 });
 /** @constructor */
-function $c_sc_MapFactory$ToFactory(factory) {
-  this.sc_MapFactory$ToFactory__f_factory = null;
-  this.sc_MapFactory$ToFactory__f_factory = factory
-}
-$c_sc_MapFactory$ToFactory.prototype = new $h_O();
-$c_sc_MapFactory$ToFactory.prototype.constructor = $c_sc_MapFactory$ToFactory;
-/** @constructor */
-function $h_sc_MapFactory$ToFactory() {
-  /*<skip>*/
-}
-$h_sc_MapFactory$ToFactory.prototype = $c_sc_MapFactory$ToFactory.prototype;
-$c_sc_MapFactory$ToFactory.prototype.fromSpecific__sc_IterableOnce__O = (function(it) {
-  return this.sc_MapFactory$ToFactory__f_factory.from__sc_IterableOnce__O(it)
-});
-var $d_sc_MapFactory$ToFactory = new $TypeData().initClass({
-  sc_MapFactory$ToFactory: 0
-}, false, "scala.collection.MapFactory$ToFactory", {
-  sc_MapFactory$ToFactory: 1,
-  O: 1,
-  sc_Factory: 1,
-  Ljava_io_Serializable: 1
-});
-$c_sc_MapFactory$ToFactory.prototype.$classData = $d_sc_MapFactory$ToFactory;
-/** @constructor */
 function $c_sc_View$() {
   /*<skip>*/
 }
@@ -10227,53 +10212,6 @@ function $m_sci_Map$() {
   };
   return $n_sci_Map$
 }
-/** @constructor */
-function $c_sci_VectorMap$() {
-  this.sci_VectorMap$__f_EmptyMap = null;
-  $n_sci_VectorMap$ = this;
-  $m_sci_Vector$();
-  var $$x1 = $m_sci_Vector0$();
-  var this$2 = $m_sci_HashMap$();
-  this.sci_VectorMap$__f_EmptyMap = $ct_sci_VectorMap__sci_Vector__sci_Map__(new $c_sci_VectorMap(), $$x1, this$2.sci_HashMap$__f_EmptyMap)
-}
-$c_sci_VectorMap$.prototype = new $h_O();
-$c_sci_VectorMap$.prototype.constructor = $c_sci_VectorMap$;
-/** @constructor */
-function $h_sci_VectorMap$() {
-  /*<skip>*/
-}
-$h_sci_VectorMap$.prototype = $c_sci_VectorMap$.prototype;
-$c_sci_VectorMap$.prototype.from__sc_IterableOnce__sci_VectorMap = (function(it) {
-  if ((it instanceof $c_sci_VectorMap)) {
-    var x2 = $as_sci_VectorMap(it);
-    return x2
-  } else {
-    var this$1 = new $c_sci_VectorMapBuilder();
-    return $as_sci_VectorMap($as_scm_Builder($f_scm_Growable__addAll__sc_IterableOnce__scm_Growable(this$1, it)).result__O())
-  }
-});
-$c_sci_VectorMap$.prototype.newBuilder__scm_Builder = (function() {
-  return new $c_sci_VectorMapBuilder()
-});
-$c_sci_VectorMap$.prototype.from__sc_IterableOnce__O = (function(it) {
-  return this.from__sc_IterableOnce__sci_VectorMap(it)
-});
-var $d_sci_VectorMap$ = new $TypeData().initClass({
-  sci_VectorMap$: 0
-}, false, "scala.collection.immutable.VectorMap$", {
-  sci_VectorMap$: 1,
-  O: 1,
-  sc_MapFactory: 1,
-  Ljava_io_Serializable: 1
-});
-$c_sci_VectorMap$.prototype.$classData = $d_sci_VectorMap$;
-var $n_sci_VectorMap$;
-function $m_sci_VectorMap$() {
-  if ((!$n_sci_VectorMap$)) {
-    $n_sci_VectorMap$ = new $c_sci_VectorMap$()
-  };
-  return $n_sci_VectorMap$
-}
 function $is_scm_Builder(obj) {
   return (!(!((obj && obj.$classData) && obj.$classData.ancestors.scm_Builder)))
 }
@@ -10397,6 +10335,36 @@ var $d_sr_Nothing$ = new $TypeData().initClass({
   O: 1,
   Ljava_io_Serializable: 1
 });
+/** @constructor */
+function $c_sjs_js_Any$() {
+  /*<skip>*/
+}
+$c_sjs_js_Any$.prototype = new $h_O();
+$c_sjs_js_Any$.prototype.constructor = $c_sjs_js_Any$;
+/** @constructor */
+function $h_sjs_js_Any$() {
+  /*<skip>*/
+}
+$h_sjs_js_Any$.prototype = $c_sjs_js_Any$.prototype;
+$c_sjs_js_Any$.prototype.toFunction0__sjs_js_Function0__F0 = (function(f) {
+  return new $c_sjsr_AnonFunction0((() => f()))
+});
+var $d_sjs_js_Any$ = new $TypeData().initClass({
+  sjs_js_Any$: 0
+}, false, "scala.scalajs.js.Any$", {
+  sjs_js_Any$: 1,
+  O: 1,
+  sjs_js_LowPrioAnyImplicits: 1,
+  sjs_js_LowestPrioAnyImplicits: 1
+});
+$c_sjs_js_Any$.prototype.$classData = $d_sjs_js_Any$;
+var $n_sjs_js_Any$;
+function $m_sjs_js_Any$() {
+  if ((!$n_sjs_js_Any$)) {
+    $n_sjs_js_Any$ = new $c_sjs_js_Any$()
+  };
+  return $n_sjs_js_Any$
+}
 /** @constructor */
 function $c_sjsr_AnonFunction0(f) {
   this.sjsr_AnonFunction0__f_f = null;
@@ -11382,6 +11350,9 @@ $c_sc_AbstractIterator.prototype.copyToArray__O__I__I__I = (function(xs, start, 
 $c_sc_AbstractIterator.prototype.addString__scm_StringBuilder__T__T__T__scm_StringBuilder = (function(b, start, sep, end) {
   return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end)
 });
+$c_sc_AbstractIterator.prototype.toMap__s_$less$colon$less__sci_Map = (function(ev) {
+  return $m_sci_Map$().from__sc_IterableOnce__sci_Map(this)
+});
 $c_sc_AbstractIterator.prototype.reversed__sc_Iterable = (function() {
   return $f_sc_IterableOnceOps__reversed__sc_Iterable(this)
 });
@@ -11711,75 +11682,6 @@ function $m_sci_LazyList$() {
   };
   return $n_sci_LazyList$
 }
-function $as_sci_VectorMap$Tombstone(obj) {
-  return ((false || (obj === null)) ? obj : $throwClassCastException(obj, "scala.collection.immutable.VectorMap$Tombstone"))
-}
-function $isArrayOf_sci_VectorMap$Tombstone(obj, depth) {
-  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.sci_VectorMap$Tombstone)))
-}
-function $asArrayOf_sci_VectorMap$Tombstone(obj, depth) {
-  return (($isArrayOf_sci_VectorMap$Tombstone(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.collection.immutable.VectorMap$Tombstone;", depth))
-}
-/** @constructor */
-function $c_sci_VectorMapBuilder() {
-  this.sci_VectorMapBuilder__f_vectorBuilder = null;
-  this.sci_VectorMapBuilder__f_mapBuilder = null;
-  this.sci_VectorMapBuilder__f_aliased = null;
-  this.sci_VectorMapBuilder__f_vectorBuilder = new $c_sci_VectorBuilder();
-  this.sci_VectorMapBuilder__f_mapBuilder = new $c_sci_MapBuilderImpl()
-}
-$c_sci_VectorMapBuilder.prototype = new $h_O();
-$c_sci_VectorMapBuilder.prototype.constructor = $c_sci_VectorMapBuilder;
-/** @constructor */
-function $h_sci_VectorMapBuilder() {
-  /*<skip>*/
-}
-$h_sci_VectorMapBuilder.prototype = $c_sci_VectorMapBuilder.prototype;
-$c_sci_VectorMapBuilder.prototype.addAll__sc_IterableOnce__scm_Growable = (function(xs) {
-  return $f_scm_Growable__addAll__sc_IterableOnce__scm_Growable(this, xs)
-});
-$c_sci_VectorMapBuilder.prototype.result__sci_VectorMap = (function() {
-  if ((this.sci_VectorMapBuilder__f_aliased === null)) {
-    this.sci_VectorMapBuilder__f_aliased = $ct_sci_VectorMap__sci_Vector__sci_Map__(new $c_sci_VectorMap(), this.sci_VectorMapBuilder__f_vectorBuilder.result__sci_Vector(), this.sci_VectorMapBuilder__f_mapBuilder.result__sci_Map())
-  };
-  return this.sci_VectorMapBuilder__f_aliased
-});
-$c_sci_VectorMapBuilder.prototype.addOne__O__O__sci_VectorMapBuilder = (function(key, value) {
-  if ((this.sci_VectorMapBuilder__f_aliased !== null)) {
-    this.sci_VectorMapBuilder__f_aliased = this.sci_VectorMapBuilder__f_aliased.updated__O__O__sci_VectorMap(key, value)
-  } else {
-    var x1 = $as_T2(this.sci_VectorMapBuilder__f_mapBuilder.getOrElse__O__O__O(key, null));
-    if ((x1 !== null)) {
-      var slot = $uI(x1.T2__f__1);
-      this.sci_VectorMapBuilder__f_mapBuilder.addOne__O__O__sci_MapBuilderImpl(key, new $c_T2(slot, value))
-    } else if ((x1 === null)) {
-      var this$1 = this.sci_VectorMapBuilder__f_vectorBuilder;
-      var vectorSize = this$1.knownSize__I();
-      this.sci_VectorMapBuilder__f_vectorBuilder.addOne__O__sci_VectorBuilder(key);
-      this.sci_VectorMapBuilder__f_mapBuilder.addOne__O__O__sci_MapBuilderImpl(key, new $c_T2(vectorSize, value))
-    } else {
-      throw new $c_s_MatchError(x1)
-    }
-  };
-  return this
-});
-$c_sci_VectorMapBuilder.prototype.addOne__O__scm_Growable = (function(elem) {
-  var elem$1 = $as_T2(elem);
-  return this.addOne__O__O__sci_VectorMapBuilder(elem$1.T2__f__1, elem$1.T2__f__2)
-});
-$c_sci_VectorMapBuilder.prototype.result__O = (function() {
-  return this.result__sci_VectorMap()
-});
-var $d_sci_VectorMapBuilder = new $TypeData().initClass({
-  sci_VectorMapBuilder: 0
-}, false, "scala.collection.immutable.VectorMapBuilder", {
-  sci_VectorMapBuilder: 1,
-  O: 1,
-  scm_Builder: 1,
-  scm_Growable: 1,
-  scm_Clearable: 1
-});
-$c_sci_VectorMapBuilder.prototype.$classData = $d_sci_VectorMapBuilder;
 /** @constructor */
 function $c_scm_Builder$$anon$1(outer, f$1) {
   this.scm_Builder$$anon$1__f_$outer = null;
@@ -14855,14 +14757,6 @@ function $h_sci_HashMapBuilder() {
   /*<skip>*/
 }
 $h_sci_HashMapBuilder.prototype = $c_sci_HashMapBuilder.prototype;
-$c_sci_HashMapBuilder.prototype.getOrElse__O__O__O = (function(key, value) {
-  if ((this.sci_HashMapBuilder__f_scala$collection$immutable$HashMapBuilder$$rootNode.sci_BitmapIndexedMapNode__f_size === 0)) {
-    return value
-  } else {
-    var originalHash = $m_sr_Statics$().anyHash__O__I(key);
-    return this.sci_HashMapBuilder__f_scala$collection$immutable$HashMapBuilder$$rootNode.getOrElse__O__I__I__I__F0__O(key, originalHash, $m_sc_Hashing$().improve__I__I(originalHash), 0, new $c_sjsr_AnonFunction0((() => value)))
-  }
-});
 $c_sci_HashMapBuilder.prototype.update__sci_MapNode__O__O__I__I__I__V = (function(mapNode, key, value, originalHash, keyHash, shift) {
   if ((mapNode instanceof $c_sci_BitmapIndexedMapNode)) {
     var x2 = $as_sci_BitmapIndexedMapNode(mapNode);
@@ -15339,9 +15233,6 @@ function $h_sci_MapBuilderImpl() {
   /*<skip>*/
 }
 $h_sci_MapBuilderImpl.prototype = $c_sci_MapBuilderImpl.prototype;
-$c_sci_MapBuilderImpl.prototype.getOrElse__O__O__O = (function(key, value) {
-  return ((this.sci_MapBuilderImpl__f_hashMapBuilder !== null) ? this.sci_MapBuilderImpl__f_hashMapBuilder.getOrElse__O__O__O(key, value) : this.sci_MapBuilderImpl__f_elems.getOrElse__O__F0__O(key, new $c_sjsr_AnonFunction0((() => value))))
-});
 $c_sci_MapBuilderImpl.prototype.result__sci_Map = (function() {
   return (this.sci_MapBuilderImpl__f_switchedToHashMapBuilder ? this.sci_MapBuilderImpl__f_hashMapBuilder.result__sci_HashMap() : this.sci_MapBuilderImpl__f_elems)
 });
@@ -15438,6 +15329,9 @@ $c_sci_MapKeyValueTupleHashIterator.prototype.copyToArray__O__I__I__I = (functio
 $c_sci_MapKeyValueTupleHashIterator.prototype.addString__scm_StringBuilder__T__T__T__scm_StringBuilder = (function(b, start, sep, end) {
   return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end)
 });
+$c_sci_MapKeyValueTupleHashIterator.prototype.toMap__s_$less$colon$less__sci_Map = (function(ev) {
+  return $m_sci_Map$().from__sc_IterableOnce__sci_Map(this)
+});
 $c_sci_MapKeyValueTupleHashIterator.prototype.reversed__sc_Iterable = (function() {
   return $f_sc_IterableOnceOps__reversed__sc_Iterable(this)
 });
@@ -15513,6 +15407,9 @@ $c_sci_MapKeyValueTupleIterator.prototype.copyToArray__O__I__I__I = (function(xs
 });
 $c_sci_MapKeyValueTupleIterator.prototype.addString__scm_StringBuilder__T__T__T__scm_StringBuilder = (function(b, start, sep, end) {
   return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end)
+});
+$c_sci_MapKeyValueTupleIterator.prototype.toMap__s_$less$colon$less__sci_Map = (function(ev) {
+  return $m_sci_Map$().from__sc_IterableOnce__sci_Map(this)
 });
 $c_sci_MapKeyValueTupleIterator.prototype.reversed__sc_Iterable = (function() {
   return $f_sc_IterableOnceOps__reversed__sc_Iterable(this)
@@ -15715,6 +15612,9 @@ $c_sci_NewVectorIterator.prototype.foldRight__O__F2__O = (function(z, op) {
 });
 $c_sci_NewVectorIterator.prototype.addString__scm_StringBuilder__T__T__T__scm_StringBuilder = (function(b, start, sep, end) {
   return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end)
+});
+$c_sci_NewVectorIterator.prototype.toMap__s_$less$colon$less__sci_Map = (function(ev) {
+  return $m_sci_Map$().from__sc_IterableOnce__sci_Map(this)
 });
 $c_sci_NewVectorIterator.prototype.reversed__sc_Iterable = (function() {
   return $f_sc_IterableOnceOps__reversed__sc_Iterable(this)
@@ -16077,9 +15977,6 @@ function $h_sci_VectorBuilder() {
   /*<skip>*/
 }
 $h_sci_VectorBuilder.prototype = $c_sci_VectorBuilder.prototype;
-$c_sci_VectorBuilder.prototype.knownSize__I = (function() {
-  return ((((this.sci_VectorBuilder__f_scala$collection$immutable$VectorBuilder$$len1 + this.sci_VectorBuilder__f_scala$collection$immutable$VectorBuilder$$lenRest) | 0) - this.sci_VectorBuilder__f_offset) | 0)
-});
 $c_sci_VectorBuilder.prototype.initFrom__sci_Vector__sci_VectorBuilder = (function(v) {
   var x1 = v.vectorSliceCount__I();
   switch (x1) {
@@ -16413,81 +16310,6 @@ var $d_sci_VectorBuilder = new $TypeData().initClass({
   scm_Clearable: 1
 });
 $c_sci_VectorBuilder.prototype.$classData = $d_sci_VectorBuilder;
-function $p_sci_VectorMap$$anon$1__advance__V($thiz) {
-  var nextSlot = ((1 + $thiz.sci_VectorMap$$anon$1__f_slot) | 0);
-  if ((nextSlot >= $thiz.sci_VectorMap$$anon$1__f_fieldsLength)) {
-    $thiz.sci_VectorMap$$anon$1__f_slot = $thiz.sci_VectorMap$$anon$1__f_fieldsLength;
-    $thiz.sci_VectorMap$$anon$1__f_key = null
-  } else {
-    var x1 = $thiz.sci_VectorMap$$anon$1__f_$outer.scala$collection$immutable$VectorMap$$nextValidField__I__T2(nextSlot);
-    matchEnd6: {
-      if ((x1 !== null)) {
-        var p2 = $uI(x1.T2__f__1);
-        if ((p2 === (-1))) {
-          $thiz.sci_VectorMap$$anon$1__f_slot = $thiz.sci_VectorMap$$anon$1__f_fieldsLength;
-          $thiz.sci_VectorMap$$anon$1__f_key = null;
-          break matchEnd6
-        }
-      };
-      if ((x1 !== null)) {
-        var s = $uI(x1.T2__f__1);
-        var k = x1.T2__f__2;
-        $thiz.sci_VectorMap$$anon$1__f_slot = s;
-        $thiz.sci_VectorMap$$anon$1__f_key = k;
-        break matchEnd6
-      };
-      throw new $c_s_MatchError(x1)
-    }
-  }
-}
-/** @constructor */
-function $c_sci_VectorMap$$anon$1(outer) {
-  this.sci_VectorMap$$anon$1__f_fieldsLength = 0;
-  this.sci_VectorMap$$anon$1__f_slot = 0;
-  this.sci_VectorMap$$anon$1__f_key = null;
-  this.sci_VectorMap$$anon$1__f_$outer = null;
-  if ((outer === null)) {
-    throw null
-  } else {
-    this.sci_VectorMap$$anon$1__f_$outer = outer
-  };
-  this.sci_VectorMap$$anon$1__f_fieldsLength = outer.sci_VectorMap__f_fields.length__I();
-  this.sci_VectorMap$$anon$1__f_slot = (-1);
-  this.sci_VectorMap$$anon$1__f_key = null;
-  $p_sci_VectorMap$$anon$1__advance__V(this)
-}
-$c_sci_VectorMap$$anon$1.prototype = new $h_sc_AbstractIterator();
-$c_sci_VectorMap$$anon$1.prototype.constructor = $c_sci_VectorMap$$anon$1;
-/** @constructor */
-function $h_sci_VectorMap$$anon$1() {
-  /*<skip>*/
-}
-$h_sci_VectorMap$$anon$1.prototype = $c_sci_VectorMap$$anon$1.prototype;
-$c_sci_VectorMap$$anon$1.prototype.hasNext__Z = (function() {
-  return (this.sci_VectorMap$$anon$1__f_slot < this.sci_VectorMap$$anon$1__f_fieldsLength)
-});
-$c_sci_VectorMap$$anon$1.prototype.next__T2 = (function() {
-  if ((!this.hasNext__Z())) {
-    throw $ct_ju_NoSuchElementException__T__(new $c_ju_NoSuchElementException(), "next called on depleted iterator")
-  };
-  var result = new $c_T2(this.sci_VectorMap$$anon$1__f_key, $as_T2(this.sci_VectorMap$$anon$1__f_$outer.sci_VectorMap__f_underlying.apply__O__O(this.sci_VectorMap$$anon$1__f_key)).T2__f__2);
-  $p_sci_VectorMap$$anon$1__advance__V(this);
-  return result
-});
-$c_sci_VectorMap$$anon$1.prototype.next__O = (function() {
-  return this.next__T2()
-});
-var $d_sci_VectorMap$$anon$1 = new $TypeData().initClass({
-  sci_VectorMap$$anon$1: 0
-}, false, "scala.collection.immutable.VectorMap$$anon$1", {
-  sci_VectorMap$$anon$1: 1,
-  sc_AbstractIterator: 1,
-  O: 1,
-  sc_Iterator: 1,
-  sc_IterableOnce: 1,
-  sc_IterableOnceOps: 1
-});
-$c_sci_VectorMap$$anon$1.prototype.$classData = $d_sci_VectorMap$$anon$1;
 function $p_scm_ArrayBuffer$__resizeEnsuring$1__I__I__I__I($thiz, length, end, n) {
   var hi = (length >> 31);
   var newSize__lo = length;
@@ -18946,6 +18768,9 @@ $c_sc_AbstractIterable.prototype.copyToArray__O__I__I__I = (function(xs, start, 
 $c_sc_AbstractIterable.prototype.addString__scm_StringBuilder__T__T__T__scm_StringBuilder = (function(b, start, sep, end) {
   return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end)
 });
+$c_sc_AbstractIterable.prototype.toMap__s_$less$colon$less__sci_Map = (function(ev) {
+  return $m_sci_Map$().from__sc_IterableOnce__sci_Map(this)
+});
 $c_sc_AbstractIterable.prototype.reversed__sc_Iterable = (function() {
   return $f_sc_IterableOnceOps__reversed__sc_Iterable(this)
 });
@@ -19199,19 +19024,6 @@ function $f_sc_MapOps__getOrElse__O__F0__O($thiz, key, default$1) {
     }
   }
 }
-function $f_sc_MapOps__apply__O__O($thiz, key) {
-  var x1 = $thiz.get__O__s_Option(key);
-  var x = $m_s_None$();
-  if ((x === x1)) {
-    return $f_sc_MapOps__default__O__O($thiz, key)
-  } else if ((x1 instanceof $c_s_Some)) {
-    var x3 = $as_s_Some(x1);
-    var value = x3.s_Some__f_value;
-    return value
-  } else {
-    throw new $c_s_MatchError(x1)
-  }
-}
 function $f_sc_MapOps__foreachEntry__F2__V($thiz, f) {
   var it = $thiz.iterator__sc_Iterator();
   while (it.hasNext__Z()) {
@@ -19246,18 +19058,6 @@ function $f_sc_MapOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(
   }));
   var this$3 = new $c_sc_Iterator$$anon$9(this$2, f);
   return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this$3, sb, start, sep, end)
-}
-function $is_sc_MapOps(obj) {
-  return (!(!((obj && obj.$classData) && obj.$classData.ancestors.sc_MapOps)))
-}
-function $as_sc_MapOps(obj) {
-  return (($is_sc_MapOps(obj) || (obj === null)) ? obj : $throwClassCastException(obj, "scala.collection.MapOps"))
-}
-function $isArrayOf_sc_MapOps(obj, depth) {
-  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.sc_MapOps)))
-}
-function $asArrayOf_sc_MapOps(obj, depth) {
-  return (($isArrayOf_sc_MapOps(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.collection.MapOps;", depth))
 }
 function $p_sci_ArraySeq$__emptyImpl$lzycompute__sci_ArraySeq$ofRef($thiz) {
   if ((!$thiz.sci_ArraySeq$__f_bitmap$0)) {
@@ -23254,16 +23054,6 @@ var $d_sc_View$Zip = new $TypeData().initClass({
   Ljava_io_Serializable: 1
 });
 $c_sc_View$Zip.prototype.$classData = $d_sc_View$Zip;
-function $f_sci_StrictOptimizedMapOps__concat__sc_IterableOnce__sci_MapOps($thiz, that) {
-  var result = $thiz;
-  var it = that.iterator__sc_Iterator();
-  while (it.hasNext__Z()) {
-    var this$1 = result;
-    var kv = $as_T2(it.next__O());
-    result = this$1.updated__O__O__sci_MapOps(kv.T2__f__1, kv.T2__f__2)
-  };
-  return result
-}
 /** @constructor */
 function $c_sc_AbstractSet() {
   /*<skip>*/
@@ -23440,12 +23230,6 @@ $c_sc_AbstractMap.prototype.stringPrefix__T = (function() {
 });
 $c_sc_AbstractMap.prototype.toString__T = (function() {
   return $f_sc_Iterable__toString__T(this)
-});
-$c_sc_AbstractMap.prototype.getOrElse__O__F0__O = (function(key, default$1) {
-  return $f_sc_MapOps__getOrElse__O__F0__O(this, key, default$1)
-});
-$c_sc_AbstractMap.prototype.apply__O__O = (function(key) {
-  return $f_sc_MapOps__apply__O__O(this, key)
 });
 $c_sc_AbstractMap.prototype.foreachEntry__F2__V = (function(f) {
   $f_sc_MapOps__foreachEntry__F2__V(this, f)
@@ -23939,6 +23723,9 @@ function $h_sci_AbstractMap() {
 $h_sci_AbstractMap.prototype = $c_sci_AbstractMap.prototype;
 $c_sci_AbstractMap.prototype.mapFactory__sc_MapFactory = (function() {
   return $m_sci_Map$()
+});
+$c_sci_AbstractMap.prototype.toMap__s_$less$colon$less__sci_Map = (function(ev) {
+  return this
 });
 $c_sci_AbstractMap.prototype.iterableFactory__sc_IterableFactory = (function() {
   return $m_sci_Iterable$()
@@ -25279,6 +25066,9 @@ $c_sjsr_WrappedVarArgs.prototype.copyToArray__O__I__I__I = (function(xs, start, 
 $c_sjsr_WrappedVarArgs.prototype.addString__scm_StringBuilder__T__T__T__scm_StringBuilder = (function(b, start, sep, end) {
   return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end)
 });
+$c_sjsr_WrappedVarArgs.prototype.toMap__s_$less$colon$less__sci_Map = (function(ev) {
+  return $m_sci_Map$().from__sc_IterableOnce__sci_Map(this)
+});
 $c_sjsr_WrappedVarArgs.prototype.length__I = (function() {
   return $uI(this.sjsr_WrappedVarArgs__f_scala$scalajs$runtime$WrappedVarArgs$$array.length)
 });
@@ -25521,152 +25311,6 @@ var $d_sci_HashMap = new $TypeData().initClass({
   Ljava_io_Serializable: 1
 });
 $c_sci_HashMap.prototype.$classData = $d_sci_HashMap;
-function $ct_sci_VectorMap__sci_Vector__sci_Map__I__($thiz, fields, underlying, dropped) {
-  $thiz.sci_VectorMap__f_fields = fields;
-  $thiz.sci_VectorMap__f_underlying = underlying;
-  $thiz.sci_VectorMap__f_dropped = dropped;
-  $thiz.sci_VectorMap__f_size = underlying.size__I();
-  return $thiz
-}
-function $ct_sci_VectorMap__sci_Vector__sci_Map__($thiz, fields, underlying) {
-  $ct_sci_VectorMap__sci_Vector__sci_Map__I__($thiz, fields, underlying, 0);
-  return $thiz
-}
-/** @constructor */
-function $c_sci_VectorMap() {
-  this.sci_VectorMap__f_fields = null;
-  this.sci_VectorMap__f_underlying = null;
-  this.sci_VectorMap__f_dropped = 0;
-  this.sci_VectorMap__f_size = 0
-}
-$c_sci_VectorMap.prototype = new $h_sci_AbstractMap();
-$c_sci_VectorMap.prototype.constructor = $c_sci_VectorMap;
-/** @constructor */
-function $h_sci_VectorMap() {
-  /*<skip>*/
-}
-$h_sci_VectorMap.prototype = $c_sci_VectorMap.prototype;
-$c_sci_VectorMap.prototype.map__F1__O = (function(f) {
-  return $f_sc_StrictOptimizedIterableOps__map__F1__O(this, f)
-});
-$c_sci_VectorMap.prototype.stringPrefix__T = (function() {
-  return "SeqMap"
-});
-$c_sci_VectorMap.prototype.className__T = (function() {
-  return "VectorMap"
-});
-$c_sci_VectorMap.prototype.size__I = (function() {
-  return this.sci_VectorMap__f_size
-});
-$c_sci_VectorMap.prototype.knownSize__I = (function() {
-  return this.sci_VectorMap__f_size
-});
-$c_sci_VectorMap.prototype.isEmpty__Z = (function() {
-  return (this.sci_VectorMap__f_size === 0)
-});
-$c_sci_VectorMap.prototype.updated__O__O__sci_VectorMap = (function(key, value) {
-  var x1 = this.sci_VectorMap__f_underlying.get__O__s_Option(key);
-  if ((x1 instanceof $c_s_Some)) {
-    var x2 = $as_s_Some(x1);
-    var p3 = $as_T2(x2.s_Some__f_value);
-    if ((p3 !== null)) {
-      var slot = $uI(p3.T2__f__1);
-      return $ct_sci_VectorMap__sci_Vector__sci_Map__I__(new $c_sci_VectorMap(), this.sci_VectorMap__f_fields, $as_sci_Map(this.sci_VectorMap__f_underlying.updated__O__O__sci_MapOps(key, new $c_T2(slot, value))), this.sci_VectorMap__f_dropped)
-    }
-  };
-  var x = $m_s_None$();
-  if ((x === x1)) {
-    var this$1 = this.sci_VectorMap__f_fields;
-    return $ct_sci_VectorMap__sci_Vector__sci_Map__I__(new $c_sci_VectorMap(), $as_sci_Vector(this$1.appended__O__O(key)), $as_sci_Map(this.sci_VectorMap__f_underlying.updated__O__O__sci_MapOps(key, new $c_T2(((this.sci_VectorMap__f_fields.length__I() + this.sci_VectorMap__f_dropped) | 0), value))), this.sci_VectorMap__f_dropped)
-  };
-  throw new $c_s_MatchError(x1)
-});
-$c_sci_VectorMap.prototype.get__O__s_Option = (function(key) {
-  var x1 = this.sci_VectorMap__f_underlying.get__O__s_Option(key);
-  if ((x1 instanceof $c_s_Some)) {
-    var x2 = $as_s_Some(x1);
-    var v = $as_T2(x2.s_Some__f_value);
-    return new $c_s_Some(v.T2__f__2)
-  } else {
-    var x = $m_s_None$();
-    if ((x === x1)) {
-      return $m_s_None$()
-    } else {
-      throw new $c_s_MatchError(x1)
-    }
-  }
-});
-$c_sci_VectorMap.prototype.scala$collection$immutable$VectorMap$$nextValidField__I__T2 = (function(slot) {
-  while (true) {
-    var $$x1 = slot;
-    var this$1 = this.sci_VectorMap__f_fields;
-    if (($$x1 >= this$1.length__I())) {
-      return new $c_T2((-1), null)
-    } else {
-      var x1 = this.sci_VectorMap__f_fields.apply__I__O(slot);
-      if (false) {
-        var x2 = $as_sci_VectorMap$Tombstone(x1);
-        var distance = x2.sci_VectorMap$Tombstone__f_distance;
-        slot = ((slot + distance) | 0)
-      } else {
-        return new $c_T2(slot, x1)
-      }
-    }
-  }
-});
-$c_sci_VectorMap.prototype.iterator__sc_Iterator = (function() {
-  return new $c_sci_VectorMap$$anon$1(this)
-});
-$c_sci_VectorMap.prototype.mapFactory__sc_MapFactory = (function() {
-  return $m_sci_VectorMap$()
-});
-$c_sci_VectorMap.prototype.contains__O__Z = (function(key) {
-  return this.sci_VectorMap__f_underlying.contains__O__Z(key)
-});
-$c_sci_VectorMap.prototype.concat__sc_IterableOnce__sc_IterableOps = (function(suffix) {
-  return $f_sci_StrictOptimizedMapOps__concat__sc_IterableOnce__sci_MapOps(this, suffix)
-});
-$c_sci_VectorMap.prototype.updated__O__O__sci_MapOps = (function(key, value) {
-  return this.updated__O__O__sci_VectorMap(key, value)
-});
-function $as_sci_VectorMap(obj) {
-  return (((obj instanceof $c_sci_VectorMap) || (obj === null)) ? obj : $throwClassCastException(obj, "scala.collection.immutable.VectorMap"))
-}
-function $isArrayOf_sci_VectorMap(obj, depth) {
-  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.sci_VectorMap)))
-}
-function $asArrayOf_sci_VectorMap(obj, depth) {
-  return (($isArrayOf_sci_VectorMap(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.collection.immutable.VectorMap;", depth))
-}
-var $d_sci_VectorMap = new $TypeData().initClass({
-  sci_VectorMap: 0
-}, false, "scala.collection.immutable.VectorMap", {
-  sci_VectorMap: 1,
-  sci_AbstractMap: 1,
-  sc_AbstractMap: 1,
-  sc_AbstractIterable: 1,
-  O: 1,
-  sc_Iterable: 1,
-  sc_IterableOnce: 1,
-  sc_IterableOps: 1,
-  sc_IterableOnceOps: 1,
-  sc_IterableFactoryDefaults: 1,
-  sc_Map: 1,
-  sc_MapOps: 1,
-  s_PartialFunction: 1,
-  F1: 1,
-  sc_MapFactoryDefaults: 1,
-  s_Equals: 1,
-  sci_Map: 1,
-  sci_Iterable: 1,
-  sci_MapOps: 1,
-  sci_SeqMap: 1,
-  sc_SeqMap: 1,
-  sci_StrictOptimizedMapOps: 1,
-  sc_StrictOptimizedMapOps: 1,
-  sc_StrictOptimizedIterableOps: 1
-});
-$c_sci_VectorMap.prototype.$classData = $d_sci_VectorMap;
 /** @constructor */
 function $c_scm_AbstractBuffer() {
   /*<skip>*/
@@ -28618,9 +28262,6 @@ $c_sci_Vector1.prototype.vectorSlice__I__AO = (function(idx) {
 $c_sci_Vector1.prototype.map__F1__O = (function(f) {
   return this.map__F1__sci_Vector(f)
 });
-$c_sci_Vector1.prototype.appended__O__O = (function(elem) {
-  return this.appended__O__sci_Vector(elem)
-});
 $c_sci_Vector1.prototype.apply__O__O = (function(v1) {
   var index = $uI(v1);
   if (((index >= 0) && (index < this.sci_Vector__f_prefix1.u.length))) {
@@ -28875,9 +28516,6 @@ $c_sci_Vector0$.prototype.ioob__I__jl_IndexOutOfBoundsException = (function(inde
 $c_sci_Vector0$.prototype.map__F1__O = (function(f) {
   return this
 });
-$c_sci_Vector0$.prototype.appended__O__O = (function(elem) {
-  return this.appended__O__sci_Vector(elem)
-});
 $c_sci_Vector0$.prototype.apply__O__O = (function(v1) {
   this.apply__I__E($uI(v1))
 });
@@ -29062,9 +28700,6 @@ $c_sci_Vector2.prototype.vectorSlice__I__AO = (function(idx) {
 });
 $c_sci_Vector2.prototype.map__F1__O = (function(f) {
   return this.map__F1__sci_Vector(f)
-});
-$c_sci_Vector2.prototype.appended__O__O = (function(elem) {
-  return this.appended__O__sci_Vector(elem)
 });
 $c_sci_Vector2.prototype.apply__O__O = (function(v1) {
   var index = $uI(v1);
@@ -29348,9 +28983,6 @@ $c_sci_Vector3.prototype.vectorSlice__I__AO = (function(idx) {
 });
 $c_sci_Vector3.prototype.map__F1__O = (function(f) {
   return this.map__F1__sci_Vector(f)
-});
-$c_sci_Vector3.prototype.appended__O__O = (function(elem) {
-  return this.appended__O__sci_Vector(elem)
 });
 $c_sci_Vector3.prototype.apply__O__O = (function(v1) {
   var index = $uI(v1);
@@ -29750,9 +29382,6 @@ $c_sci_Vector4.prototype.vectorSlice__I__AO = (function(idx) {
 });
 $c_sci_Vector4.prototype.map__F1__O = (function(f) {
   return this.map__F1__sci_Vector(f)
-});
-$c_sci_Vector4.prototype.appended__O__O = (function(elem) {
-  return this.appended__O__sci_Vector(elem)
 });
 $c_sci_Vector4.prototype.apply__O__O = (function(v1) {
   var index = $uI(v1);
@@ -30293,9 +29922,6 @@ $c_sci_Vector5.prototype.vectorSlice__I__AO = (function(idx) {
 });
 $c_sci_Vector5.prototype.map__F1__O = (function(f) {
   return this.map__F1__sci_Vector(f)
-});
-$c_sci_Vector5.prototype.appended__O__O = (function(elem) {
-  return this.appended__O__sci_Vector(elem)
 });
 $c_sci_Vector5.prototype.apply__O__O = (function(v1) {
   var index = $uI(v1);
@@ -30981,9 +30607,6 @@ $c_sci_Vector6.prototype.vectorSlice__I__AO = (function(idx) {
 $c_sci_Vector6.prototype.map__F1__O = (function(f) {
   return this.map__F1__sci_Vector(f)
 });
-$c_sci_Vector6.prototype.appended__O__O = (function(elem) {
-  return this.appended__O__sci_Vector(elem)
-});
 $c_sci_Vector6.prototype.apply__O__O = (function(v1) {
   var index = $uI(v1);
   if (((index >= 0) && (index < this.sci_BigVector__f_length0))) {
@@ -31638,6 +31261,6 @@ $L0 = new $c_RTLong(0, 0);
 $d_J.zero = $L0;
 exports.Formulae = (function(arg) {
   var prep0 = $as_T(arg);
-  return new $c_Lcom_vinctus_formula_Formulae(prep0)
+  return new $c_Lcom_vinctus_formula_FormulaeJS(prep0)
 });
 //# sourceMappingURL=main.js.map

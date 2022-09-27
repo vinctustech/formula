@@ -1,12 +1,10 @@
 package com.vinctus.formula
 
-import scala.collection.immutable.VectorMap
 import scala.collection.mutable
 import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
 
-@JSExportTopLevel("Formulae")
 class Formulae(decls: String):
-  val env: Map[String, Decl] =
+  private val env: Map[String, Decl] =
     val ds: Seq[Decl] = FormulaParser.parseFormulae(decls)
     val s = new mutable.HashSet[String]
 
@@ -14,7 +12,7 @@ class Formulae(decls: String):
       if s contains d.name then problem(d.pos, s"duplicate name '${d.name}'")
       s += d.name
 
-    (ds map (d => (d.name, d)) to VectorMap) ++ Builtin
+    (ds map (d => (d.name, d)) toMap) ++ Builtin
 
   @JSExport
   def formula(name: String): Any =
@@ -34,7 +32,6 @@ class Formulae(decls: String):
         eval(expr, env ++ locals, env, false)
       case _ => sys.error(s"function '$name' not found")
 
-  @JSExport
   def set(name: String, value: () => Any): Unit =
     require(value != null, "can't assign null to a variable")
 
