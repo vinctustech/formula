@@ -77,21 +77,21 @@ class ParsingTests extends AnyFreeSpec with Matchers:
         |""".stripMargin.trim
   }
 
-  "func" in {
+  "def" in {
     parseExpr("f()") shouldBe
       """
         |Apply(name = "f", args = List())
         """.trim.stripMargin
   }
 
-  "func arg" in {
+  "def arg" in {
     parseExpr("f(3)") shouldBe
       """
         |Apply(name = "f", args = List(NumericLit(n = "3")))
         """.trim.stripMargin
   }
 
-  "func args" in {
+  "def args" in {
     parseExpr("f(3, a)") shouldBe
       """
         |Apply(name = "f", args = List(NumericLit(n = "3"), Name(name = "a")))

@@ -43,4 +43,4 @@ class Formulae(decls: String):
   def get(name: String): Any = lookup(name, null, env, env, false)
 
   @JSExport
-  def expression(expr: String): Any = eval(FormulaParser.parseExpr(expr), env, env, false)
+  def evaluate(expr: String): Any = eval(FormulaParser.parseExpr(expr), env, env, false)

@@ -13,15 +13,19 @@ class FormulaeTests extends AnyFreeSpec with Matchers:
         |
         |def f(a) = a + 4.2
         |
-        |formula u = x + f(5.3)
+        |def u = x + f(5.3)
         |""".stripMargin,
     )
 
   "formula" in {
-    render(f.formula("u")) shouldBe "12"
+    f.formula("u") shouldBe 12.6
   }
 
   "set" in {
     f.set("x", () => 3.5)
-    f.formula("u") shouldBe 12.5
+    f.formula("u") shouldBe 13.0
+  }
+
+  "evaluate" in {
+    f.evaluate("cos(f(3))") shouldBe 0.6083513145322546
   }

@@ -10,8 +10,8 @@
 //        |
 //        |def f(a) = a + 4
 //        |
-//        |formula u = x + f(5) < 10 ? 'yes' : 'no'
+//        |def u = x + f(5) < 10 ? 'yes' : 'no'
 //        |""".stripMargin,
 //    )
 //
-//  println(f.expression("pi + x"))
+//  println(f.evaluate("pi + x"))

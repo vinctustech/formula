@@ -13,7 +13,7 @@ val stringRegex = "'([^']*)'|\"([^\"]*)\"".r
     import builder._
     OParser.sequence(
       programName("formula"),
-      head("formula", "0.0.32"),
+      head("formula", "0.0.33"),
       arg[File]("<file>")
         .action((x, c) => c.copy(input = x))
         .text("file containing formulae"),
@@ -45,7 +45,7 @@ val stringRegex = "'([^']*)'|\"([^\"]*)\"".r
         case (name, n)                      => f.set(name, () => n.toDouble)
       }
 
-      actions foreach (name => println(s"formula $name = ${f.formula(name)}"))
-      expr foreach (e => println(s"expression = ${f.expression(e)}"))
+      actions foreach (name => println(s"$name = ${f.formula(name)}"))
+      expr foreach (e => println(s"$e = ${f.evaluate(e)}"))
     case _ =>
   }
