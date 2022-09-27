@@ -53,17 +53,17 @@ object FormulaParser extends StandardTokenParsers with PackratParsers with Impli
   lazy val expression: P[Expr] = ternary
 
   lazy val ternary: P[Expr] = positioned(
-    disjunctive ~ ("?" ~> disjunctive) ~ (":" ~> disjunctive) ^^ Ternary.apply
+    disjunctive ~ ("?" ~> disjunctive) ~ (":" ~> ternary) ^^ Ternary.apply
       | disjunctive,
   )
 
   lazy val disjunctive: P[Expr] = positioned(
-    conjunctive ~ "or" ~ conjunctive ^^ Binary.apply
+    disjunctive ~ "or" ~ conjunctive ^^ Binary.apply
       | conjunctive,
   )
 
   lazy val conjunctive: P[Expr] = positioned(
-    relational ~ "and" ~ relational ^^ Binary.apply
+    conjunctive ~ "and" ~ relational ^^ Binary.apply
       | relational,
   )
 
@@ -83,7 +83,7 @@ object FormulaParser extends StandardTokenParsers with PackratParsers with Impli
   )
 
   lazy val prefix: P[Expr] = positioned(
-    "-" ~ exponentiation ^^ Unary.apply
+    "-" ~ prefix ^^ Unary.apply
       | exponentiation,
   )
 
@@ -94,7 +94,7 @@ object FormulaParser extends StandardTokenParsers with PackratParsers with Impli
 
   lazy val applicative: P[Expr] = positioned(
     ident ~ ("(" ~> repsep(expression, ",") <~ ")") ^^ Apply.apply
-      | primary <~ "%" ^^ (e => Unary("%", e))
+      | applicative <~ "%" ^^ (e => Unary("%", e))
       | primary,
   )
 
