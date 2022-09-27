@@ -39,10 +39,10 @@ val stringRegex = "'([^']*)'|\"([^\"]*)\"".r
       val f = new Formulae(Using(io.Source.fromFile(file))(_.mkString).get)
 
       vars foreach {
-        case (name, stringRegex(s, null))   => f.set(name, s)
-        case (name, stringRegex(null, s))   => f.set(name, s)
-        case (name, b @ ("true" | "false")) => f.set(name, b == "true")
-        case (name, n)                      => f.set(name, n.toDouble)
+        case (name, stringRegex(s, null))   => f.set(name, () => s)
+        case (name, stringRegex(null, s))   => f.set(name, () => s)
+        case (name, b @ ("true" | "false")) => f.set(name, () => b == "true")
+        case (name, n)                      => f.set(name, () => n.toDouble)
       }
 
       actions foreach (name => println(s"formula $name = ${f.formula(name)}"))

@@ -4,4 +4,4 @@ var x = default
 
 def f(a) = a + 4
 
-formula u = x + f(5)
+def u = x + f(5)

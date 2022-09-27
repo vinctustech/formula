@@ -1162,7 +1162,7 @@ $c_Lcom_vinctus_formula_Formulae.prototype.func__T__sci_Seq__O = (function(name,
   };
   $m_s_sys_package$().error__T__E((("function '" + name) + "' not found"))
 });
-$c_Lcom_vinctus_formula_Formulae.prototype.set__T__O__V = (function(name, value) {
+$c_Lcom_vinctus_formula_Formulae.prototype.set__T__F0__V = (function(name, value) {
   var requirement = (value !== null);
   if ((!requirement)) {
     throw $ct_jl_IllegalArgumentException__T__(new $c_jl_IllegalArgumentException(), "requirement failed: can't assign null to a variable")
@@ -1189,8 +1189,8 @@ $c_Lcom_vinctus_formula_Formulae.prototype.$js$exported$meth$formula__T__O = (fu
 $c_Lcom_vinctus_formula_Formulae.prototype.$js$exported$meth$func__T__sci_Seq__O = (function(name, args) {
   return this.func__T__sci_Seq__O(name, args)
 });
-$c_Lcom_vinctus_formula_Formulae.prototype.$js$exported$meth$set__T__O__O = (function(name, value) {
-  this.set__T__O__V(name, value)
+$c_Lcom_vinctus_formula_Formulae.prototype.$js$exported$meth$set__T__F0__O = (function(name, value) {
+  this.set__T__F0__V(name, value)
 });
 $c_Lcom_vinctus_formula_Formulae.prototype.$js$exported$meth$get__T__O = (function(name) {
   return $m_Lcom_vinctus_formula_lookup$package$().lookup__T__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O(name, null, this.Lcom_vinctus_formula_Formulae__f_env, this.Lcom_vinctus_formula_Formulae__f_env, false)
@@ -1208,8 +1208,8 @@ $c_Lcom_vinctus_formula_Formulae.prototype.expression = (function(arg) {
 });
 $c_Lcom_vinctus_formula_Formulae.prototype.set = (function(arg, arg$2) {
   var prep0 = $as_T(arg);
-  var prep1 = arg$2;
-  return this.$js$exported$meth$set__T__O__O(prep0, prep1)
+  var prep1 = $as_F0(arg$2);
+  return this.$js$exported$meth$set__T__F0__O(prep0, prep1)
 });
 $c_Lcom_vinctus_formula_Formulae.prototype.func = (function(arg, ...rest) {
   var prep0 = $as_T(arg);
@@ -1486,10 +1486,11 @@ $c_Lcom_vinctus_formula_lookup$package$.prototype.lookup__T__Lcom_vinctus_formul
       if ((x14 === null)) {
         $m_Lcom_vinctus_formula_problem$package$().problem__s_util_parsing_input_Position__T__E(e.Lcom_vinctus_formula_AST$Expr__f_pos, (("variable '" + name) + "' has not been set"))
       };
-      x11.Lcom_vinctus_formula_Var__f_value = $m_Lcom_vinctus_formula_eval$package$().eval__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O(x14, env, ctx, false);
-      return x11.Lcom_vinctus_formula_Var__f_value
+      var x = $m_Lcom_vinctus_formula_eval$package$().eval__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O(x14, env, ctx, false);
+      x11.Lcom_vinctus_formula_Var__f_value = new $c_sjsr_AnonFunction0((() => x));
+      return x
     } else {
-      return x15
+      return x15.apply__O()
     }
   };
   if ((x1 instanceof $c_Lcom_vinctus_formula_Const)) {
@@ -4070,6 +4071,18 @@ function $m_s_Array$EmptyArrays$() {
     $n_s_Array$EmptyArrays$ = new $c_s_Array$EmptyArrays$()
   };
   return $n_s_Array$EmptyArrays$
+}
+function $is_F0(obj) {
+  return (!(!((obj && obj.$classData) && obj.$classData.ancestors.F0)))
+}
+function $as_F0(obj) {
+  return (($is_F0(obj) || (obj === null)) ? obj : $throwClassCastException(obj, "scala.Function0"))
+}
+function $isArrayOf_F0(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.F0)))
+}
+function $asArrayOf_F0(obj, depth) {
+  return (($isArrayOf_F0(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.Function0;", depth))
 }
 function $is_F1(obj) {
   return (!(!((obj && obj.$classData) && obj.$classData.ancestors.F1)))
@@ -18348,9 +18361,9 @@ $c_Lcom_vinctus_formula_Var.prototype.equals__O__Z = (function(x$0) {
       var $$x1 = false
     };
     if ($$x1) {
-      var x$1 = this.Lcom_vinctus_formula_Var__f_value;
-      var y = x$0$2.Lcom_vinctus_formula_Var__f_value;
-      return $m_sr_BoxesRunTime$().equals__O__O__Z(x$1, y)
+      var x$3 = this.Lcom_vinctus_formula_Var__f_value;
+      var x$4 = x$0$2.Lcom_vinctus_formula_Var__f_value;
+      return (x$3 === x$4)
     } else {
       return false
     }
