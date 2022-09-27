@@ -13,7 +13,7 @@ val stringRegex = "'([^']*)'|\"([^\"]*)\"".r
     import builder._
     OParser.sequence(
       programName("formula"),
-      head("formula", "0.0.1"),
+      head("formula", "0.0.32"),
       arg[File]("<file>")
         .action((x, c) => c.copy(input = x))
         .text("file containing formulae"),
