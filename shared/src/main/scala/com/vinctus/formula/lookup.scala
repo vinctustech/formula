@@ -13,9 +13,12 @@ def lookup(
       if pure then problem(e.pos, s"referentially opaque: variable '$name' referenced")
       if value == null then
         if expr == null then problem(e.pos, s"variable '$name' has not been set")
-        v.value = eval(expr, env, ctx, false)
-        v.value
-      else value
+
+        val x = eval(expr, env, ctx, false)
+
+        v.value = () => x
+        x
+      else value()
     case c @ Const(_, expr, value) =>
       if value == null then
         c.value = eval(expr, env, ctx, true)

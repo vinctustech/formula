@@ -62,6 +62,6 @@ class FormulaeTests extends AnyFreeSpec with Matchers:
   }
 
   "set" in {
-    f.set("x", 3.5)
+    f.set("x", () => 3.5)
     f.formula("u") shouldBe 12.5
   }

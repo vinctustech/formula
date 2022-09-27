@@ -35,7 +35,7 @@ class Formulae(decls: String):
       case _ => sys.error(s"function '$name' not found")
 
   @JSExport
-  def set(name: String, value: Any): Unit =
+  def set(name: String, value: () => Any): Unit =
     require(value != null, "can't assign null to a variable")
 
     env get name match
