@@ -1185,7 +1185,7 @@ $c_Lcom_vinctus_formula_Formulae.prototype.set__T__F0__V = (function(name, value
 $c_Lcom_vinctus_formula_Formulae.prototype.get__T__O = (function(name) {
   return $m_Lcom_vinctus_formula_lookup$package$().lookup__T__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O(name, null, this.Lcom_vinctus_formula_Formulae__f_env, this.Lcom_vinctus_formula_Formulae__f_env, false)
 });
-$c_Lcom_vinctus_formula_Formulae.prototype.expression__T__O = (function(expr) {
+$c_Lcom_vinctus_formula_Formulae.prototype.evaluate__T__O = (function(expr) {
   return $m_Lcom_vinctus_formula_eval$package$().eval__Lcom_vinctus_formula_AST$Expr__sc_Map__sc_Map__Z__O($m_Lcom_vinctus_formula_FormulaParser$().parseExpr__T__Lcom_vinctus_formula_AST$Expr(expr), this.Lcom_vinctus_formula_Formulae__f_env, this.Lcom_vinctus_formula_Formulae__f_env, false)
 });
 $c_Lcom_vinctus_formula_Formulae.prototype.$js$exported$meth$formula__T__O = (function(name) {
@@ -1197,16 +1197,16 @@ $c_Lcom_vinctus_formula_Formulae.prototype.$js$exported$meth$func__T__sci_Seq__O
 $c_Lcom_vinctus_formula_Formulae.prototype.$js$exported$meth$get__T__O = (function(name) {
   return this.get__T__O(name)
 });
-$c_Lcom_vinctus_formula_Formulae.prototype.$js$exported$meth$expression__T__O = (function(expr) {
-  return this.expression__T__O(expr)
+$c_Lcom_vinctus_formula_Formulae.prototype.$js$exported$meth$evaluate__T__O = (function(expr) {
+  return this.evaluate__T__O(expr)
 });
 $c_Lcom_vinctus_formula_Formulae.prototype.formula = (function(arg) {
   var prep0 = $as_T(arg);
   return this.$js$exported$meth$formula__T__O(prep0)
 });
-$c_Lcom_vinctus_formula_Formulae.prototype.expression = (function(arg) {
+$c_Lcom_vinctus_formula_Formulae.prototype.evaluate = (function(arg) {
   var prep0 = $as_T(arg);
-  return this.$js$exported$meth$expression__T__O(prep0)
+  return this.$js$exported$meth$evaluate__T__O(prep0)
 });
 $c_Lcom_vinctus_formula_Formulae.prototype.func = (function(arg, ...rest) {
   var prep0 = $as_T(arg);
@@ -21052,7 +21052,7 @@ $c_Lcom_vinctus_formula_FormulaParser$.prototype.ternary__s_util_parsing_combina
   if ((!this.Lcom_vinctus_formula_FormulaParser$__f_ternarybitmap$1)) {
     var p$1 = new $c_sjsr_AnonFunction0((() => {
       var p = new $c_sjsr_AnonFunction0((() => {
-        var $$x1 = this.disjunctive__s_util_parsing_combinator_PackratParsers$PackratParser().$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser("?").$tilde$greater__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.disjunctive__s_util_parsing_combinator_PackratParsers$PackratParser())))))).$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser(":").$tilde$greater__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.disjunctive__s_util_parsing_combinator_PackratParsers$PackratParser()))))));
+        var $$x1 = this.disjunctive__s_util_parsing_combinator_PackratParsers$PackratParser().$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser("?").$tilde$greater__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.disjunctive__s_util_parsing_combinator_PackratParsers$PackratParser())))))).$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser(":").$tilde$greater__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.ternary__s_util_parsing_combinator_PackratParsers$PackratParser()))))));
         var f = new $c_sjsr_AnonFunction3(((cond, yes, no) => {
           var cond$1 = $as_Lcom_vinctus_formula_AST$Expr(cond);
           var yes$1 = $as_Lcom_vinctus_formula_AST$Expr(yes);
@@ -21072,7 +21072,7 @@ $c_Lcom_vinctus_formula_FormulaParser$.prototype.disjunctive__s_util_parsing_com
   if ((!this.Lcom_vinctus_formula_FormulaParser$__f_disjunctivebitmap$1)) {
     var p$1 = new $c_sjsr_AnonFunction0((() => {
       var p = new $c_sjsr_AnonFunction0((() => {
-        var $$x1 = this.conjunctive__s_util_parsing_combinator_PackratParsers$PackratParser().$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser("or")))).$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.conjunctive__s_util_parsing_combinator_PackratParsers$PackratParser())));
+        var $$x1 = this.disjunctive__s_util_parsing_combinator_PackratParsers$PackratParser().$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser("or")))).$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.conjunctive__s_util_parsing_combinator_PackratParsers$PackratParser())));
         var f = new $c_sjsr_AnonFunction3(((left, op, right) => {
           var left$1 = $as_Lcom_vinctus_formula_AST$Expr(left);
           var op$1 = $as_T(op);
@@ -21092,7 +21092,7 @@ $c_Lcom_vinctus_formula_FormulaParser$.prototype.conjunctive__s_util_parsing_com
   if ((!this.Lcom_vinctus_formula_FormulaParser$__f_conjunctivebitmap$1)) {
     var p$1 = new $c_sjsr_AnonFunction0((() => {
       var p = new $c_sjsr_AnonFunction0((() => {
-        var $$x1 = this.relational__s_util_parsing_combinator_PackratParsers$PackratParser().$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser("and")))).$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.relational__s_util_parsing_combinator_PackratParsers$PackratParser())));
+        var $$x1 = this.conjunctive__s_util_parsing_combinator_PackratParsers$PackratParser().$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser("and")))).$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.relational__s_util_parsing_combinator_PackratParsers$PackratParser())));
         var f = new $c_sjsr_AnonFunction3(((left, op, right) => {
           var left$1 = $as_Lcom_vinctus_formula_AST$Expr(left);
           var op$1 = $as_T(op);
@@ -21172,7 +21172,7 @@ $c_Lcom_vinctus_formula_FormulaParser$.prototype.prefix__s_util_parsing_combinat
   if ((!this.Lcom_vinctus_formula_FormulaParser$__f_prefixbitmap$1)) {
     var p$1 = new $c_sjsr_AnonFunction0((() => {
       var p = new $c_sjsr_AnonFunction0((() => {
-        var $$x1 = this.keyword__T__s_util_parsing_combinator_Parsers$Parser("-").$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.exponentiation__s_util_parsing_combinator_PackratParsers$PackratParser())));
+        var $$x1 = this.keyword__T__s_util_parsing_combinator_Parsers$Parser("-").$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.prefix__s_util_parsing_combinator_PackratParsers$PackratParser())));
         var f = new $c_sjsr_AnonFunction2(((op, expr) => {
           var op$1 = $as_T(op);
           var expr$1 = $as_Lcom_vinctus_formula_AST$Expr(expr);
@@ -21221,7 +21221,7 @@ $c_Lcom_vinctus_formula_FormulaParser$.prototype.applicative__s_util_parsing_com
           var args$1 = $as_sci_Seq(args);
           return new $c_Lcom_vinctus_formula_AST$Expr$Apply(name$1, args$1)
         }));
-        return $$x1.$up$up__F1__s_util_parsing_combinator_Parsers$Parser($f_s_util_parsing_combinator_ImplicitConversions__flatten2__F2__F1(this, f)).$bar__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.primary__s_util_parsing_combinator_PackratParsers$PackratParser().$less$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser("%")))).$up$up__F1__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction1(((e) => {
+        return $$x1.$up$up__F1__s_util_parsing_combinator_Parsers$Parser($f_s_util_parsing_combinator_ImplicitConversions__flatten2__F2__F1(this, f)).$bar__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.applicative__s_util_parsing_combinator_PackratParsers$PackratParser().$less$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser("%")))).$up$up__F1__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction1(((e) => {
           var e$1 = $as_Lcom_vinctus_formula_AST$Expr(e);
           return new $c_Lcom_vinctus_formula_AST$Expr$Unary("%", e$1)
         })))))).$bar__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.primary__s_util_parsing_combinator_PackratParsers$PackratParser())))
