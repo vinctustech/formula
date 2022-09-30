@@ -114,6 +114,10 @@ Syntax
     <dt>formulae</dt><dd><img src="images/formulae.png"/></dd>
     <dt>declaration</dt><dd><img src="images/declaration.png"/></dd>
     <dt>expression</dt><dd><img src="images/expression.png"/></dd>
+    <dt>disjunctive</dt><dd><img src="images/disjunctive.png"/></dd>
+    <dt>conjunctive</dt><dd><img src="images/conjunctive.png"/></dd>
+    <dt>relational</dt><dd><img src="images/relational.png"/></dd>
+    <dt>additive</dt><dd><img src="images/additive.png"/></dd>
     <dt></dt><dd><img src="images/.png"/></dd>
 </dl>
 

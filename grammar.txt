@@ -23,3 +23,9 @@ conjunctive
       | relational
 
 relational
+    ::= additive ('<' | '>' | '<=' | '>=' | '==' | '!=') additive
+      | additive
+
+additive
+    ::= additive ('+' | '-') multiplicative
+      | multiplicative
