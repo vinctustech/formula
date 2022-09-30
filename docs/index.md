@@ -111,8 +111,8 @@ Syntax
 ------
 
 <dl>
-    <dt>formulae</dt><dd><img src="images/Production.png"/>*</dd>
-    <dt>declaration</dt><dd></dd>
+    <dt>formulae</dt><dd><img src="images/formulae.png"/></dd>
+    <dt>declaration</dt><dd><img src="images/declaration.png"/></dd>
 </dl>
 
 Built-in Functions
