@@ -114,6 +114,6 @@ Built-in Functions and Constants
 --------------------------------
 
 <dl>
-    <dt>$e$</dt>
+    <dt>e</dt>
     <dd>base of the natural logarithm</dd>
 </dl>
