@@ -122,16 +122,15 @@ Built-in Functions
     <dt>ceil(x)</dt><dd>smallest integer greater than or equal to <i>x</i></dd>
     <dt>cos(x)</dt><dd>cosine of <i>x</i></dd>
     <dt>exp(x)</dt><dd><i>e</i> raised to the power of <i>x</i></dd>
-    <dt></dt><dd></dd>
-    <dt></dt><dd></dd>
-    <dt></dt><dd></dd>
-    <dt></dt><dd></dd>
-    <dt></dt><dd></dd>
+    <dt>floor(x)</dt><dd>largest integer less than or equal to <i>x</i></dd>
+    <dt>log(x)</dt><dd>base 10 logarithm of <i>x</i></dd>
+    <dt>ln(x)</dt><dd>natural logarithm of <i>x</i></dd>
+    <dt>pow(x,y)</dt><dd><i>x</i> raised to the power of <i>y</i></dd>
     <dt>round(x)</dt><dd>nearest integer to <i>x</i></dd>
-    <dt></dt><dd></dd>
-    <dt></dt><dd></dd>
-    <dt></dt><dd></dd>
-    <dt></dt><dd></dd>
+    <dt>sign(x)</dt><dd>sign of <i>x</i></dd>
+    <dt>sin(x)</dt><dd>sine of <i>x</i></dd>
+    <dt>sqrt(x)</dt><dd>square root of <i>x</i></dd>
+    <dt>tan(x)</dt><dd>tangent of <i>x</i></dd>
 </dl>
 
 Built-in Constants
