@@ -114,11 +114,11 @@ Built-in Functions
 ------------------
 
 <dl>
-    <dt>abs(<i>x</i>)</dt><dd>absolute value of <i>x</i></dd>
-    <dt>acos</dt><dd>inverse cosine</dd>
-    <dt>asin</dt><dd>inverse sin</dd>
-    <dt>atan</dt><dd>inverse tangent</dd>
-    <dt>atan2</dt><dd></dd>
+    <dt>abs(x)</dt><dd>absolute value of <i>x</i></dd>
+    <dt>acos(x)</dt><dd>inverse cosine (in radians) of <i>x</i></dd>
+    <dt>asin(x)</dt><dd>inverse sin (in radians) of <i>x</i></dd>
+    <dt>atan(x)</dt><dd>inverse tangent (in radians) of <i>x</i></dd>
+    <dt>atan2(x,y)</dt><dd>counterclockwise angle (in radians) between the positive x-axis and the point (<i>x</i>, <i>y</i>)</dd>
     <dt></dt><dd></dd>
     <dt></dt><dd></dd>
     <dt></dt><dd></dd>
@@ -127,11 +127,11 @@ Built-in Functions
     <dt></dt><dd></dd>
     <dt></dt><dd></dd>
     <dt></dt><dd></dd>
+    <dt>round(x)</dt><dd>nearest whole number to <i>x</i></dd>
     <dt></dt><dd></dd>
     <dt></dt><dd></dd>
     <dt></dt><dd></dd>
     <dt></dt><dd></dd>
-    <dt>round</dt><dd>round to the nearest whole number</dd>
 </dl>
 
 Built-in Constants
