@@ -8,7 +8,7 @@ formula
 Documentation
 -------------
 
-See https://vinctustech.github.io/formula/.
+See [documentation](https://vinctustech.github.io/formula/).
 
 Usage
 -----
@@ -54,7 +54,7 @@ The obligatory "Hello World" example
 
 Although *formula* is mainly for doing math, it can handle strings and also boolean values in a limited way. For example, you might want a certain text to vary depending on some condition. The following is a vanilla React 18 example.
 
-```typescript
+```tsx
 import React, { FC, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { Formulae } from '@vinctus/formula'
