@@ -17,3 +17,9 @@ ternary
 disjunctive
     ::= disjunctive 'or' conjunctive
       | conjunctive
+
+conjunctive
+    ::= conjunctive 'and' relational
+      | relational
+
+relational
