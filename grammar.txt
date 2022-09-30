@@ -13,3 +13,7 @@ expression
 ternary
     ::= disjunctive '?' disjunctive ':' ternary
       | disjunctive
+
+disjunctive
+    ::= disjunctive 'or' conjunctive
+      | conjunctive
