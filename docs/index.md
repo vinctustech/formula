@@ -114,6 +114,6 @@ Built-in Functions and Constants
 --------------------------------
 
 <dl>
-    <dt>edt>
+    <dt>e</dt>
     <dd>base of the natural logarithm</dd>
 </dl>
