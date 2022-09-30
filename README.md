@@ -40,7 +40,7 @@ Include the following in your `build.sbt`:
 ```sbt
 resolvers += Resolver.githubPackages("vinctustech")
 
-libraryDependencies += "io.github.vinctustech" %%% "formula" % "0.0.33"
+libraryDependencies += "io.github.vinctustech" %%% "formula" % "0.0.34"
 ```
 
 Use the following `import` in your code:

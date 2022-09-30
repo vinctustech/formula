@@ -1008,39 +1008,39 @@ function $c_Lcom_vinctus_formula_Builtin$package$() {
   $m_s_package$();
   var $$x17 = $m_sr_ScalaRunTime$();
   var func = new $c_Lcom_vinctus_formula_Builtin$package$$anon$1();
-  var $$x16 = new $c_Lcom_vinctus_formula_Function("round", func);
+  var $$x16 = new $c_Lcom_vinctus_formula_Function("abs", func);
   var func$1 = new $c_Lcom_vinctus_formula_Builtin$package$$anon$2();
-  var $$x15 = new $c_Lcom_vinctus_formula_Function("abs", func$1);
+  var $$x15 = new $c_Lcom_vinctus_formula_Function("acos", func$1);
   var func$2 = new $c_Lcom_vinctus_formula_Builtin$package$$anon$3();
-  var $$x14 = new $c_Lcom_vinctus_formula_Function("ceil", func$2);
+  var $$x14 = new $c_Lcom_vinctus_formula_Function("asin", func$2);
   var func$3 = new $c_Lcom_vinctus_formula_Builtin$package$$anon$4();
-  var $$x13 = new $c_Lcom_vinctus_formula_Function("floor", func$3);
+  var $$x13 = new $c_Lcom_vinctus_formula_Function("atan", func$3);
   var func$4 = new $c_Lcom_vinctus_formula_Builtin$package$$anon$5();
-  var $$x12 = new $c_Lcom_vinctus_formula_Function("sign", func$4);
+  var $$x12 = new $c_Lcom_vinctus_formula_Function("atan2", func$4);
   var func$5 = new $c_Lcom_vinctus_formula_Builtin$package$$anon$6();
-  var $$x11 = new $c_Lcom_vinctus_formula_Function("sin", func$5);
+  var $$x11 = new $c_Lcom_vinctus_formula_Function("ceil", func$5);
   var func$6 = new $c_Lcom_vinctus_formula_Builtin$package$$anon$7();
   var $$x10 = new $c_Lcom_vinctus_formula_Function("cos", func$6);
   var func$7 = new $c_Lcom_vinctus_formula_Builtin$package$$anon$8();
-  var $$x9 = new $c_Lcom_vinctus_formula_Function("tan", func$7);
+  var $$x9 = new $c_Lcom_vinctus_formula_Function("exp", func$7);
   var func$8 = new $c_Lcom_vinctus_formula_Builtin$package$$anon$9();
-  var $$x8 = new $c_Lcom_vinctus_formula_Function("asin", func$8);
+  var $$x8 = new $c_Lcom_vinctus_formula_Function("floor", func$8);
   var func$9 = new $c_Lcom_vinctus_formula_Builtin$package$$anon$10();
-  var $$x7 = new $c_Lcom_vinctus_formula_Function("acos", func$9);
+  var $$x7 = new $c_Lcom_vinctus_formula_Function("log", func$9);
   var func$10 = new $c_Lcom_vinctus_formula_Builtin$package$$anon$11();
-  var $$x6 = new $c_Lcom_vinctus_formula_Function("atan", func$10);
+  var $$x6 = new $c_Lcom_vinctus_formula_Function("ln", func$10);
   var func$11 = new $c_Lcom_vinctus_formula_Builtin$package$$anon$12();
-  var $$x5 = new $c_Lcom_vinctus_formula_Function("atan2", func$11);
+  var $$x5 = new $c_Lcom_vinctus_formula_Function("pow", func$11);
   var func$12 = new $c_Lcom_vinctus_formula_Builtin$package$$anon$13();
-  var $$x4 = new $c_Lcom_vinctus_formula_Function("exp", func$12);
+  var $$x4 = new $c_Lcom_vinctus_formula_Function("round", func$12);
   var func$13 = new $c_Lcom_vinctus_formula_Builtin$package$$anon$14();
-  var $$x3 = new $c_Lcom_vinctus_formula_Function("ln", func$13);
+  var $$x3 = new $c_Lcom_vinctus_formula_Function("sign", func$13);
   var func$14 = new $c_Lcom_vinctus_formula_Builtin$package$$anon$15();
-  var $$x2 = new $c_Lcom_vinctus_formula_Function("log", func$14);
+  var $$x2 = new $c_Lcom_vinctus_formula_Function("sin", func$14);
   var func$15 = new $c_Lcom_vinctus_formula_Builtin$package$$anon$16();
   var $$x1 = new $c_Lcom_vinctus_formula_Function("sqrt", func$15);
   var func$16 = new $c_Lcom_vinctus_formula_Builtin$package$$anon$17();
-  var elems = $$x17.wrapRefArray__AO__sci_ArraySeq(new ($d_Lcom_vinctus_formula_Decl.getArrayOf().constr)([$$x16, $$x15, $$x14, $$x13, $$x12, $$x11, $$x10, $$x9, $$x8, $$x7, $$x6, $$x5, $$x4, $$x3, $$x2, $$x1, new $c_Lcom_vinctus_formula_Function("pow", func$16), new $c_Lcom_vinctus_formula_Val("pi", 3.141592653589793), new $c_Lcom_vinctus_formula_Val("e", 2.718281828459045)]));
+  var elems = $$x17.wrapRefArray__AO__sci_ArraySeq(new ($d_Lcom_vinctus_formula_Decl.getArrayOf().constr)([$$x16, $$x15, $$x14, $$x13, $$x12, $$x11, $$x10, $$x9, $$x8, $$x7, $$x6, $$x5, $$x4, $$x3, $$x2, $$x1, new $c_Lcom_vinctus_formula_Function("tan", func$16), new $c_Lcom_vinctus_formula_Val("pi", 3.141592653589793), new $c_Lcom_vinctus_formula_Val("e", 2.718281828459045)]));
   var this$23 = $m_sci_Nil$().prependedAll__sc_IterableOnce__sci_List(elems);
   var f$2 = ((f) => {
     var f$1 = $as_Lcom_vinctus_formula_Decl(f);
@@ -1200,18 +1200,18 @@ $c_Lcom_vinctus_formula_Formulae.prototype.$js$exported$meth$get__T__O = (functi
 $c_Lcom_vinctus_formula_Formulae.prototype.$js$exported$meth$evaluate__T__O = (function(expr) {
   return this.evaluate__T__O(expr)
 });
-$c_Lcom_vinctus_formula_Formulae.prototype.formula = (function(arg) {
+$c_Lcom_vinctus_formula_Formulae.prototype.func = (function(arg, ...rest) {
   var prep0 = $as_T(arg);
-  return this.$js$exported$meth$formula__T__O(prep0)
+  var prep1 = $m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq(rest);
+  return this.$js$exported$meth$func__T__sci_Seq__O(prep0, prep1)
 });
 $c_Lcom_vinctus_formula_Formulae.prototype.evaluate = (function(arg) {
   var prep0 = $as_T(arg);
   return this.$js$exported$meth$evaluate__T__O(prep0)
 });
-$c_Lcom_vinctus_formula_Formulae.prototype.func = (function(arg, ...rest) {
+$c_Lcom_vinctus_formula_Formulae.prototype.formula = (function(arg) {
   var prep0 = $as_T(arg);
-  var prep1 = $m_sjsr_package$().toScalaVarArgs__sjs_js_Array__sci_Seq(rest);
-  return this.$js$exported$meth$func__T__sci_Seq__O(prep0, prep1)
+  return this.$js$exported$meth$formula__T__O(prep0)
 });
 $c_Lcom_vinctus_formula_Formulae.prototype.get = (function(arg) {
   var prep0 = $as_T(arg);
@@ -12481,11 +12481,7 @@ $c_Lcom_vinctus_formula_Builtin$package$$anon$1.prototype.applyOrElse__sci_Seq__
       var x7 = x.apply__I__O(0);
       if (((typeof x7) === "number")) {
         var x$2 = $uD(x7);
-        var this$8 = $m_RTLong$();
-        var value = $uD(Math.round(x$2));
-        var lo = this$8.org$scalajs$linker$runtime$RuntimeLong$$fromDoubleImpl__D__I(value);
-        var hi = this$8.RTLong$__f_org$scalajs$linker$runtime$RuntimeLong$$hiReturn;
-        return $m_RTLong$().org$scalajs$linker$runtime$RuntimeLong$$toDouble__I__I__D(lo, hi)
+        return $uD(Math.abs(x$2))
       }
     }
   };
@@ -12523,9 +12519,9 @@ $c_Lcom_vinctus_formula_Builtin$package$$anon$10.prototype.isDefinedAt__sci_Seq_
   if ((x !== null)) {
     $m_s_package$();
     if ((x.lengthCompare__I__I(1) === 0)) {
-      var x75 = x.apply__I__O(0);
-      if (((typeof x75) === "number")) {
-        $uD(x75);
+      var x79 = x.apply__I__O(0);
+      if (((typeof x79) === "number")) {
+        $uD(x79);
         return true
       }
     }
@@ -12536,10 +12532,10 @@ $c_Lcom_vinctus_formula_Builtin$package$$anon$10.prototype.applyOrElse__sci_Seq_
   if ((x !== null)) {
     $m_s_package$();
     if ((x.lengthCompare__I__I(1) === 0)) {
-      var x79 = x.apply__I__O(0);
-      if (((typeof x79) === "number")) {
-        var x$2 = $uD(x79);
-        return $uD(Math.acos(x$2))
+      var x83 = x.apply__I__O(0);
+      if (((typeof x83) === "number")) {
+        var x$2 = $uD(x83);
+        return $uD(Math.log10(x$2))
       }
     }
   };
@@ -12577,9 +12573,9 @@ $c_Lcom_vinctus_formula_Builtin$package$$anon$11.prototype.isDefinedAt__sci_Seq_
   if ((x !== null)) {
     $m_s_package$();
     if ((x.lengthCompare__I__I(1) === 0)) {
-      var x83 = x.apply__I__O(0);
-      if (((typeof x83) === "number")) {
-        $uD(x83);
+      var x87 = x.apply__I__O(0);
+      if (((typeof x87) === "number")) {
+        $uD(x87);
         return true
       }
     }
@@ -12590,10 +12586,10 @@ $c_Lcom_vinctus_formula_Builtin$package$$anon$11.prototype.applyOrElse__sci_Seq_
   if ((x !== null)) {
     $m_s_package$();
     if ((x.lengthCompare__I__I(1) === 0)) {
-      var x87 = x.apply__I__O(0);
-      if (((typeof x87) === "number")) {
-        var x$2 = $uD(x87);
-        return $uD(Math.atan(x$2))
+      var x91 = x.apply__I__O(0);
+      if (((typeof x91) === "number")) {
+        var x$2 = $uD(x91);
+        return $uD(Math.log(x$2))
       }
     }
   };
@@ -12631,12 +12627,12 @@ $c_Lcom_vinctus_formula_Builtin$package$$anon$12.prototype.isDefinedAt__sci_Seq_
   if ((x !== null)) {
     $m_s_package$();
     if ((x.lengthCompare__I__I(2) === 0)) {
-      var x91 = x.apply__I__O(0);
-      var x92 = x.apply__I__O(1);
-      if (((typeof x91) === "number")) {
-        $uD(x91);
-        if (((typeof x92) === "number")) {
-          $uD(x92);
+      var x95 = x.apply__I__O(0);
+      var x96 = x.apply__I__O(1);
+      if (((typeof x95) === "number")) {
+        $uD(x95);
+        if (((typeof x96) === "number")) {
+          $uD(x96);
           return true
         }
       }
@@ -12648,13 +12644,13 @@ $c_Lcom_vinctus_formula_Builtin$package$$anon$12.prototype.applyOrElse__sci_Seq_
   if ((x !== null)) {
     $m_s_package$();
     if ((x.lengthCompare__I__I(2) === 0)) {
-      var x97 = x.apply__I__O(0);
-      var x98 = x.apply__I__O(1);
-      if (((typeof x97) === "number")) {
-        var x$2 = $uD(x97);
-        if (((typeof x98) === "number")) {
-          var y = $uD(x98);
-          return $uD(Math.atan2(x$2, y))
+      var x101 = x.apply__I__O(0);
+      var x102 = x.apply__I__O(1);
+      if (((typeof x101) === "number")) {
+        var x$2 = $uD(x101);
+        if (((typeof x102) === "number")) {
+          var y = $uD(x102);
+          return $uD(Math.pow(x$2, y))
         }
       }
     }
@@ -12693,9 +12689,9 @@ $c_Lcom_vinctus_formula_Builtin$package$$anon$13.prototype.isDefinedAt__sci_Seq_
   if ((x !== null)) {
     $m_s_package$();
     if ((x.lengthCompare__I__I(1) === 0)) {
-      var x103 = x.apply__I__O(0);
-      if (((typeof x103) === "number")) {
-        $uD(x103);
+      var x107 = x.apply__I__O(0);
+      if (((typeof x107) === "number")) {
+        $uD(x107);
         return true
       }
     }
@@ -12706,10 +12702,14 @@ $c_Lcom_vinctus_formula_Builtin$package$$anon$13.prototype.applyOrElse__sci_Seq_
   if ((x !== null)) {
     $m_s_package$();
     if ((x.lengthCompare__I__I(1) === 0)) {
-      var x107 = x.apply__I__O(0);
-      if (((typeof x107) === "number")) {
-        var x$2 = $uD(x107);
-        return $uD(Math.exp(x$2))
+      var x111 = x.apply__I__O(0);
+      if (((typeof x111) === "number")) {
+        var x$2 = $uD(x111);
+        var this$8 = $m_RTLong$();
+        var value = $uD(Math.round(x$2));
+        var lo = this$8.org$scalajs$linker$runtime$RuntimeLong$$fromDoubleImpl__D__I(value);
+        var hi = this$8.RTLong$__f_org$scalajs$linker$runtime$RuntimeLong$$hiReturn;
+        return $m_RTLong$().org$scalajs$linker$runtime$RuntimeLong$$toDouble__I__I__D(lo, hi)
       }
     }
   };
@@ -12747,9 +12747,9 @@ $c_Lcom_vinctus_formula_Builtin$package$$anon$14.prototype.isDefinedAt__sci_Seq_
   if ((x !== null)) {
     $m_s_package$();
     if ((x.lengthCompare__I__I(1) === 0)) {
-      var x111 = x.apply__I__O(0);
-      if (((typeof x111) === "number")) {
-        $uD(x111);
+      var x115 = x.apply__I__O(0);
+      if (((typeof x115) === "number")) {
+        $uD(x115);
         return true
       }
     }
@@ -12760,10 +12760,12 @@ $c_Lcom_vinctus_formula_Builtin$package$$anon$14.prototype.applyOrElse__sci_Seq_
   if ((x !== null)) {
     $m_s_package$();
     if ((x.lengthCompare__I__I(1) === 0)) {
-      var x115 = x.apply__I__O(0);
-      if (((typeof x115) === "number")) {
-        var x$2 = $uD(x115);
-        return $uD(Math.log(x$2))
+      var x119 = x.apply__I__O(0);
+      if (((typeof x119) === "number")) {
+        var x$2 = $uD(x119);
+        var this$5 = new $c_sr_RichDouble(x$2);
+        var x$1 = this$5.sr_RichDouble__f_self;
+        return ((x$1 > 0.0) ? 1.0 : ((x$1 < 0.0) ? (-1.0) : x$1))
       }
     }
   };
@@ -12801,9 +12803,9 @@ $c_Lcom_vinctus_formula_Builtin$package$$anon$15.prototype.isDefinedAt__sci_Seq_
   if ((x !== null)) {
     $m_s_package$();
     if ((x.lengthCompare__I__I(1) === 0)) {
-      var x119 = x.apply__I__O(0);
-      if (((typeof x119) === "number")) {
-        $uD(x119);
+      var x123 = x.apply__I__O(0);
+      if (((typeof x123) === "number")) {
+        $uD(x123);
         return true
       }
     }
@@ -12814,10 +12816,10 @@ $c_Lcom_vinctus_formula_Builtin$package$$anon$15.prototype.applyOrElse__sci_Seq_
   if ((x !== null)) {
     $m_s_package$();
     if ((x.lengthCompare__I__I(1) === 0)) {
-      var x123 = x.apply__I__O(0);
-      if (((typeof x123) === "number")) {
-        var x$2 = $uD(x123);
-        return $uD(Math.log10(x$2))
+      var x127 = x.apply__I__O(0);
+      if (((typeof x127) === "number")) {
+        var x$2 = $uD(x127);
+        return $uD(Math.sin(x$2))
       }
     }
   };
@@ -12855,9 +12857,9 @@ $c_Lcom_vinctus_formula_Builtin$package$$anon$16.prototype.isDefinedAt__sci_Seq_
   if ((x !== null)) {
     $m_s_package$();
     if ((x.lengthCompare__I__I(1) === 0)) {
-      var x127 = x.apply__I__O(0);
-      if (((typeof x127) === "number")) {
-        $uD(x127);
+      var x131 = x.apply__I__O(0);
+      if (((typeof x131) === "number")) {
+        $uD(x131);
         return true
       }
     }
@@ -12868,9 +12870,9 @@ $c_Lcom_vinctus_formula_Builtin$package$$anon$16.prototype.applyOrElse__sci_Seq_
   if ((x !== null)) {
     $m_s_package$();
     if ((x.lengthCompare__I__I(1) === 0)) {
-      var x131 = x.apply__I__O(0);
-      if (((typeof x131) === "number")) {
-        var x$2 = $uD(x131);
+      var x135 = x.apply__I__O(0);
+      if (((typeof x135) === "number")) {
+        var x$2 = $uD(x135);
         return $uD(Math.sqrt(x$2))
       }
     }
@@ -12908,15 +12910,11 @@ $h_Lcom_vinctus_formula_Builtin$package$$anon$17.prototype = $c_Lcom_vinctus_for
 $c_Lcom_vinctus_formula_Builtin$package$$anon$17.prototype.isDefinedAt__sci_Seq__Z = (function(x) {
   if ((x !== null)) {
     $m_s_package$();
-    if ((x.lengthCompare__I__I(2) === 0)) {
-      var x135 = x.apply__I__O(0);
-      var x136 = x.apply__I__O(1);
-      if (((typeof x135) === "number")) {
-        $uD(x135);
-        if (((typeof x136) === "number")) {
-          $uD(x136);
-          return true
-        }
+    if ((x.lengthCompare__I__I(1) === 0)) {
+      var x139 = x.apply__I__O(0);
+      if (((typeof x139) === "number")) {
+        $uD(x139);
+        return true
       }
     }
   };
@@ -12925,15 +12923,11 @@ $c_Lcom_vinctus_formula_Builtin$package$$anon$17.prototype.isDefinedAt__sci_Seq_
 $c_Lcom_vinctus_formula_Builtin$package$$anon$17.prototype.applyOrElse__sci_Seq__F1__O = (function(x, default$1) {
   if ((x !== null)) {
     $m_s_package$();
-    if ((x.lengthCompare__I__I(2) === 0)) {
-      var x141 = x.apply__I__O(0);
-      var x142 = x.apply__I__O(1);
-      if (((typeof x141) === "number")) {
-        var x$2 = $uD(x141);
-        if (((typeof x142) === "number")) {
-          var y = $uD(x142);
-          return $uD(Math.pow(x$2, y))
-        }
+    if ((x.lengthCompare__I__I(1) === 0)) {
+      var x143 = x.apply__I__O(0);
+      if (((typeof x143) === "number")) {
+        var x$2 = $uD(x143);
+        return $uD(Math.tan(x$2))
       }
     }
   };
@@ -12987,7 +12981,7 @@ $c_Lcom_vinctus_formula_Builtin$package$$anon$2.prototype.applyOrElse__sci_Seq__
       var x15 = x.apply__I__O(0);
       if (((typeof x15) === "number")) {
         var x$2 = $uD(x15);
-        return $uD(Math.abs(x$2))
+        return $uD(Math.acos(x$2))
       }
     }
   };
@@ -13041,7 +13035,7 @@ $c_Lcom_vinctus_formula_Builtin$package$$anon$3.prototype.applyOrElse__sci_Seq__
       var x23 = x.apply__I__O(0);
       if (((typeof x23) === "number")) {
         var x$2 = $uD(x23);
-        return $uD(Math.ceil(x$2))
+        return $uD(Math.asin(x$2))
       }
     }
   };
@@ -13095,7 +13089,7 @@ $c_Lcom_vinctus_formula_Builtin$package$$anon$4.prototype.applyOrElse__sci_Seq__
       var x31 = x.apply__I__O(0);
       if (((typeof x31) === "number")) {
         var x$2 = $uD(x31);
-        return $uD(Math.floor(x$2))
+        return $uD(Math.atan(x$2))
       }
     }
   };
@@ -13132,11 +13126,15 @@ $h_Lcom_vinctus_formula_Builtin$package$$anon$5.prototype = $c_Lcom_vinctus_form
 $c_Lcom_vinctus_formula_Builtin$package$$anon$5.prototype.isDefinedAt__sci_Seq__Z = (function(x) {
   if ((x !== null)) {
     $m_s_package$();
-    if ((x.lengthCompare__I__I(1) === 0)) {
+    if ((x.lengthCompare__I__I(2) === 0)) {
       var x35 = x.apply__I__O(0);
+      var x36 = x.apply__I__O(1);
       if (((typeof x35) === "number")) {
         $uD(x35);
-        return true
+        if (((typeof x36) === "number")) {
+          $uD(x36);
+          return true
+        }
       }
     }
   };
@@ -13145,13 +13143,15 @@ $c_Lcom_vinctus_formula_Builtin$package$$anon$5.prototype.isDefinedAt__sci_Seq__
 $c_Lcom_vinctus_formula_Builtin$package$$anon$5.prototype.applyOrElse__sci_Seq__F1__O = (function(x, default$1) {
   if ((x !== null)) {
     $m_s_package$();
-    if ((x.lengthCompare__I__I(1) === 0)) {
-      var x39 = x.apply__I__O(0);
-      if (((typeof x39) === "number")) {
-        var x$2 = $uD(x39);
-        var this$5 = new $c_sr_RichDouble(x$2);
-        var x$1 = this$5.sr_RichDouble__f_self;
-        return ((x$1 > 0.0) ? 1.0 : ((x$1 < 0.0) ? (-1.0) : x$1))
+    if ((x.lengthCompare__I__I(2) === 0)) {
+      var x41 = x.apply__I__O(0);
+      var x42 = x.apply__I__O(1);
+      if (((typeof x41) === "number")) {
+        var x$2 = $uD(x41);
+        if (((typeof x42) === "number")) {
+          var y = $uD(x42);
+          return $uD(Math.atan2(x$2, y))
+        }
       }
     }
   };
@@ -13189,9 +13189,9 @@ $c_Lcom_vinctus_formula_Builtin$package$$anon$6.prototype.isDefinedAt__sci_Seq__
   if ((x !== null)) {
     $m_s_package$();
     if ((x.lengthCompare__I__I(1) === 0)) {
-      var x43 = x.apply__I__O(0);
-      if (((typeof x43) === "number")) {
-        $uD(x43);
+      var x47 = x.apply__I__O(0);
+      if (((typeof x47) === "number")) {
+        $uD(x47);
         return true
       }
     }
@@ -13202,10 +13202,10 @@ $c_Lcom_vinctus_formula_Builtin$package$$anon$6.prototype.applyOrElse__sci_Seq__
   if ((x !== null)) {
     $m_s_package$();
     if ((x.lengthCompare__I__I(1) === 0)) {
-      var x47 = x.apply__I__O(0);
-      if (((typeof x47) === "number")) {
-        var x$2 = $uD(x47);
-        return $uD(Math.sin(x$2))
+      var x51 = x.apply__I__O(0);
+      if (((typeof x51) === "number")) {
+        var x$2 = $uD(x51);
+        return $uD(Math.ceil(x$2))
       }
     }
   };
@@ -13243,9 +13243,9 @@ $c_Lcom_vinctus_formula_Builtin$package$$anon$7.prototype.isDefinedAt__sci_Seq__
   if ((x !== null)) {
     $m_s_package$();
     if ((x.lengthCompare__I__I(1) === 0)) {
-      var x51 = x.apply__I__O(0);
-      if (((typeof x51) === "number")) {
-        $uD(x51);
+      var x55 = x.apply__I__O(0);
+      if (((typeof x55) === "number")) {
+        $uD(x55);
         return true
       }
     }
@@ -13256,9 +13256,9 @@ $c_Lcom_vinctus_formula_Builtin$package$$anon$7.prototype.applyOrElse__sci_Seq__
   if ((x !== null)) {
     $m_s_package$();
     if ((x.lengthCompare__I__I(1) === 0)) {
-      var x55 = x.apply__I__O(0);
-      if (((typeof x55) === "number")) {
-        var x$2 = $uD(x55);
+      var x59 = x.apply__I__O(0);
+      if (((typeof x59) === "number")) {
+        var x$2 = $uD(x59);
         return $uD(Math.cos(x$2))
       }
     }
@@ -13297,9 +13297,9 @@ $c_Lcom_vinctus_formula_Builtin$package$$anon$8.prototype.isDefinedAt__sci_Seq__
   if ((x !== null)) {
     $m_s_package$();
     if ((x.lengthCompare__I__I(1) === 0)) {
-      var x59 = x.apply__I__O(0);
-      if (((typeof x59) === "number")) {
-        $uD(x59);
+      var x63 = x.apply__I__O(0);
+      if (((typeof x63) === "number")) {
+        $uD(x63);
         return true
       }
     }
@@ -13310,10 +13310,10 @@ $c_Lcom_vinctus_formula_Builtin$package$$anon$8.prototype.applyOrElse__sci_Seq__
   if ((x !== null)) {
     $m_s_package$();
     if ((x.lengthCompare__I__I(1) === 0)) {
-      var x63 = x.apply__I__O(0);
-      if (((typeof x63) === "number")) {
-        var x$2 = $uD(x63);
-        return $uD(Math.tan(x$2))
+      var x67 = x.apply__I__O(0);
+      if (((typeof x67) === "number")) {
+        var x$2 = $uD(x67);
+        return $uD(Math.exp(x$2))
       }
     }
   };
@@ -13351,9 +13351,9 @@ $c_Lcom_vinctus_formula_Builtin$package$$anon$9.prototype.isDefinedAt__sci_Seq__
   if ((x !== null)) {
     $m_s_package$();
     if ((x.lengthCompare__I__I(1) === 0)) {
-      var x67 = x.apply__I__O(0);
-      if (((typeof x67) === "number")) {
-        $uD(x67);
+      var x71 = x.apply__I__O(0);
+      if (((typeof x71) === "number")) {
+        $uD(x71);
         return true
       }
     }
@@ -13364,10 +13364,10 @@ $c_Lcom_vinctus_formula_Builtin$package$$anon$9.prototype.applyOrElse__sci_Seq__
   if ((x !== null)) {
     $m_s_package$();
     if ((x.lengthCompare__I__I(1) === 0)) {
-      var x71 = x.apply__I__O(0);
-      if (((typeof x71) === "number")) {
-        var x$2 = $uD(x71);
-        return $uD(Math.asin(x$2))
+      var x75 = x.apply__I__O(0);
+      if (((typeof x75) === "number")) {
+        var x$2 = $uD(x75);
+        return $uD(Math.floor(x$2))
       }
     }
   };
@@ -20877,6 +20877,8 @@ function $c_Lcom_vinctus_formula_FormulaParser$() {
   this.Lcom_vinctus_formula_FormulaParser$__f_prefixbitmap$1 = false;
   this.Lcom_vinctus_formula_FormulaParser$__f_exponentiation$lzy1 = null;
   this.Lcom_vinctus_formula_FormulaParser$__f_exponentiationbitmap$1 = false;
+  this.Lcom_vinctus_formula_FormulaParser$__f_postfix$lzy1 = null;
+  this.Lcom_vinctus_formula_FormulaParser$__f_postfixbitmap$1 = false;
   this.Lcom_vinctus_formula_FormulaParser$__f_applicative$lzy1 = null;
   this.Lcom_vinctus_formula_FormulaParser$__f_applicativebitmap$1 = false;
   this.Lcom_vinctus_formula_FormulaParser$__f_primary$lzy1 = null;
@@ -21172,7 +21174,7 @@ $c_Lcom_vinctus_formula_FormulaParser$.prototype.prefix__s_util_parsing_combinat
   if ((!this.Lcom_vinctus_formula_FormulaParser$__f_prefixbitmap$1)) {
     var p$1 = new $c_sjsr_AnonFunction0((() => {
       var p = new $c_sjsr_AnonFunction0((() => {
-        var $$x1 = this.keyword__T__s_util_parsing_combinator_Parsers$Parser("-").$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.prefix__s_util_parsing_combinator_PackratParsers$PackratParser())));
+        var $$x1 = this.keyword__T__s_util_parsing_combinator_Parsers$Parser("not").$bar__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser("-")))).$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.prefix__s_util_parsing_combinator_PackratParsers$PackratParser())));
         var f = new $c_sjsr_AnonFunction2(((op, expr) => {
           var op$1 = $as_T(op);
           var expr$1 = $as_Lcom_vinctus_formula_AST$Expr(expr);
@@ -21191,14 +21193,14 @@ $c_Lcom_vinctus_formula_FormulaParser$.prototype.exponentiation__s_util_parsing_
   if ((!this.Lcom_vinctus_formula_FormulaParser$__f_exponentiationbitmap$1)) {
     var p$1 = new $c_sjsr_AnonFunction0((() => {
       var p = new $c_sjsr_AnonFunction0((() => {
-        var $$x1 = this.applicative__s_util_parsing_combinator_PackratParsers$PackratParser().$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser("^")))).$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.prefix__s_util_parsing_combinator_PackratParsers$PackratParser())));
+        var $$x1 = this.postfix__s_util_parsing_combinator_PackratParsers$PackratParser().$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser("^")))).$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.prefix__s_util_parsing_combinator_PackratParsers$PackratParser())));
         var f = new $c_sjsr_AnonFunction3(((left, op, right) => {
           var left$1 = $as_Lcom_vinctus_formula_AST$Expr(left);
           var op$1 = $as_T(op);
           var right$1 = $as_Lcom_vinctus_formula_AST$Expr(right);
           return new $c_Lcom_vinctus_formula_AST$Expr$Binary(left$1, op$1, right$1)
         }));
-        return $$x1.$up$up__F1__s_util_parsing_combinator_Parsers$Parser($f_s_util_parsing_combinator_ImplicitConversions__flatten3__F3__F1(this, f)).$bar__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.applicative__s_util_parsing_combinator_PackratParsers$PackratParser())))
+        return $$x1.$up$up__F1__s_util_parsing_combinator_Parsers$Parser($f_s_util_parsing_combinator_ImplicitConversions__flatten3__F3__F1(this, f)).$bar__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.postfix__s_util_parsing_combinator_PackratParsers$PackratParser())))
       }));
       return $f_s_util_parsing_combinator_Parsers__positioned__F0__s_util_parsing_combinator_Parsers$Parser(this, p)
     }));
@@ -21206,6 +21208,20 @@ $c_Lcom_vinctus_formula_FormulaParser$.prototype.exponentiation__s_util_parsing_
     this.Lcom_vinctus_formula_FormulaParser$__f_exponentiationbitmap$1 = true
   };
   return this.Lcom_vinctus_formula_FormulaParser$__f_exponentiation$lzy1
+});
+$c_Lcom_vinctus_formula_FormulaParser$.prototype.postfix__s_util_parsing_combinator_PackratParsers$PackratParser = (function() {
+  if ((!this.Lcom_vinctus_formula_FormulaParser$__f_postfixbitmap$1)) {
+    var p$1 = new $c_sjsr_AnonFunction0((() => {
+      var p = new $c_sjsr_AnonFunction0((() => this.applicative__s_util_parsing_combinator_PackratParsers$PackratParser().$less$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser("%")))).$up$up__F1__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction1(((e) => {
+        var e$1 = $as_Lcom_vinctus_formula_AST$Expr(e);
+        return new $c_Lcom_vinctus_formula_AST$Expr$Unary("%", e$1)
+      }))).$bar__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.applicative__s_util_parsing_combinator_PackratParsers$PackratParser())))));
+      return $f_s_util_parsing_combinator_Parsers__positioned__F0__s_util_parsing_combinator_Parsers$Parser(this, p)
+    }));
+    this.Lcom_vinctus_formula_FormulaParser$__f_postfix$lzy1 = $f_s_util_parsing_combinator_PackratParsers__parser2packrat__F0__s_util_parsing_combinator_PackratParsers$PackratParser(this, p$1);
+    this.Lcom_vinctus_formula_FormulaParser$__f_postfixbitmap$1 = true
+  };
+  return this.Lcom_vinctus_formula_FormulaParser$__f_postfix$lzy1
 });
 $c_Lcom_vinctus_formula_FormulaParser$.prototype.applicative__s_util_parsing_combinator_PackratParsers$PackratParser = (function() {
   if ((!this.Lcom_vinctus_formula_FormulaParser$__f_applicativebitmap$1)) {
@@ -21221,10 +21237,7 @@ $c_Lcom_vinctus_formula_FormulaParser$.prototype.applicative__s_util_parsing_com
           var args$1 = $as_sci_Seq(args);
           return new $c_Lcom_vinctus_formula_AST$Expr$Apply(name$1, args$1)
         }));
-        return $$x1.$up$up__F1__s_util_parsing_combinator_Parsers$Parser($f_s_util_parsing_combinator_ImplicitConversions__flatten2__F2__F1(this, f)).$bar__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.applicative__s_util_parsing_combinator_PackratParsers$PackratParser().$less$tilde__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.keyword__T__s_util_parsing_combinator_Parsers$Parser("%")))).$up$up__F1__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction1(((e) => {
-          var e$1 = $as_Lcom_vinctus_formula_AST$Expr(e);
-          return new $c_Lcom_vinctus_formula_AST$Expr$Unary("%", e$1)
-        })))))).$bar__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.primary__s_util_parsing_combinator_PackratParsers$PackratParser())))
+        return $$x1.$up$up__F1__s_util_parsing_combinator_Parsers$Parser($f_s_util_parsing_combinator_ImplicitConversions__flatten2__F2__F1(this, f)).$bar__F0__s_util_parsing_combinator_Parsers$Parser(new $c_sjsr_AnonFunction0((() => this.primary__s_util_parsing_combinator_PackratParsers$PackratParser())))
       }));
       return $f_s_util_parsing_combinator_Parsers__positioned__F0__s_util_parsing_combinator_Parsers$Parser(this, p$1)
     }));

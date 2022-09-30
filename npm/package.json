@@ -1,6 +1,6 @@
 {
   "name": "@vinctus/formula",
-  "version": "0.0.33",
+  "version": "0.0.34",
   "description": "Formula interpreter",
   "main": "main.js",
   "scripts": {

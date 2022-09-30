@@ -2,10 +2,10 @@ formulae
     ::= declaration*
 
 declaration
-    ::= 'def' ident '=' expression
-      | 'const' ident '=' expression
-      | 'def' ident '(' ident (',' ident)* ')'
-      | 'var' ident ('=' expression)?
+    ::= 'def' identifier '=' expression
+      | 'const' identifier '=' expression
+      | 'def' identifier '(' identifier (',' identifier)* ')'
+      | 'var' identifier ('=' expression)?
 
 expression
     ::= ternary
@@ -29,3 +29,29 @@ relational
 additive
     ::= additive ('+' | '-') multiplicative
       | multiplicative
+
+multiplicative
+    ::= multiplicative ('*' | '/' | 'mod') prefix
+      | prefix
+
+prefix
+    ::= ('not' | '-') prefix
+      | exponentiation
+
+exponentiation
+    ::= postfix '^' prefix
+      | postfix
+
+postfix
+    ::= applicative '%'
+      | applicative
+
+applicative
+    ::= identifier '(' expression (',' expression)* ')'
+      | primary
+
+primary
+    ::= identifier
+      | number
+      | string
+      | '(' expression ')'

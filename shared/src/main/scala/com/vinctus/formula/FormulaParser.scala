@@ -83,18 +83,22 @@ object FormulaParser extends StandardTokenParsers with PackratParsers with Impli
   )
 
   lazy val prefix: P[Expr] = positioned(
-    "-" ~ prefix ^^ Unary.apply
+    ("not" | "-") ~ prefix ^^ Unary.apply
       | exponentiation,
   )
 
   lazy val exponentiation: P[Expr] = positioned(
-    applicative ~ "^" ~ prefix ^^ Binary.apply
+    postfix ~ "^" ~ prefix ^^ Binary.apply
+      | postfix,
+  )
+
+  lazy val postfix: P[Expr] = positioned(
+    applicative <~ "%" ^^ (e => Unary("%", e))
       | applicative,
   )
 
   lazy val applicative: P[Expr] = positioned(
     ident ~ ("(" ~> repsep(expression, ",") <~ ")") ^^ Apply.apply
-      | applicative <~ "%" ^^ (e => Unary("%", e))
       | primary,
   )
 

@@ -40,7 +40,7 @@ Include the following in your `build.sbt`:
 ```sbt
 resolvers += Resolver.githubPackages("vinctustech")
 
-libraryDependencies += "io.github.vinctustech" %%% "formula" % "0.0.33"
+libraryDependencies += "io.github.vinctustech" %%% "formula" % "0.0.34"
 ```
 
 Use the following `import` in your code:
@@ -118,7 +118,12 @@ Syntax
     <dt>conjunctive</dt><dd><img src="images/conjunctive.png"/></dd>
     <dt>relational</dt><dd><img src="images/relational.png"/></dd>
     <dt>additive</dt><dd><img src="images/additive.png"/></dd>
-    <dt></dt><dd><img src="images/.png"/></dd>
+    <dt>multiplicative</dt><dd><img src="images/multiplicative.png"/></dd>
+    <dt>prefix</dt><dd><img src="images/prefix.png"/></dd>
+    <dt>exponentiation</dt><dd><img src="images/exponentiation.png"/></dd>
+    <dt>postfix</dt><dd><img src="images/postfix.png"/></dd>
+    <dt>applicative</dt><dd><img src="images/applicative.png"/></dd>
+    <dt>primary</dt><dd><img src="images/primary.png"/></dd>
 </dl>
 
 Built-in Functions
