@@ -113,6 +113,8 @@ Syntax
 <dl>
     <dt>formulae</dt><dd><img src="images/formulae.png"/></dd>
     <dt>declaration</dt><dd><img src="images/declaration.png"/></dd>
+    <dt>expression</dt><dd><img src="images/expression.png"/></dd>
+    <dt></dt><dd><img src="images/.png"/></dd>
 </dl>
 
 Built-in Functions

@@ -1,0 +1,15 @@
+formulae
+    ::= declaration*
+
+declaration
+    ::= 'def' ident '=' expression
+      | 'const' ident '=' expression
+      | 'def' ident '(' ident (',' ident)* ')'
+      | 'var' ident ('=' expression)?
+
+expression
+    ::= ternary
+
+ternary
+    ::= disjunctive '?' disjunctive ':' ternary
+      | disjunctive
