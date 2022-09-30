@@ -110,8 +110,32 @@ License
 Syntax
 ------
 
-Built-in Functions and Constants
---------------------------------
+Built-in Functions
+------------------
+
+<dl>
+    <dt>abs(<i>x</i>)</dt><dd>absolute value of <i>x</i></dd>
+    <dt>acos</dt><dd>inverse cosine</dd>
+    <dt>asin</dt><dd>inverse sin</dd>
+    <dt>atan</dt><dd>inverse tangent</dd>
+    <dt>atan2</dt><dd></dd>
+    <dt></dt><dd></dd>
+    <dt></dt><dd></dd>
+    <dt></dt><dd></dd>
+    <dt></dt><dd></dd>
+    <dt></dt><dd></dd>
+    <dt></dt><dd></dd>
+    <dt></dt><dd></dd>
+    <dt></dt><dd></dd>
+    <dt></dt><dd></dd>
+    <dt></dt><dd></dd>
+    <dt></dt><dd></dd>
+    <dt></dt><dd></dd>
+    <dt>round</dt><dd>round to the nearest whole number</dd>
+</dl>
+
+Built-in Constants
+------------------
 
 <dl>
     <dt>e</dt><dd>&#8455; is the base of the natural logarithm</dd>
