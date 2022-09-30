@@ -110,6 +110,11 @@ License
 Syntax
 ------
 
+<dl>
+    <dt>formulae</dt><dd><img src="images/Production.png"/>*</dd>
+    <dt>declaration</dt><dd></dd>
+</dl>
+
 Built-in Functions
 ------------------
 
