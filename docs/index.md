@@ -106,3 +106,14 @@ License
 -------
 
 [ISC](https://github.com/vinctustech/formula/blob/main/LICENSE)
+
+Syntax
+------
+
+Built-in Functions and Constants
+--------------------------------
+
+<dl>
+    <dt>edt>
+    <dd>base of the natural logarithm</dd>
+</dl>
