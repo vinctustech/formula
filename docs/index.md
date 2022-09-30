@@ -114,6 +114,6 @@ Built-in Functions and Constants
 --------------------------------
 
 <dl>
-    <dt>e</dt>
-    <dd>base of the natural logarithm</dd>
+    <dt>e</dt><dd>&#8455; is the base of the natural logarithm</dd>
+    <dt>pi</dt><dd>π is the ratio of a circle's circumference to its diameter</dd>
 </dl>
