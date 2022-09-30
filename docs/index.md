@@ -119,6 +119,7 @@ Built-in Functions
     <dt>asin(x)</dt><dd>inverse sin (in radians) of <i>x</i></dd>
     <dt>atan(x)</dt><dd>inverse tangent (in radians) of <i>x</i></dd>
     <dt>atan2(x,y)</dt><dd>counterclockwise angle (in radians) between the positive x-axis and the point (<i>x</i>, <i>y</i>)</dd>
+    <dt></dt>ceil(x)<dd>smallest integer greater than or equal to $x$</dd>
     <dt></dt><dd></dd>
     <dt></dt><dd></dd>
     <dt></dt><dd></dd>
@@ -126,8 +127,7 @@ Built-in Functions
     <dt></dt><dd></dd>
     <dt></dt><dd></dd>
     <dt></dt><dd></dd>
-    <dt></dt><dd></dd>
-    <dt>round(x)</dt><dd>nearest whole number to <i>x</i></dd>
+    <dt>round(x)</dt><dd>nearest integer to <i>x</i></dd>
     <dt></dt><dd></dd>
     <dt></dt><dd></dd>
     <dt></dt><dd></dd>
